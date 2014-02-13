@@ -1,13 +1,14 @@
 //
-//  ViewController.h
+//  Card.m
 //  AamMango
 //
 //  Created by Sumedha Pramod on 2/12/14.
 //  Copyright (c) 2014 Sumedha Pramod. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Card.h"
 
-@interface ViewController : UITableViewController
+
+@implementation Card
 
 @end
