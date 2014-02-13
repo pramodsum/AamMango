@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Sumedha Pramod. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "RootViewController.h"
 #import "TopicViewController.h"
 
 @interface ViewController ()
