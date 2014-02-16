@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 #import "TopicViewController.h"
-#import "SWRevealViewController.h"
 
 @interface ViewController ()
 
