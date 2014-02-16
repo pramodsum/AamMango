@@ -7,7 +7,6 @@
 //
 
 #import "TopicViewController.h"
-#import "SWRevealViewController.h"
 
 @interface TopicViewController ()
 
