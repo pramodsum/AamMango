@@ -20,6 +20,7 @@
 		4916AEA518AFF6CB00A45A8C /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4916AEA418AFF6CB00A45A8C /* UserViewController.m */; };
 		4916AEAE18B0083100A45A8C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4916AEAD18B0083100A45A8C /* LoginViewController.m */; };
 		4916AEB118B0083D00A45A8C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4916AEB018B0083D00A45A8C /* SignupViewController.m */; };
+		4916AEB318B066AC00A45A8C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4916AEB218B066AC00A45A8C /* FacebookSDK.framework */; };
 		4927F45118AC3A1E005257CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4927F45018AC3A1E005257CF /* Foundation.framework */; };
 		4927F45318AC3A1E005257CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4927F45218AC3A1E005257CF /* CoreGraphics.framework */; };
 		4927F45518AC3A1E005257CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4927F45418AC3A1E005257CF /* UIKit.framework */; };
@@ -83,6 +84,7 @@
 		4916AEAD18B0083100A45A8C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4916AEAF18B0083D00A45A8C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		4916AEB018B0083D00A45A8C /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		4916AEB218B066AC00A45A8C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4927F44D18AC3A1E005257CF /* AamMango.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AamMango.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4927F45018AC3A1E005257CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4927F45218AC3A1E005257CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +145,7 @@
 				4916AE9418AFEEE500A45A8C /* CFNetwork.framework in Frameworks */,
 				4916AE9218AFEEDF00A45A8C /* AudioToolbox.framework in Frameworks */,
 				4989822418AD26A000A0F985 /* libsqlite3.dylib in Frameworks */,
+				4916AEB318B066AC00A45A8C /* FacebookSDK.framework in Frameworks */,
 				4927F45518AC3A1E005257CF /* UIKit.framework in Frameworks */,
 				4927F45118AC3A1E005257CF /* Foundation.framework in Frameworks */,
 				4916AE9018AFEEBD00A45A8C /* Parse.framework in Frameworks */,
@@ -184,6 +187,7 @@
 		4927F44F18AC3A1E005257CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4916AEB218B066AC00A45A8C /* FacebookSDK.framework */,
 				4916AEA118AFEF1500A45A8C /* SystemConfiguration.framework */,
 				4916AE9F18AFEF0F00A45A8C /* StoreKit.framework */,
 				4916AE9D18AFEF0A00A45A8C /* Security.framework */,

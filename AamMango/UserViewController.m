@@ -30,7 +30,7 @@
     [super viewDidLoad];
 //    self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.barTintColor =
-        [UIColor colorWithRed:102/255.0f green:102/255.0f blue:255/255.0f alpha:1];//UIColorFromRGB(0x6666FF);
+        [UIColor colorWithRed:102/255.0f green:102/255.0f blue:255/255.0f alpha:1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,9 +50,11 @@
     [_signup_btn setHidden:YES];
     [_logout_btn setHidden:YES];
     [_status setHidden:YES];
+    [_begin_btn setHidden:YES];
 
     if ([PFUser currentUser]) {
         [_logout_btn setHidden:NO];
+        [_begin_btn setHidden:NO];
 
         self.status.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[PFUser currentUser] username]];;
         [_status setHidden:NO];
@@ -73,6 +75,10 @@
 - (IBAction)logout:(id)sender {
     [PFUser logOut];
     [self checkStatus];
+}
+
+- (IBAction)begin:(id)sender {
+    [self performSegueWithIdentifier:@"beginSegue" sender:self];
 }
 
 @end

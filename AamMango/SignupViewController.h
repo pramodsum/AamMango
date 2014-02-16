@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UITextField *email;
 @property (strong, nonatomic) IBOutlet UIButton *signup_btn;
+@property (strong, nonatomic) IBOutlet UIButton *profpic_btn;
 - (IBAction)signup:(id)sender;
+- (IBAction)selectProfPic:(id)sender;
 
 @end

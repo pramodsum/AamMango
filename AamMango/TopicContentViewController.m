@@ -7,6 +7,7 @@
 //
 
 #import "TopicContentViewController.h"
+#import "SWRevealViewController.h"
 
 @interface TopicContentViewController ()
 

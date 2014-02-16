@@ -64,6 +64,7 @@
         newUser.username = user;
         newUser.password = pass;
         newUser.email = email;
+        [newUser setObject:@"false" forKey:@"isFBUser"];
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
                 NSString *errorString = [[error userInfo] objectForKey:@"error"];
@@ -74,6 +75,9 @@
             }
         }];
     }
+}
+
+- (IBAction)selectProfPic:(id)sender {
 }
 
 - (void)dismissKeyboard {
