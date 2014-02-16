@@ -7,18 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Card.h"
+#import "TopicContentViewController.h"
 
-@interface TopicViewController : UIViewController
+@interface TopicViewController : UIViewController <UIPageViewControllerDataSource>
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @property (strong, nonatomic) NSArray *cards;
 @property (strong, nonatomic) NSArray *numberCards;
 @property (strong, nonatomic) NSArray *fruitCards;
 @property (strong, nonatomic) NSArray *vegetableCards;
 @property (strong, nonatomic) NSArray *emotionCards;
-
-@property (strong, nonatomic) IBOutlet UIImageView *cardImage;
-@property (strong, nonatomic) IBOutlet UILabel *cardLabel;
-@property (strong, nonatomic) Card *card;
 
 @end

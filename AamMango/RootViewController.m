@@ -23,7 +23,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
 
-    topics = [NSArray arrayWithObjects:@"Numbers", @"Fruits", @"Vegetables", @"Emotions", nil];
+    topics = [NSArray arrayWithObjects:@"Numbers", nil];
 
     //Init alertview
 //    UIAlertView *name_dialog = [[UIAlertView alloc]

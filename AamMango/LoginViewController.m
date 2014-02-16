@@ -2,11 +2,12 @@
 //  LoginViewController.m
 //  AamMango
 //
-//  Created by Sumedha Pramod on 2/13/14.
+//  Created by Sumedha Pramod on 2/15/14.
 //  Copyright (c) 2014 Sumedha Pramod. All rights reserved.
 //
 
 #import "LoginViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface LoginViewController ()
 
@@ -26,41 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *docsDir;
-    NSArray *dirPaths;
+    self.title = @"Login";
+//    self.navigationController.navigationBarHidden = YES;
 
-    // Get the documents directory
-    dirPaths = NSSearchPathForDirectoriesInDomains(
-                                                   NSDocumentDirectory, NSUserDomainMask, YES);
-
-    docsDir = dirPaths[0];
-
-    // Build the path to the database file
-    _databasePath = [[NSString alloc]
-                     initWithString: [docsDir stringByAppendingPathComponent:
-                                      @"users.db"]];
-
-    NSFileManager *filemgr = [NSFileManager defaultManager];
-
-    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
-    {
-        const char *dbpath = [_databasePath UTF8String];
-
-        if (sqlite3_open(dbpath, &_userDB) == SQLITE_OK)
-        {
-            char *errMsg;
-            const char *sql_stmt =
-            "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, ADDRESS TEXT, PHONE TEXT)";
-
-            if (sqlite3_exec(_userDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
-            {
-                _status.text = @"Username or Password is incorrect!";
-            }
-            sqlite3_close(_userDB);
-        } else {
-            _status.text = @"Failed to open/create database";
-        }
-    }
+    [_username setDelegate:self];
+    [_password setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,70 +40,38 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)textFieldReturn:(id)sender
-{
-    [sender resignFirstResponder];
-}
-
 - (IBAction)login:(id)sender {
-    const char *dbpath = [_databasePath UTF8String];
-    sqlite3_stmt    *statement;
+    NSString *user = [_username text];
+    NSString *pass = [_password text];
 
-    if (sqlite3_open(dbpath, &_userDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:
-                              @"SELECT username, password FROM users WHERE username=\"%@\"",
-                              _username.text];
-
-        const char *query_stmt = [querySQL UTF8String];
-
-        if (sqlite3_prepare_v2(_userDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            if (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                NSString *usernameField = [[NSString alloc]
-                                          initWithUTF8String:
-                                          (const char *) sqlite3_column_text(
-                                                                             statement, 0)];
-                _username.text = usernameField;
-                NSString *passwordField = [[NSString alloc]
-                                        initWithUTF8String:(const char *)
-                                        sqlite3_column_text(statement, 1)];
-                _password.text = passwordField;
-                _status.text = @"Match found";
+    if ([user length] < 4 || [pass length] < 4) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Entry" message:@"Username and Password must both be at least 4 characters long." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        [PFUser logInWithUsernameInBackground:user password:pass block:^(PFUser *user, NSError *error) {
+            if (user) {
+                [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
             } else {
-                _status.text = @"Match not found";
-                _username.text = @"";
-                _password.text = @"";
+                NSLog(@"%@",error);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed." message:@"Invalid Username and/or Password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                [alert show];
             }
-            sqlite3_finalize(statement);
-        }
-        sqlite3_close(_userDB);
+        }];
     }
-//    sqlite3_stmt    *statement;
-//    const char *dbpath = [_databasePath UTF8String];
-//
-//    if (sqlite3_open(dbpath, &_userDB) == SQLITE_OK)
-//    {
-//
-//        NSString *insertSQL = [NSString stringWithFormat:
-//                               @"INSERT INTO CONTACTS (name, address) VALUES (\"%@\", \"%@\")",
-//                               _username.text, _password.text];
-//
-//        const char *insert_stmt = [insertSQL UTF8String];
-//        sqlite3_prepare_v2(_userDB, insert_stmt,
-//                           -1, &statement, NULL);
-//        if (sqlite3_step(statement) == SQLITE_DONE)
-//        {
-//            _status.text = @"Username added";
-//            _username.text = @"";
-//            _password.text = @"";
-//        } else {
-//            _status.text = @"Failed to add contact";
-//        }
-//        sqlite3_finalize(statement);
-//        sqlite3_close(_userDB);
-//    }
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSInteger nextTag = textField.tag + 1;
+    // Try to find next responder
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
 @end
