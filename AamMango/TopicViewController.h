@@ -14,7 +14,6 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @property (strong, nonatomic) NSArray *cards;
-@property (strong, nonatomic) NSArray *numberCards;
 @property (strong, nonatomic) NSArray *fruitCards;
 @property (strong, nonatomic) NSArray *vegetableCards;
 @property (strong, nonatomic) NSArray *emotionCards;

@@ -13,6 +13,8 @@
 @end
 
 @implementation TopicContentViewController
+@synthesize cardImage, cardLabel, cardEnglishLabel, cardHindiLabel;
+@synthesize card;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,15 +29,27 @@
 {
     [super viewDidLoad];
 
-    self.cardImage.image = [UIImage imageNamed:self.imageFile];
-    self.cardLabel.text = self.titleText;
-    self.cardEnglishLabel.text = self.subtitleText;
+    cardImage.image = [UIImage imageNamed:card.image];
+    UIFont *font = [UIFont fontWithName:@"DevanagariSangamMN" size:30];
+    cardLabel.font = font;
+    cardLabel.text = card.hindi;
+    cardHindiLabel.text = card.translit;
+    cardEnglishLabel.text = card.english;
+
+    self.synthesizer = [[AVSpeechSynthesizer alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)pronounceWord:(id)sender {
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString: card.hindi];
+    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"hi-IN"];
+    [self.synthesizer speakUtterance:utterance];
 }
 
 @end

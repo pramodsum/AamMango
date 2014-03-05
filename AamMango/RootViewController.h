@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *profile_btn;
+- (IBAction)viewProfile:(id)sender;
+- (IBAction)logout:(id)sender;
 
 @end

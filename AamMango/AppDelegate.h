@@ -13,4 +13,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)facebookRequestDidLoad:(id)result;
+- (void)facebookRequestDidFailWithError:(NSError *)error;
+
 @end

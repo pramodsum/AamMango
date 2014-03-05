@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "UserViewController.h"
+#import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface LoginViewController ()
@@ -15,7 +17,7 @@
 
 @implementation LoginViewController
 
-@synthesize loginView;
+//@synthesize loginView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,14 +31,56 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Login";
-//    self.navigationController.navigationBarHidden = YES;
 
     [_username setDelegate:self];
     [_password setDelegate:self];
 
-    loginView.readPermissions = @[@"basic_info", @"email", @"user_likes"];
-    loginView.delegate = self;
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
+    }
+
+    [[PFUser currentUser] refreshInBackgroundWithTarget:self selector:@selector(refreshCurrentUserCallbackWithResult:error:)];
+}
+
+- (void)refreshCurrentUserCallbackWithResult:(PFObject *)refreshedObject error:(NSError *)error {
+    // A kPFErrorObjectNotFound error on currentUser refresh signals a deleted user
+    if (error && error.code == kPFErrorObjectNotFound) {
+        NSLog(@"User does not exist.");
+        [PFUser logOut];
+        [self performSegueWithIdentifier:@"loginfail_segue" sender:self];
+        return;
+    }
+
+    // Check if user is missing a Facebook ID
+    if ([Utility userHasValidFacebookData:[PFUser currentUser]]) {
+        // User has Facebook ID.
+
+        // refresh Facebook friends on each launch
+        [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if (!error) {
+                if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(facebookRequestDidLoad:)]) {
+                    [[UIApplication sharedApplication].delegate performSelector:@selector(facebookRequestDidLoad:) withObject:result];
+                }
+            } else {
+                if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(facebookRequestDidFailWithError:)]) {
+                    [[UIApplication sharedApplication].delegate performSelector:@selector(facebookRequestDidFailWithError:) withObject:error];
+                }
+            }
+        }];
+    } else {
+        NSLog(@"Current user is missing their Facebook ID");
+        [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if (!error) {
+                if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(facebookRequestDidLoad:)]) {
+                    [[UIApplication sharedApplication].delegate performSelector:@selector(facebookRequestDidLoad:) withObject:result];
+                }
+            } else {
+                if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(facebookRequestDidFailWithError:)]) {
+                    [[UIApplication sharedApplication].delegate performSelector:@selector(facebookRequestDidFailWithError:) withObject:error];
+                }
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,33 +109,62 @@
     }
 }
 
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-    [PFUser logInWithUsernameInBackground:[user objectForKey:@"email"] password:user.id block:^(PFUser *current_user, NSError *error) {
-        if (current_user) {
-            [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
-        } else {
-            PFUser *newUser = [PFUser user];
-            //self.profilePictureView.profileID = user.id;
-            newUser.username = user.name;
-            newUser.password = user.id;
-            newUser.email = [user objectForKey:@"email"];
-            [newUser setObject:@"true" forKey:@"isFBUser"];
-            [newUser setObject:user.id forKey:@"FBProfilePictureID"];
-            [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (error) {
-                    NSString *errorString = [[error userInfo] objectForKey:@"error"];
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-                    [alert show];
+- (IBAction)signup:(id)sender {
+    [self performSegueWithIdentifier:@"newuser_segue" sender:self];
+}
+
+- (IBAction)facebookLogin:(id)sender {
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"email", @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+
+    // Login PFUser using facebook
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+
+        if (!user) {
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"Uh oh. The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            }
+        } else if (user.isNew) {
+            NSLog(@"User with facebook signed up and logged in!");
+
+            // Send request to Facebook
+            FBRequest *request = [FBRequest requestForMe];
+            [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                // handle response
+                if (!error) {
+                    // Parse the data received
+                    NSDictionary *userData = (NSDictionary *)result;
+
+                    NSString *email = userData[@"email"];
+
+                    [[PFUser currentUser] setObject:email forKey:@"email"];
+                    [[PFUser currentUser] setObject:@0 forKey:@"Score"];
+                    [[PFUser currentUser] saveInBackground];
+                } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
+                            isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
+                    NSLog(@"The facebook session was invalidated");
+                    [PFUser logOut];
+                    [self performSegueWithIdentifier:@"logout_segue" sender:self];
+                    
                 } else {
-                    [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
+                    NSLog(@"Some other error: %@", error);
                 }
             }];
+            [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
+        } else {
+            NSLog(@"User with facebook logged in!");
+            [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
         }
     }];
 }
 
-- (IBAction)signup:(id)sender {
-    [self performSegueWithIdentifier:@"newuser_segue" sender:self];
+- (IBAction)twitterLogin:(id)sender {
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -106,49 +179,6 @@
         [textField resignFirstResponder];
     }
     return NO; // We do not want UITextField to insert line-breaks.
-}
-
-// Handle possible errors that can occur during login
-- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
-    NSString *alertMessage, *alertTitle;
-
-    // If the user should perform an action outside of you app to recover,
-    // the SDK will provide a message for the user, you just need to surface it.
-    // This conveniently handles cases like Facebook password change or unverified Facebook accounts.
-    if ([FBErrorUtility shouldNotifyUserForError:error]) {
-        alertTitle = @"Facebook error";
-        alertMessage = [FBErrorUtility userMessageForError:error];
-
-        // This code will handle session closures that happen outside of the app
-        // You can take a look at our error handling guide to know more about it
-        // https://developers.facebook.com/docs/ios/errors
-    } else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryAuthenticationReopenSession) {
-        alertTitle = @"Session Error";
-        alertMessage = @"Your current session is no longer valid. Please log in again.";
-
-        // If the user has cancelled a login, we will do nothing.
-        // You can also choose to show the user a message if cancelling login will result in
-        // the user not being able to complete a task they had initiated in your app
-        // (like accessing FB-stored information or posting to Facebook)
-    } else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
-        NSLog(@"user cancelled login");
-
-        // For simplicity, this sample handles other errors with a generic message
-        // You can checkout our error handling guide for more detailed information
-        // https://developers.facebook.com/docs/ios/errors
-    } else {
-        alertTitle  = @"Something went wrong";
-        alertMessage = @"Please try again later.";
-        NSLog(@"Unexpected error:%@", error);
-    }
-
-    if (alertMessage) {
-        [[[UIAlertView alloc] initWithTitle:alertTitle
-                                    message:alertMessage
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
-    }
 }
 
 @end

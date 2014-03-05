@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PAPCache.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
@@ -14,7 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [FBLoginView class];
+//    [FBLoginView class];
 
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
@@ -25,6 +26,8 @@
                   clientKey:@"XLcHBiK4G3t3TWN8SbYNVklyWDaQvxFk3jvCl36B"];
 
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+    [PFFacebookUtils initializeFacebook];
 
     return YES;
 }
@@ -49,24 +52,85 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[PFFacebookUtils session] close];
 }
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
+}
 
-    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
 
-    // You can add your app-specific url handling code here if needed
 
-    return wasHandled;
+- (void)facebookRequestDidLoad:(id)result {
+    // This method is called twice - once for the user's /me profile, and a second time when obtaining their friends. We will try and handle both scenarios in a single method.
+    PFUser *user = [PFUser currentUser];
+
+    NSArray *data = [result objectForKey:@"data"];
+
+    if (data) {
+        // we have friends data
+        NSMutableArray *facebookIds = [[NSMutableArray alloc] initWithCapacity:[data count]];
+        for (NSDictionary *friendData in data) {
+            if (friendData[@"id"]) {
+                [facebookIds addObject:friendData[@"id"]];
+            }
+        }
+
+        // cache friend data
+        [[PAPCache sharedCache] setFacebookFriends:facebookIds];
+
+        if (!user) {
+            NSLog(@"No user session found. Forcing logOut.");
+            [PFUser logOut];
+        }
+    } else {
+        if (user) {
+            NSString *facebookName = result[@"name"];
+            if (facebookName && [facebookName length] != 0) {
+                [user setObject:facebookName forKey:@"displayName"];
+            } else {
+                [user setObject:@"Someone" forKey:@"displayName"];
+            }
+
+            NSString *facebookId = result[@"id"];
+            if (facebookId && [facebookId length] != 0) {
+                [user setObject:facebookId forKey:@"facebookId"];
+            }
+
+            [user saveEventually];
+        }
+
+        [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if (!error) {
+                [self facebookRequestDidLoad:result];
+            } else {
+                [self facebookRequestDidFailWithError:error];
+            }
+        }];
+    }
+}
+
+- (void)facebookRequestDidFailWithError:(NSError *)error {
+    NSLog(@"Facebook error: %@", error);
+
+    if ([PFUser currentUser]) {
+        if ([[error userInfo][@"error"][@"type"] isEqualToString:@"OAuthException"]) {
+            NSLog(@"The Facebook token was invalidated. Logging out.");
+            [PFUser logOut];
+        }
+    }
 }
 
 @end

@@ -28,6 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [_logout_btn setHidden:YES];
+    [_status setHidden:YES];
+    [_begin_btn setHidden:YES];
+    [_login_btn setHidden:YES];
+    [_signup_btn setHidden:YES];
+
 //    self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.barTintColor =
         [UIColor colorWithRed:102/255.0f green:102/255.0f blue:255/255.0f alpha:1];
@@ -46,18 +53,31 @@
 
 - (void)checkStatus {
     NSLog(@"Splash - checkStatus");
-    [_login_btn setHidden:YES];
-    [_signup_btn setHidden:YES];
     [_logout_btn setHidden:YES];
     [_status setHidden:YES];
     [_begin_btn setHidden:YES];
+    [_login_btn setHidden:YES];
+    [_signup_btn setHidden:YES];
 
     if ([PFUser currentUser]) {
         [_logout_btn setHidden:NO];
         [_begin_btn setHidden:NO];
-
-        self.status.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[PFUser currentUser] username]];;
         [_status setHidden:NO];
+
+        FBRequest *request = [FBRequest requestForMe];
+
+        // Send request to Facebook
+        [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if (!error) {
+                // result is a dictionary with the user's Facebook data
+                NSDictionary *userData = (NSDictionary *)result;
+
+                NSString *name = userData[@"name"];
+                
+                // Now add the data to the UI elements
+                self.status.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), name];
+            }
+        }];
     } else {
         [_login_btn setHidden:NO];
         [_signup_btn setHidden:NO];

@@ -28,14 +28,12 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Login";
-//    self.navigationController.navigationBarHidden = YES;
-
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
 
+    [_fullname setDelegate: self];
     [_username setDelegate:self];
     [_password setDelegate:self];
     [_email setDelegate:self];
@@ -48,6 +46,7 @@
 }
 
 - (IBAction)signup:(id)sender {
+    NSString *fullname = [_fullname text];
     NSString *user = [_username text];
     NSString *pass = [_password text];
     NSString *email = [_email text];
@@ -61,10 +60,12 @@
     } else {
 
         PFUser *newUser = [PFUser user];
+        [newUser setValue:fullname forKey:@"Name"];
         newUser.username = user;
         newUser.password = pass;
         newUser.email = email;
-        [newUser setObject:@"false" forKey:@"isFBUser"];
+        [newUser setObject:@0 forKey:@"Score"];
+        [newUser setValue:@"false" forKey:@"isFBUser"];
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
                 NSString *errorString = [[error userInfo] objectForKey:@"error"];

@@ -11,12 +11,4 @@
 
 @implementation Card
 
-//- (id) initWithNAme:(NSString *)label_ (NSString *) image_name_ {
-//    self = [super init];
-//    if(self) {
-//
-//    }
-//    return self;
-//}
-
 @end

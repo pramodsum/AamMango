@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "TopicViewController.h"
+#import <Parse/Parse.h>
 
 @interface ViewController ()
 
@@ -78,5 +79,14 @@ static NSString *CellIdentifier = @"CellIdentifier";
     return NO;
 }
 
+
+- (IBAction)viewProfile:(id)sender {
+    [self performSegueWithIdentifier:@"profileview_segue" sender:self];
+}
+
+- (IBAction)logout:(id)sender {
+    [PFUser logOut];
+    [self performSegueWithIdentifier:@"rootlogout_segue" sender:self];
+}
 
 @end

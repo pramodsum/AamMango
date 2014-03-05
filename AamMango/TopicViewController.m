@@ -7,6 +7,7 @@
 //
 
 #import "TopicViewController.h"
+#import "NumberCards.h"
 
 @interface TopicViewController ()
 
@@ -28,8 +29,9 @@
     [super viewDidLoad];
 
     if([self.navigationItem.title  isEqual: @"Numbers"]) {
-        [self initNumberCards];
-        _cards = [[NSArray alloc] initWithArray:_numberCards];
+        NumberCards *numberCardController = [[NumberCards alloc] init];
+        [numberCardController initNumberCards];
+        _cards = [[NSArray alloc] initWithArray: numberCardController.numberCards];
     }
     else if([self.navigationItem.title  isEqual: @"Fruits"]) {
         _cards = _fruitCards;
@@ -101,13 +103,14 @@
     // Create a new view controller and pass suitable data.
     TopicContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicContentViewController"];
     Card *c = self.cards[index];
-    pageContentViewController.titleText = c.label;
-    pageContentViewController.cardLabel.text = c.label;
-    pageContentViewController.subtitleText = c.english;
-    pageContentViewController.cardEnglishLabel.text = c.english;
-    pageContentViewController.imageFile = c.image;
-    pageContentViewController.cardImage.image = [UIImage imageNamed:c.image];
+//    pageContentViewController.titleText = c.label;
+//    pageContentViewController.cardLabel.text = c.label;
+//    pageContentViewController.subtitleText = c.english;
+//    pageContentViewController.cardEnglishLabel.text = c.english;
+//    pageContentViewController.imageFile = c.image;
+//    pageContentViewController.cardImage.image = [UIImage imageNamed:c.image];
     pageContentViewController.pageIndex = index;
+    pageContentViewController.card = self.cards[index];
 
     return pageContentViewController;
 }
@@ -120,52 +123,6 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
-}
-
-- (void) initNumberCards {
-    Card *c1 = [[Card alloc] init],
-        *c2 = [[Card alloc] init],
-        *c3 = [[Card alloc] init],
-        *c4 = [[Card alloc] init],
-        *c5 = [[Card alloc] init],
-        *c6 = [[Card alloc] init],
-        *c7 = [[Card alloc] init],
-        *c8 = [[Card alloc] init],
-        *c9 = [[Card alloc] init],
-        *c10 = [[Card alloc] init];
-    c1.label = @"Ek";
-    c1.image = @"number_one";
-    c1.english = @"One";
-    c2.label = @"Do";
-    c2.image = @"number_two";
-    c2.english = @"Two";
-    c3.label = @"Theen";
-    c3.image = @"number_three";
-    c3.english = @"Three";
-    c4.label = @"Chaar";
-    c4.image = @"number_four";
-    c4.english = @"Four";
-    c5.label = @"Paanch";
-    c5.image = @"number_five";
-    c5.english = @"Five";
-    c6.label = @"Che";
-    c6.image = @"number_six";
-    c6.english = @"Six";
-    c7.label = @"Saath";
-    c7.image = @"number_seven";
-    c7.english = @"Seven";
-    c8.label = @"Aat";
-    c8.image = @"number_eight";
-    c8.english = @"Eight";
-    c9.label = @"Nau";
-    c9.image = @"number_nine";
-    c9.english = @"Nine";
-    c10.label = @"Dus";
-    c10.image = @"number_ten";
-    c10.english = @"Ten";
-
-    _numberCards = [[NSArray alloc]
-                    initWithObjects: c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, nil];
 }
 
 @end
