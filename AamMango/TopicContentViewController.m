@@ -28,15 +28,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    cardImage.image = [UIImage imageNamed:card.image];
+    cardImage.image = [UIImage imageNamed:card.english];
     UIFont *font = [UIFont fontWithName:@"DevanagariSangamMN" size:30];
     cardLabel.font = font;
+
+    //Get Hindi Translation of english word
+    [[MSTranslateAccessTokenRequester sharedRequester] requestSynchronousAccessToken:CLIENT_ID clientSecret:CLIENT_SECRET];
+
+    //Get Hindi translation if not already found
+    if(card.hindi.length == 0) {
+        MSTranslateVendor *vendor = [[MSTranslateVendor alloc] init];
+        [vendor requestTranslate: card.english from:@"en" to:@"hi" blockWithSuccess:
+         ^(NSString *translatedText) {
+             NSLog(@"translatedText: %@", translatedText);
+             card.hindi = translatedText;
+             cardLabel.text = translatedText;
+         }
+                         failure:^(NSError *error) {
+                             NSLog(@"error_translate: %@", error);
+                         }];
+        NSLog(@"hindi: %@", card.hindi);
+    }
     cardLabel.text = card.hindi;
     cardHindiLabel.text = card.translit;
     cardEnglishLabel.text = card.english;
-
-    self.synthesizer = [[AVSpeechSynthesizer alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,10 +61,12 @@
 }
 
 - (IBAction)pronounceWord:(id)sender {
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString: card.hindi];
-    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"hi-IN"];
-    [self.synthesizer speakUtterance:utterance];
+    if([card.hindi isEqual:@""]) {
+        [card announceError];
+    }
+    else {
+        [card pronounce];
+    }
 }
 
 @end

@@ -7,15 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <Parse/Parse.h>
 
 @interface Card : NSObject
 
-@property (strong, nonatomic) NSString *label;
-@property (strong, nonatomic) NSString *image;
-@property (strong, nonatomic) NSString *english;
-@property (strong, nonatomic) NSString *hindi;
-@property (strong, nonatomic) NSString *translit;
-//@property (strong, nonatomic) TYPE *pronounciation;
-@property (strong, nonatomic) NSNumber *answered_correctly; //set like [NSNumber numberWithBool:YES]
+@property (retain) NSString *english;
+@property (retain) NSString *hindi;
+@property (retain) NSString *translit;
+@property (retain) NSString *category;
+@property (retain) UIImage *image;
+@property (retain) PFImageView *pfimage;
+
+@property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
+@property (strong, nonatomic) NSNumber *answeredCorrectly; //set like [NSNumber numberWithBool:YES]
+
+//Methods
+-(void) pronounce;
+-(void) pronounce:(NSString *) str;
+-(void) announceError;
+-(BOOL) isAnsweredCorrectly;
 
 @end

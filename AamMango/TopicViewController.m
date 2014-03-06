@@ -7,13 +7,14 @@
 //
 
 #import "TopicViewController.h"
-#import "NumberCards.h"
 
 @interface TopicViewController ()
 
 @end
 
 @implementation TopicViewController
+
+@synthesize deck;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,21 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if([self.navigationItem.title  isEqual: @"Numbers"]) {
-        NumberCards *numberCardController = [[NumberCards alloc] init];
-        [numberCardController initNumberCards];
-        _cards = [[NSArray alloc] initWithArray: numberCardController.numberCards];
-    }
-    else if([self.navigationItem.title  isEqual: @"Fruits"]) {
-        _cards = _fruitCards;
-    }
-    else if([self.navigationItem.title  isEqual: @"Vegetables"]) {
-        _cards = _vegetableCards;
-    }
-    else if([self.navigationItem.title  isEqual: @"Emotions"]) {
-        _cards = _emotionCards;
-    }
+    deck = [Deck alloc];
+    [deck initDeck: self.navigationItem.title];
+    NSLog(@"SIZE: %li", deck.cards.count);
 
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicViewController"];
@@ -88,7 +77,7 @@
     }
 
     index++;
-    if (index == [self.cards count]) {
+    if (index == [deck.cards count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
@@ -96,28 +85,21 @@
 
 - (TopicContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([self.cards count] == 0) || (index >= [self.cards count])) {
+    if (([deck.cards count] == 0) || (index >= [deck.cards count])) {
         return nil;
     }
 
     // Create a new view controller and pass suitable data.
     TopicContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicContentViewController"];
-    Card *c = self.cards[index];
-//    pageContentViewController.titleText = c.label;
-//    pageContentViewController.cardLabel.text = c.label;
-//    pageContentViewController.subtitleText = c.english;
-//    pageContentViewController.cardEnglishLabel.text = c.english;
-//    pageContentViewController.imageFile = c.image;
-//    pageContentViewController.cardImage.image = [UIImage imageNamed:c.image];
     pageContentViewController.pageIndex = index;
-    pageContentViewController.card = self.cards[index];
+    pageContentViewController.card = deck.cards[index];
 
     return pageContentViewController;
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return [self.cards count];
+    return [deck.cards count];
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
