@@ -58,10 +58,6 @@
 		494A8F8C18B2F97D00C8F8DF /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8B18B2F97D00C8F8DF /* PAPCache.m */; };
 		495070BB18C7E72B009C0675 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */; };
 		4989822418AD26A000A0F985 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989822318AD26A000A0F985 /* libsqlite3.dylib */; };
-		499904EF18D2476400B3A237 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 499904EB18D2476400B3A237 /* AcousticModelEnglish.bundle */; };
-		499904F018D2476400B3A237 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 499904EC18D2476400B3A237 /* AcousticModelSpanish.bundle */; };
-		499904F118D2476400B3A237 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499904ED18D2476400B3A237 /* OpenEars.framework */; };
-		499904F218D2476400B3A237 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499904EE18D2476400B3A237 /* Slt.framework */; };
 		49A3ED7318ADCC0A00895B23 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7018ADCC0A00895B23 /* LaunchImage.png */; };
 		49A3ED7518ADCC0A00895B23 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7218ADCC0A00895B23 /* logo.png */; };
 		49BA4A2C18D5E1CE002A67D6 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49BA4A2818D5E1CE002A67D6 /* AcousticModelEnglish.bundle */; };
@@ -156,10 +152,6 @@
 		494A8F8B18B2F97D00C8F8DF /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		4989822318AD26A000A0F985 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		499904EB18D2476400B3A237 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
-		499904EC18D2476400B3A237 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
-		499904ED18D2476400B3A237 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
-		499904EE18D2476400B3A237 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		49A3ED7018ADCC0A00895B23 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		49A3ED7218ADCC0A00895B23 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		49BA4A2818D5E1CE002A67D6 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
@@ -204,9 +196,7 @@
 				49BA4A2F18D5E1CE002A67D6 /* Slt.framework in Frameworks */,
 				4927F45518AC3A1E005257CF /* UIKit.framework in Frameworks */,
 				4927F45118AC3A1E005257CF /* Foundation.framework in Frameworks */,
-				499904F218D2476400B3A237 /* Slt.framework in Frameworks */,
 				4916AE9018AFEEBD00A45A8C /* Parse.framework in Frameworks */,
-				499904F118D2476400B3A237 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +270,6 @@
 		4927F44418AC3A1E005257CF = {
 			isa = PBXGroup;
 			children = (
-				499904EA18D2476400B3A237 /* Framework */,
 				4927F45618AC3A1E005257CF /* AamMango */,
 				4927F47518AC3A1E005257CF /* AamMangoTests */,
 				4927F44F18AC3A1E005257CF /* Frameworks */,
@@ -420,17 +409,6 @@
 			name = UtilityFiles;
 			sourceTree = "<group>";
 		};
-		499904EA18D2476400B3A237 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				499904EB18D2476400B3A237 /* AcousticModelEnglish.bundle */,
-				499904EC18D2476400B3A237 /* AcousticModelSpanish.bundle */,
-				499904ED18D2476400B3A237 /* OpenEars.framework */,
-				499904EE18D2476400B3A237 /* Slt.framework */,
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,12 +494,10 @@
 				4924562718C9052300CAAEB1 /* Seven.png in Resources */,
 				4924562D18C9052300CAAEB1 /* One.png in Resources */,
 				4924562418C9052300CAAEB1 /* Nine.png in Resources */,
-				499904EF18D2476400B3A237 /* AcousticModelEnglish.bundle in Resources */,
 				4924562918C9052300CAAEB1 /* Five.png in Resources */,
 				4927F49018AC5D7C005257CF /* menu.png in Resources */,
 				4927F46918AC3A1E005257CF /* Images.xcassets in Resources */,
 				4927F45B18AC3A1E005257CF /* InfoPlist.strings in Resources */,
-				499904F018D2476400B3A237 /* AcousticModelSpanish.bundle in Resources */,
 				4924562B18C9052300CAAEB1 /* Four.png in Resources */,
 				49BA4A2D18D5E1CE002A67D6 /* AcousticModelSpanish.bundle in Resources */,
 				49A3ED7518ADCC0A00895B23 /* logo.png in Resources */,
