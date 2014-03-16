@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Sumedha Pramod. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "TopicViewController.h"
 
 @interface TopicViewController ()
@@ -14,7 +15,7 @@
 
 @implementation TopicViewController
 
-@synthesize deck;
+@synthesize appDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,9 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    deck = [Deck alloc];
-    [deck initDeck: self.navigationItem.title];
-    NSLog(@"SIZE: %li", deck.cards.count);
 
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicViewController"];
@@ -77,7 +75,7 @@
     }
 
     index++;
-    if (index == [deck.cards count]) {
+    if (index == [appDelegate.deckManager count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
@@ -85,21 +83,21 @@
 
 - (TopicContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([deck.cards count] == 0) || (index >= [deck.cards count])) {
+    if (([appDelegate.deckManager count] == 0) || (index >= [appDelegate.deckManager count])) {
         return nil;
     }
 
     // Create a new view controller and pass suitable data.
     TopicContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicContentViewController"];
     pageContentViewController.pageIndex = index;
-    pageContentViewController.card = deck.cards[index];
+    pageContentViewController.card = [appDelegate.deckManager getCard:index];
 
     return pageContentViewController;
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return [deck.cards count];
+    return [appDelegate.deckManager count];
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController

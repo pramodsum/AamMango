@@ -549,7 +549,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5E-F3-rtt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5E-F3-rtt" customClass="PFImageView">
                                 <rect key="frame" x="35" y="82" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -612,7 +612,7 @@
                     <connections>
                         <outlet property="cardEnglishLabel" destination="9Vn-US-6pE" id="23Q-Re-eEB"/>
                         <outlet property="cardHindiLabel" destination="b2V-aU-r1d" id="DL7-Hm-Kig"/>
-                        <outlet property="cardImage" destination="f5E-F3-rtt" id="ipR-Vg-Bt6"/>
+                        <outlet property="cardImage" destination="f5E-F3-rtt" id="rft-3L-v9m"/>
                         <outlet property="cardLabel" destination="DgZ-12-n78" id="FiU-LH-l2y"/>
                     </connections>
                 </viewController>

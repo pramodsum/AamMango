@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Card.h"
-#import "MSTranslateAccessTokenRequester.h"
-#import "MSTranslateVendor.h"
 
 @interface TopicContentViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIImageView *cardImage;
+@property (strong, nonatomic) IBOutlet PFImageView *cardImage;
 @property (strong, nonatomic) IBOutlet UILabel *cardLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cardEnglishLabel;
 @property (strong, nonatomic) IBOutlet UILabel *cardHindiLabel;

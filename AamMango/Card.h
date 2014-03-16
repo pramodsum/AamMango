@@ -16,15 +16,13 @@
 @property (retain) NSString *hindi;
 @property (retain) NSString *translit;
 @property (retain) NSString *category;
-@property (retain) UIImage *image;
-@property (retain) PFImageView *pfimage;
 
 @property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
 @property (strong, nonatomic) NSNumber *answeredCorrectly; //set like [NSNumber numberWithBool:YES]
 
 //Methods
 -(void) pronounce;
--(void) pronounce:(NSString *) str;
+-(void) pronounceString:(NSString *) str;
 -(void) announceError;
 -(BOOL) isAnsweredCorrectly;
 

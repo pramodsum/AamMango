@@ -9,11 +9,9 @@
 #import "Card.h"
 #import <Parse/PFObject+Subclass.h>
 
-@implementation Card
+@implementation Card 
 
-@synthesize answeredCorrectly, synthesizer;
-
-@synthesize english, hindi, translit, category;
+@synthesize answeredCorrectly, synthesizer, english, hindi, translit, category;
 
 -(BOOL) isAnsweredCorrectly {
     if (answeredCorrectly) {
@@ -31,7 +29,7 @@
     [synthesizer speakUtterance:utterance];
 }
 
--(void) pronounce:(NSString *) str {
+-(void) pronounceString:(NSString *) str {
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString: str];
     utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
     utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"hi-IN"];

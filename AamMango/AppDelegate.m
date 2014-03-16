@@ -10,12 +10,16 @@
 #import "PAPCache.h"
 #import <Parse/Parse.h>
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 @implementation AppDelegate
+
+@synthesize deckManager = _deckManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-//    [FBLoginView class];
+    _deckManager = [[DeckManager alloc] init];
 
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
@@ -26,6 +30,8 @@
                   clientKey:@"XLcHBiK4G3t3TWN8SbYNVklyWDaQvxFk3jvCl36B"];
 
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+    [PFImageView class];
 
     [PFFacebookUtils initializeFacebook];
 

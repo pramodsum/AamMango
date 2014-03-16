@@ -13,8 +13,11 @@
 
 @interface Deck : NSObject
 
-@property (strong, nonatomic) NSMutableArray *cards;
+- (void) addCard:(Card *) c;
+- (void) clearDeck;
 
-- (void) initDeck:(NSString *)category;
+- (NSArray *) getCards;
+- (Card *) fetch:(NSUInteger) index;
+- (NSUInteger) count;
 
 @end

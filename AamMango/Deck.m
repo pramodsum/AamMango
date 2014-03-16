@@ -6,31 +6,34 @@
 //  Copyright (c) 2014 Sumedha Pramod. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "Deck.h"
 
-@implementation Deck
+@implementation Deck {
+    NSMutableArray *cards;
+}
 
-@synthesize cards;
-
-- (void) initDeck:(NSString *)category {
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Cards"];
-    [query whereKey:@"category" equalTo:category];
-    [query orderByAscending:@"createdAt"];
-
-    NSArray *results = query.findObjects;
-    cards = [[NSMutableArray alloc] init];
-
-    for(PFObject *obj in results) {
-        Card *c = [[Card alloc] init];
-        c.english = [obj objectForKey:@"english"];
-        c.translit = [obj objectForKey:@"translit"];
-        c.pfimage.file = [obj objectForKey:@"image"];
-        [cards addObject:c];
-        c.synthesizer = [[AVSpeechSynthesizer alloc] init];
+- (void) addCard:(Card *) c {
+    if([cards count] == 0) {
+        cards = [[NSMutableArray alloc] init];
     }
+    [cards addObject:c];
+}
 
-    [query cancel];
+- (NSArray *) getCards {
+    return cards;
+}
+
+- (void) clearDeck {
+    [cards removeAllObjects];
+}
+
+- (NSUInteger) count {
+    return [cards count];
+}
+
+- (Card *) fetch:(NSUInteger) index {
+    return [cards objectAtIndex:index];
 }
 
 @end
