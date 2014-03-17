@@ -57,6 +57,7 @@
 		494A8F8918B2F61C00C8F8DF /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8618B2F61C00C8F8DF /* UIImage+RoundedCornerAdditions.m */; };
 		494A8F8C18B2F97D00C8F8DF /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8B18B2F97D00C8F8DF /* PAPCache.m */; };
 		495070BB18C7E72B009C0675 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */; };
+		496C479B18D7551B00792038 /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 496C479A18D7551B00792038 /* AcousticModelHindi.bundle */; };
 		4989822418AD26A000A0F985 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989822318AD26A000A0F985 /* libsqlite3.dylib */; };
 		49A3ED7318ADCC0A00895B23 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7018ADCC0A00895B23 /* LaunchImage.png */; };
 		49A3ED7518ADCC0A00895B23 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7218ADCC0A00895B23 /* logo.png */; };
@@ -151,6 +152,7 @@
 		494A8F8A18B2F97D00C8F8DF /* PAPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPCache.h; sourceTree = "<group>"; };
 		494A8F8B18B2F97D00C8F8DF /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		496C479A18D7551B00792038 /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelHindi.bundle; sourceTree = "<group>"; };
 		4989822318AD26A000A0F985 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		49A3ED7018ADCC0A00895B23 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		49A3ED7218ADCC0A00895B23 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		4920FDE218C6AB2C00653628 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				49BA4A3318D5E5C6002A67D6 /* AcousticModel */,
 				4927F45F18AC3A1E005257CF /* AppDelegate.h */,
 				4927F46018AC3A1E005257CF /* AppDelegate.m */,
 				49D84BCC18AC738300A67C03 /* Card.h */,
@@ -289,6 +292,7 @@
 		4927F44F18AC3A1E005257CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				496C479A18D7551B00792038 /* AcousticModelHindi.bundle */,
 				49BA4A2818D5E1CE002A67D6 /* AcousticModelEnglish.bundle */,
 				49BA4A2918D5E1CE002A67D6 /* AcousticModelSpanish.bundle */,
 				49BA4A2A18D5E1CE002A67D6 /* OpenEars.framework */,
@@ -409,6 +413,13 @@
 			name = UtilityFiles;
 			sourceTree = "<group>";
 		};
+		49BA4A3318D5E5C6002A67D6 /* AcousticModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AcousticModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -453,7 +464,7 @@
 		4927F44518AC3A1E005257CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Sumedha Pramod";
 				TargetAttributes = {
 					4927F44C18AC3A1E005257CF = {
@@ -502,6 +513,7 @@
 				49BA4A2D18D5E1CE002A67D6 /* AcousticModelSpanish.bundle in Resources */,
 				49A3ED7518ADCC0A00895B23 /* logo.png in Resources */,
 				4924562818C9052300CAAEB1 /* Six.png in Resources */,
+				496C479B18D7551B00792038 /* AcousticModelHindi.bundle in Resources */,
 				49D84BD718AC7E7100A67C03 /* AamMango-29.png in Resources */,
 				4927F46418AC3A1E005257CF /* Main.storyboard in Resources */,
 				49BA4A2C18D5E1CE002A67D6 /* AcousticModelEnglish.bundle in Resources */,
@@ -600,7 +612,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -639,7 +650,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -715,7 +725,6 @@
 		4927F48318AC3A1E005257CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AamMango.app/AamMango";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -738,7 +747,6 @@
 		4927F48418AC3A1E005257CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AamMango.app/AamMango";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

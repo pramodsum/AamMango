@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "TopicViewController.h"
+#import "OfflineRecognition.h"
 #import <Parse/Parse.h>
 
 @interface ViewController ()
@@ -18,6 +19,7 @@
 @implementation ViewController {
     NSArray *topics;
     UIActivityIndicatorView *spinner;
+    OfflineRecognition *offlineRecognition;
 }
 
 static NSString *CellIdentifier = @"CellIdentifier";
@@ -74,7 +76,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
         foo.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
         [foo.appDelegate.deckManager changeDeck: title];
-        NSLog(@"SIZE: %li", foo.appDelegate.deckManager.count);
+        NSLog(@"SIZE: %lu", (unsigned long)foo.appDelegate.deckManager.count);
     }
 }
 

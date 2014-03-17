@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <OpenEars/LanguageModelGenerator.h>
+#import <OpenEars/PocketsphinxController.h>
+#import <OpenEars/AcousticModel.h>
 
-@interface OfflineRecognition : NSObject
+@interface OfflineRecognition : NSObject {
+    PocketsphinxController *pocketsphinxController;
+}
+
+@property (strong, nonatomic) PocketsphinxController *pocketsphinxController;
 
 @end
