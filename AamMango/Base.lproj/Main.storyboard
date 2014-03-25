@@ -594,15 +594,8 @@
                                     <action selector="record:" destination="9zl-27-lw1" eventType="touchUpInside" id="HeB-cQ-dww"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="English" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vn-US-6pE">
-                                <rect key="frame" x="168" y="383" width="132" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hindi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2V-aU-r1d">
-                                <rect key="frame" x="20" y="383" width="132" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vn-US-6pE">
+                                <rect key="frame" x="94" y="383" width="132" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -630,7 +623,6 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="cardEnglishLabel" destination="9Vn-US-6pE" id="23Q-Re-eEB"/>
-                        <outlet property="cardHindiLabel" destination="b2V-aU-r1d" id="DL7-Hm-Kig"/>
                         <outlet property="cardImage" destination="f5E-F3-rtt" id="rft-3L-v9m"/>
                         <outlet property="cardLabel" destination="DgZ-12-n78" id="FiU-LH-l2y"/>
                         <outlet property="playbackButton" destination="UVU-T5-HIG" id="B6O-5B-ZdG"/>

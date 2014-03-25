@@ -10,6 +10,7 @@
 
 @implementation DeckManager {
     Deck *deck;
+    NSMutableArray *deckArray;
 }
 
 - (Deck *) getDeck {
@@ -27,6 +28,7 @@
 - (Deck *) fetchDeck:(NSString *) category {
     if([deck count] == 0) {
         deck = [[Deck alloc] init];
+        deckArray = [[NSMutableArray alloc] init];
     }
 
     PFQuery *query = [PFQuery queryWithClassName:@"Cards"];
@@ -42,6 +44,7 @@
         c.translit = [obj objectForKey:@"translit"];
         c.synthesizer = [[AVSpeechSynthesizer alloc] init];
         [deck addCard:c];
+        [deckArray addObject:c.hindi];
     }
     [query cancel];
     return deck;
@@ -53,6 +56,10 @@
     }
     [self fetchDeck:category];
     return deck;
+}
+
+- (NSArray *) getDeckArray {
+    return deckArray;
 }
 
 @end

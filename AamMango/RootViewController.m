@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "TopicViewController.h"
-#import "OfflineRecognition.h"
 #import <Parse/Parse.h>
 
 @interface ViewController ()
@@ -19,7 +18,6 @@
 @implementation ViewController {
     NSArray *topics;
     UIActivityIndicatorView *spinner;
-    OfflineRecognition *offlineRecognition;
 }
 
 static NSString *CellIdentifier = @"CellIdentifier";

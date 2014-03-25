@@ -11,6 +11,8 @@
 
 @interface DeckManager : NSObject
 
+- (NSArray *) getDeckArray;
+
 - (Deck *) fetchDeck:(NSString *) category;
 - (Deck *) changeDeck:(NSString *) category;
 

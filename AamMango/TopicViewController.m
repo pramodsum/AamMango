@@ -91,6 +91,7 @@
     TopicContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicContentViewController"];
     pageContentViewController.pageIndex = index;
     pageContentViewController.card = [appDelegate.deckManager getCard:index];
+    pageContentViewController.deckArray = [appDelegate.deckManager getDeckArray];
 
     return pageContentViewController;
 }

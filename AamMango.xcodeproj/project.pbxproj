@@ -49,7 +49,14 @@
 		4927F47A18AC3A1E005257CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4927F47818AC3A1E005257CF /* InfoPlist.strings */; };
 		4927F47C18AC3A1E005257CF /* AamMangoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4927F47B18AC3A1E005257CF /* AamMangoTests.m */; };
 		4927F49018AC5D7C005257CF /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4927F48F18AC5D7C005257CF /* menu.png */; };
+		492B69A118DE84FC0057F9B7 /* hindi.gram in Resources */ = {isa = PBXBuildFile; fileRef = 492B69A018DE84FC0057F9B7 /* hindi.gram */; };
 		49344FC518CF30940043AD1B /* DeckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49344FC418CF30940043AD1B /* DeckManager.m */; };
+		4945FB8418DCE70B00C894A5 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4945FB8018DCE70B00C894A5 /* AcousticModelEnglish.bundle */; };
+		4945FB8518DCE70B00C894A5 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4945FB8118DCE70B00C894A5 /* AcousticModelSpanish.bundle */; };
+		4945FB8618DCE70B00C894A5 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945FB8218DCE70B00C894A5 /* OpenEars.framework */; };
+		4945FB8718DCE70B00C894A5 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945FB8318DCE70B00C894A5 /* Slt.framework */; };
+		4945FB8918DCF07400C894A5 /* hindi.arpa in Resources */ = {isa = PBXBuildFile; fileRef = 4945FB8818DCF07400C894A5 /* hindi.arpa */; };
+		4945FB8B18DCF07B00C894A5 /* hindi.dic in Resources */ = {isa = PBXBuildFile; fileRef = 4945FB8A18DCF07B00C894A5 /* hindi.dic */; };
 		494A8F7918B2F3A100C8F8DF /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F7818B2F3A100C8F8DF /* Utility.m */; };
 		494A8F7C18B2F58900C8F8DF /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F7B18B2F58900C8F8DF /* UIImage+ResizeAdditions.m */; };
 		494A8F8718B2F61C00C8F8DF /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8218B2F61C00C8F8DF /* UIImage+Alpha.m */; };
@@ -57,14 +64,11 @@
 		494A8F8918B2F61C00C8F8DF /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8618B2F61C00C8F8DF /* UIImage+RoundedCornerAdditions.m */; };
 		494A8F8C18B2F97D00C8F8DF /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8B18B2F97D00C8F8DF /* PAPCache.m */; };
 		495070BB18C7E72B009C0675 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */; };
-		496C479B18D7551B00792038 /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 496C479A18D7551B00792038 /* AcousticModelHindi.bundle */; };
 		4989822418AD26A000A0F985 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989822318AD26A000A0F985 /* libsqlite3.dylib */; };
 		49A3ED7318ADCC0A00895B23 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7018ADCC0A00895B23 /* LaunchImage.png */; };
 		49A3ED7518ADCC0A00895B23 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7218ADCC0A00895B23 /* logo.png */; };
-		49BA4A2C18D5E1CE002A67D6 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49BA4A2818D5E1CE002A67D6 /* AcousticModelEnglish.bundle */; };
-		49BA4A2D18D5E1CE002A67D6 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49BA4A2918D5E1CE002A67D6 /* AcousticModelSpanish.bundle */; };
-		49BA4A2E18D5E1CE002A67D6 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA4A2A18D5E1CE002A67D6 /* OpenEars.framework */; };
-		49BA4A2F18D5E1CE002A67D6 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA4A2B18D5E1CE002A67D6 /* Slt.framework */; };
+		49A9226D18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text in Resources */ = {isa = PBXBuildFile; fileRef = 49A9226C18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text */; };
+		49A9226F18DD0C710062F850 /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49A9226E18DD0C710062F850 /* AcousticModelHindi.bundle */; };
 		49BA4A3218D5E473002A67D6 /* OfflineRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BA4A3118D5E473002A67D6 /* OfflineRecognition.m */; };
 		49D3290118B1224A0098176B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3290018B1224A0098176B /* ProfileViewController.m */; };
 		49D7DAC318AD512E0056D115 /* TopicContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7DAC218AD512E0056D115 /* TopicContentViewController.m */; };
@@ -137,8 +141,15 @@
 		4927F47918AC3A1E005257CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4927F47B18AC3A1E005257CF /* AamMangoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AamMangoTests.m; sourceTree = "<group>"; };
 		4927F48F18AC5D7C005257CF /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		492B69A018DE84FC0057F9B7 /* hindi.gram */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hindi.gram; sourceTree = "<group>"; };
 		49344FC318CF30940043AD1B /* DeckManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckManager.h; sourceTree = "<group>"; };
 		49344FC418CF30940043AD1B /* DeckManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckManager.m; sourceTree = "<group>"; };
+		4945FB8018DCE70B00C894A5 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		4945FB8118DCE70B00C894A5 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
+		4945FB8218DCE70B00C894A5 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		4945FB8318DCE70B00C894A5 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		4945FB8818DCF07400C894A5 /* hindi.arpa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hindi.arpa; sourceTree = "<group>"; };
+		4945FB8A18DCF07B00C894A5 /* hindi.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hindi.dic; sourceTree = "<group>"; };
 		494A8F7718B2F3A100C8F8DF /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		494A8F7818B2F3A100C8F8DF /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		494A8F7A18B2F58900C8F8DF /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
@@ -152,14 +163,12 @@
 		494A8F8A18B2F97D00C8F8DF /* PAPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPCache.h; sourceTree = "<group>"; };
 		494A8F8B18B2F97D00C8F8DF /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		496C479A18D7551B00792038 /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelHindi.bundle; sourceTree = "<group>"; };
 		4989822318AD26A000A0F985 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		49A3ED7018ADCC0A00895B23 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		49A3ED7218ADCC0A00895B23 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		49BA4A2818D5E1CE002A67D6 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
-		49BA4A2918D5E1CE002A67D6 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
-		49BA4A2A18D5E1CE002A67D6 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
-		49BA4A2B18D5E1CE002A67D6 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		49A9226C18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanguageModelGeneratorLookupList.text; sourceTree = "<group>"; };
+		49A9226E18DD0C710062F850 /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelHindi.bundle; sourceTree = "<group>"; };
+		49A9227018DE3A430062F850 /* hindi.DMP */ = {isa = PBXFileReference; lastKnownFileType = file; path = hindi.DMP; sourceTree = "<group>"; };
 		49BA4A3018D5E473002A67D6 /* OfflineRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRecognition.h; sourceTree = "<group>"; };
 		49BA4A3118D5E473002A67D6 /* OfflineRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRecognition.m; sourceTree = "<group>"; };
 		49D328FF18B1224A0098176B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -187,7 +196,6 @@
 				4916AE9A18AFEEFF00A45A8C /* MobileCoreServices.framework in Frameworks */,
 				495070BB18C7E72B009C0675 /* libz.1.1.3.dylib in Frameworks */,
 				4916AE9618AFEEF200A45A8C /* CoreLocation.framework in Frameworks */,
-				49BA4A2E18D5E1CE002A67D6 /* OpenEars.framework in Frameworks */,
 				4927F45318AC3A1E005257CF /* CoreGraphics.framework in Frameworks */,
 				4916AE9418AFEEE500A45A8C /* CFNetwork.framework in Frameworks */,
 				4916AE9218AFEEDF00A45A8C /* AudioToolbox.framework in Frameworks */,
@@ -195,10 +203,11 @@
 				4916AE9818AFEEF800A45A8C /* libz.dylib in Frameworks */,
 				4989822418AD26A000A0F985 /* libsqlite3.dylib in Frameworks */,
 				4916AEB318B066AC00A45A8C /* FacebookSDK.framework in Frameworks */,
-				49BA4A2F18D5E1CE002A67D6 /* Slt.framework in Frameworks */,
 				4927F45518AC3A1E005257CF /* UIKit.framework in Frameworks */,
 				4927F45118AC3A1E005257CF /* Foundation.framework in Frameworks */,
+				4945FB8718DCE70B00C894A5 /* Slt.framework in Frameworks */,
 				4916AE9018AFEEBD00A45A8C /* Parse.framework in Frameworks */,
+				4945FB8618DCE70B00C894A5 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,11 +301,11 @@
 		4927F44F18AC3A1E005257CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				496C479A18D7551B00792038 /* AcousticModelHindi.bundle */,
-				49BA4A2818D5E1CE002A67D6 /* AcousticModelEnglish.bundle */,
-				49BA4A2918D5E1CE002A67D6 /* AcousticModelSpanish.bundle */,
-				49BA4A2A18D5E1CE002A67D6 /* OpenEars.framework */,
-				49BA4A2B18D5E1CE002A67D6 /* Slt.framework */,
+				49A9226E18DD0C710062F850 /* AcousticModelHindi.bundle */,
+				4945FB8018DCE70B00C894A5 /* AcousticModelEnglish.bundle */,
+				4945FB8118DCE70B00C894A5 /* AcousticModelSpanish.bundle */,
+				4945FB8218DCE70B00C894A5 /* OpenEars.framework */,
+				4945FB8318DCE70B00C894A5 /* Slt.framework */,
 				495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */,
 				4920FDDD18C67FF700653628 /* AVFoundation.framework */,
 				4916AEB218B066AC00A45A8C /* FacebookSDK.framework */,
@@ -416,6 +425,11 @@
 		49BA4A3318D5E5C6002A67D6 /* AcousticModel */ = {
 			isa = PBXGroup;
 			children = (
+				49A9226C18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text */,
+				4945FB8A18DCF07B00C894A5 /* hindi.dic */,
+				492B69A018DE84FC0057F9B7 /* hindi.gram */,
+				4945FB8818DCF07400C894A5 /* hindi.arpa */,
+				49A9227018DE3A430062F850 /* hindi.DMP */,
 			);
 			name = AcousticModel;
 			sourceTree = "<group>";
@@ -499,6 +513,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4945FB8418DCE70B00C894A5 /* AcousticModelEnglish.bundle in Resources */,
+				4945FB8918DCF07400C894A5 /* hindi.arpa in Resources */,
 				4924562618C9052300CAAEB1 /* Eight.png in Resources */,
 				49247B8018B27EAA00A0CDE7 /* elephant.png in Resources */,
 				49D84BD818AC7E7100A67C03 /* AamMango-40.png in Resources */,
@@ -508,15 +524,17 @@
 				4924562918C9052300CAAEB1 /* Five.png in Resources */,
 				4927F49018AC5D7C005257CF /* menu.png in Resources */,
 				4927F46918AC3A1E005257CF /* Images.xcassets in Resources */,
+				492B69A118DE84FC0057F9B7 /* hindi.gram in Resources */,
+				49A9226F18DD0C710062F850 /* AcousticModelHindi.bundle in Resources */,
+				4945FB8B18DCF07B00C894A5 /* hindi.dic in Resources */,
 				4927F45B18AC3A1E005257CF /* InfoPlist.strings in Resources */,
+				49A9226D18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text in Resources */,
 				4924562B18C9052300CAAEB1 /* Four.png in Resources */,
-				49BA4A2D18D5E1CE002A67D6 /* AcousticModelSpanish.bundle in Resources */,
 				49A3ED7518ADCC0A00895B23 /* logo.png in Resources */,
+				4945FB8518DCE70B00C894A5 /* AcousticModelSpanish.bundle in Resources */,
 				4924562818C9052300CAAEB1 /* Six.png in Resources */,
-				496C479B18D7551B00792038 /* AcousticModelHindi.bundle in Resources */,
 				49D84BD718AC7E7100A67C03 /* AamMango-29.png in Resources */,
 				4927F46418AC3A1E005257CF /* Main.storyboard in Resources */,
-				49BA4A2C18D5E1CE002A67D6 /* AcousticModelEnglish.bundle in Resources */,
 				4924562C18C9052300CAAEB1 /* Two.png in Resources */,
 				4924562A18C9052300CAAEB1 /* Three.png in Resources */,
 				4924562518C9052300CAAEB1 /* Ten.png in Resources */,
