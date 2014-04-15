@@ -1,7 +1,7 @@
 #JSGF V1.0;
 grammar samplegrammar;
 public <mygrammar2> = (eika |
-doo |
+dhoo |
 thiin: |
 chaara |
 paan:cha |

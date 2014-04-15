@@ -59,6 +59,21 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
+//    if([
+        [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+            if (granted) {
+                // Microphone enabled code
+                NSLog(@"Microphone enabled");
+            }
+            else {
+                // Microphone disabled code
+                NSLog(@"Microphone disabled");
+                [[[UIAlertView alloc] initWithTitle:@"Microphone Error" message:@"Microphone is not enabled for this application on your device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+                
+            }
+        }];
+//    }
+
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 

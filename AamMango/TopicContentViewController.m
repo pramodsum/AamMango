@@ -18,6 +18,12 @@
     NSString *dicPath;
     UIActivityIndicatorView *spinner;
     UIAlertView *alert;
+    NSString *filePath;
+    NSInteger fileNumber;
+
+    AVAudioSession *audioSession;
+    AVAudioRecorder *recorder;
+
 //    OfflineRecognition *offlineRecognition;
 }
 
@@ -44,6 +50,11 @@
     return self;
 }
 
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,8 +70,11 @@
     [playbackButton setHidden:YES];
 
     // Setup audio session
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+//    AVAudioSession *session = [AVAudioSession sharedInstance];
+//    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+
+    fileNumber = 0;
+    filePath = [NSString stringWithFormat:@"%@/audio", [self applicationDocumentsDirectory].path];
 
     //    offlineRecognition = [[OfflineRecognition alloc] initWithDeck:_deckArray];
     [OpenEarsLogging startOpenEarsLogging];
@@ -128,27 +142,71 @@
         [player stop];
     }
 
-    if (![self.pocketsphinxController isListening]) {
+    if (![recorder isRecording]) {
         [recordButton setTitle:@"Done" forState:UIControlStateNormal];
-        [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"gram"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:YES];
-        alert = [[UIAlertView alloc] initWithTitle:@"Calibrating..." message:@"\n"
-                                          delegate:self
-                                 cancelButtonTitle:nil
-                                 otherButtonTitles:nil];
 
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        spinner.center = CGPointMake(139.5, 75.5); // .5 so it doesn't blur
-        [alert addSubview:spinner];
-        [spinner startAnimating];
-        [alert show];
-    }else if([self.pocketsphinxController isSuspended]) {
-        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
-        [self.pocketsphinxController resumeRecognition];
+
+        audioSession = [AVAudioSession sharedInstance];
+        NSError *err = nil;
+        [audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];
+        if(err){
+            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+            return;
+        }
+        [audioSession setActive:YES error:&err];
+        err = nil;
+        if(err){
+            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+            return;
+        }
+
+        NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                               [NSNumber numberWithFloat: 16000.0],AVSampleRateKey,
+                                               [NSNumber numberWithInt: kAudioFormatLinearPCM], AVFormatIDKey,// kAudioFormatLinearPCM
+                                               [NSNumber numberWithInt:8],AVLinearPCMBitDepthKey,
+                                               [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
+                                               [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,
+                                               [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
+                                               [NSNumber numberWithInt: AVAudioQualityLow],AVEncoderAudioQualityKey,
+                                               nil];
+
+
+        NSString *recorderFilePath = [NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber];
+        NSLog(@"recorderFilePath: %@",recorderFilePath);
+        NSURL *audioFileURL = [NSURL fileURLWithPath:recorderFilePath];
+
+        recorder = [[ AVAudioRecorder alloc] initWithURL:audioFileURL settings:recordSettings error:&err];
+        if(!recorder){
+            NSLog(@"recorder: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+            [[[UIAlertView alloc] initWithTitle: @"Warning"
+                                        message: [err localizedDescription]
+                                       delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+            return;
+        }
+        
+        //prepare to record
+        [recorder setDelegate: self];
+        [recorder prepareToRecord];
+        recorder.meteringEnabled = YES;
+        [recorder record];
+//        [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"usedhindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
+//        alert = [[UIAlertView alloc] initWithTitle:@"Calibrating..." message:@"\n"
+//                                          delegate:self
+//                                 cancelButtonTitle:nil
+//                                 otherButtonTitles:nil];
+//        [alert show];
+//    }else if([self.pocketsphinxController isSuspended]) {
+//        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
+//        [self.pocketsphinxController resumeRecognition];
     }else {
         [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
-        [self.pocketsphinxController suspendRecognition];
+        [recorder stop];
+        [self.pocketsphinxController runRecognitionOnWavFileAtPath:[NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber] usingLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"usedhindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
+        fileNumber++;
+//        [self.pocketsphinxController suspendRecognition];
     }
-//    [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
 
 }
 
@@ -158,18 +216,9 @@
 
 	self.heardText = [NSString stringWithFormat:@"Heard: \"%@\"", hypothesis]; // Show it in the status box.
 
-	// This is how to use an available instance of FliteController. We're going to repeat back the command that we heard with the voice we've chosen.
-//	[self.fliteController say:[NSString stringWithFormat:@"You said %@",hypothesis] withVoice:self.slt];
-
     NSString *message = [NSString stringWithFormat:@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID];
     NSLog(@"%@", message);
 
-//    alert = [[UIAlertView alloc] initWithTitle: @"Hypothesis"
-//                                                    message: message
-//                                                   delegate: nil
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:nil];
-//    [alert show];
     [self checkPronunciationCorrectness:hypothesis recognitionScore:recognitionScore utteranceID:utteranceID];
 }
 
@@ -239,6 +288,8 @@
 	return fliteController;
 }
 
+#pragma mark OpenEars Delegate Functions
+
 - (void) pocketsphinxDidStartCalibration {
 	NSLog(@"Pocketsphinx calibration has started.");
 }
@@ -246,19 +297,25 @@
 - (void) pocketsphinxDidCompleteCalibration {
 	NSLog(@"Pocketsphinx calibration is complete.");
     [alert dismissWithClickedButtonIndex:0 animated:YES];
-    alert = [[UIAlertView alloc] initWithTitle:@"Begin!" message:@""
+//    alert = [[UIAlertView alloc] initWithTitle:@"Begin!" message:@""
+//                                      delegate:self
+//                             cancelButtonTitle:nil
+//                             otherButtonTitles:nil];
+//    [alert show];
+}
+
+- (void) pocketsphinxDidStartListening {
+	NSLog(@"Pocketsphinx is now listening.");
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+    alert = [[UIAlertView alloc] initWithTitle:@"Speak" message:@""
                                       delegate:self
                              cancelButtonTitle:nil
                              otherButtonTitles:nil];
     [alert show];
 }
 
-- (void) pocketsphinxDidStartListening {
-	NSLog(@"Pocketsphinx is now listening.");
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-}
-
 - (void) pocketsphinxDidDetectSpeech {
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
 	NSLog(@"Pocketsphinx has detected speech.");
     alert = [[UIAlertView alloc] initWithTitle:@"Speech Detected" message:@""
                                       delegate:self
@@ -272,7 +329,7 @@
 	NSLog(@"Pocketsphinx has detected a period of silence, concluding an utterance.");
     [alert dismissWithClickedButtonIndex:0 animated:YES];
     [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
-//    [self.pocketsphinxController suspendRecognition];
+    [self.pocketsphinxController stopListening];
 //    alert = [[UIAlertView alloc] initWithTitle:@"Processing Speech..." message:@""
 //                                      delegate:self
 //                             cancelButtonTitle:nil

@@ -20,7 +20,7 @@
 @class PocketsphinxController;
 @class FliteController;
 
-@interface TopicContentViewController : UIViewController <OpenEarsEventsObserverDelegate> {
+@interface TopicContentViewController : UIViewController <OpenEarsEventsObserverDelegate, AVAudioRecorderDelegate> {
     OpenEarsEventsObserver *openEarsEventsObserver;
 	Slt *slt;
 

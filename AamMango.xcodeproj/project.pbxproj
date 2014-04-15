@@ -70,6 +70,7 @@
 		49A9226D18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text in Resources */ = {isa = PBXBuildFile; fileRef = 49A9226C18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text */; };
 		49A9226F18DD0C710062F850 /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49A9226E18DD0C710062F850 /* AcousticModelHindi.bundle */; };
 		49BA4A3218D5E473002A67D6 /* OfflineRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BA4A3118D5E473002A67D6 /* OfflineRecognition.m */; };
+		49C13BA018F6FF7F00B4E926 /* usedhindi.dic in Resources */ = {isa = PBXBuildFile; fileRef = 49C13B9F18F6FF7F00B4E926 /* usedhindi.dic */; };
 		49D3290118B1224A0098176B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3290018B1224A0098176B /* ProfileViewController.m */; };
 		49D7DAC318AD512E0056D115 /* TopicContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7DAC218AD512E0056D115 /* TopicContentViewController.m */; };
 		49D84BCB18AC678B00A67C03 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D84BCA18AC678B00A67C03 /* TopicViewController.m */; };
@@ -171,6 +172,7 @@
 		49A9227018DE3A430062F850 /* hindi.DMP */ = {isa = PBXFileReference; lastKnownFileType = file; path = hindi.DMP; sourceTree = "<group>"; };
 		49BA4A3018D5E473002A67D6 /* OfflineRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRecognition.h; sourceTree = "<group>"; };
 		49BA4A3118D5E473002A67D6 /* OfflineRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRecognition.m; sourceTree = "<group>"; };
+		49C13B9F18F6FF7F00B4E926 /* usedhindi.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = usedhindi.dic; sourceTree = "<group>"; };
 		49D328FF18B1224A0098176B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		49D3290018B1224A0098176B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		49D7DAC118AD512E0056D115 /* TopicContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicContentViewController.h; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				49A9226C18DD0ADB0062F850 /* LanguageModelGeneratorLookupList.text */,
+				49C13B9F18F6FF7F00B4E926 /* usedhindi.dic */,
 				4945FB8A18DCF07B00C894A5 /* hindi.dic */,
 				492B69A018DE84FC0057F9B7 /* hindi.gram */,
 				4945FB8818DCF07400C894A5 /* hindi.arpa */,
@@ -525,6 +528,7 @@
 				4927F49018AC5D7C005257CF /* menu.png in Resources */,
 				4927F46918AC3A1E005257CF /* Images.xcassets in Resources */,
 				492B69A118DE84FC0057F9B7 /* hindi.gram in Resources */,
+				49C13BA018F6FF7F00B4E926 /* usedhindi.dic in Resources */,
 				49A9226F18DD0C710062F850 /* AcousticModelHindi.bundle in Resources */,
 				4945FB8B18DCF07B00C894A5 /* hindi.dic in Resources */,
 				4927F45B18AC3A1E005257CF /* InfoPlist.strings in Resources */,
@@ -702,6 +706,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/pramods/Documents/Box,
@@ -714,6 +719,7 @@
 				GCC_PREFIX_HEADER = "AamMango/AamMango-Prefix.pch";
 				INFOPLIST_FILE = "AamMango/AamMango-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -724,6 +730,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/pramods/Documents/Box,
@@ -736,6 +743,7 @@
 				GCC_PREFIX_HEADER = "AamMango/AamMango-Prefix.pch";
 				INFOPLIST_FILE = "AamMango/AamMango-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
