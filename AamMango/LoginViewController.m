@@ -39,6 +39,7 @@
         [self performSegueWithIdentifier:@"loginsuccess_segue" sender:self];
     }
 
+    [self.navigationController.navigationBar setHidden:NO];
     [[PFUser currentUser] refreshInBackgroundWithTarget:self selector:@selector(refreshCurrentUserCallbackWithResult:error:)];
 }
 

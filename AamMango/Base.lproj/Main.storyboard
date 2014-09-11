@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ia9-2g-qFx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ia9-2g-qFx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -83,7 +83,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="zms-S8-fsp"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="begin_btn" destination="cTi-bu-VeK" id="ZJt-YJ-bOx"/>
                         <outlet property="login_btn" destination="gXB-1M-edJ" id="f0P-jJ-2aN"/>
@@ -92,7 +91,7 @@
                         <outlet property="status" destination="z93-XX-lcb" id="KFA-uv-gLf"/>
                         <segue destination="gn6-W3-eN5" kind="push" identifier="LoginSegue" id="3cx-d3-6Sf"/>
                         <segue destination="9wb-iU-cYL" kind="push" identifier="SignupSegue" id="ai3-vH-OpG"/>
-                        <segue destination="hUg-DZ-jkS" kind="modal" identifier="beginSegue" id="ZYe-zR-ccH"/>
+                        <segue destination="Kji-Jb-fPF" kind="push" identifier="beginSegue" id="1OL-14-ngb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMm-FV-M38" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -112,8 +111,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elephant.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wy8-3f-yBw">
-                                <rect key="frame" x="-47" y="-16" width="415" height="362"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elephant" translatesAutoresizingMaskIntoConstraints="NO" id="Wy8-3f-yBw">
+                                <rect key="frame" x="45" y="42" width="230" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UT2-Ci-pvo">
@@ -173,25 +172,24 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="BfS-lJ-k2O"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="email" destination="GYn-KW-FL6" id="6NX-eN-vh1"/>
                         <outlet property="fullname" destination="KFO-S7-79m" id="X3O-DJ-BWJ"/>
                         <outlet property="password" destination="fea-dJ-SiM" id="HOQ-Wr-UuO"/>
                         <outlet property="signup_btn" destination="jNy-OB-LTn" id="29I-H3-zAu"/>
                         <outlet property="username" destination="UT2-Ci-pvo" id="mtR-3w-3bn"/>
-                        <segue destination="hUg-DZ-jkS" kind="modal" identifier="signupsuccess_segue" id="7VW-A4-97y"/>
+                        <segue destination="Kji-Jb-fPF" kind="push" identifier="signupsuccess_segue" id="DQq-lb-cLm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCw-qL-iV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="18h-8I-Feu"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="421"/>
+            <point key="canvasLocation" x="-506" y="421"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yoz-Oi-hbI">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="Ia9-2g-qFx" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="Ia9-2g-qFx" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qnj-S7-IdX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -217,7 +215,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TopicCell" rowHeight="40" id="oFE-qs-GMy">
-                                <rect key="frame" x="0.0" y="22" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oFE-qs-GMy" id="zXV-Dc-O3v">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="39"/>
@@ -247,6 +245,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="profile_btn" destination="YEi-Pk-QXJ" id="WvG-to-yl8"/>
                         <outlet property="view" destination="e4h-du-8dM" id="9WP-zz-EO7"/>
@@ -295,7 +294,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvg-EO-GKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="684"/>
+            <point key="canvasLocation" x="225" y="776"/>
         </scene>
         <!--Topic View Controller - Category-->
         <scene sceneID="6ML-Cr-Gam">
@@ -345,8 +344,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elephant.png" translatesAutoresizingMaskIntoConstraints="NO" id="k5v-Ap-w6R">
-                                <rect key="frame" x="-47" y="17" width="415" height="362"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elephant" translatesAutoresizingMaskIntoConstraints="NO" id="k5v-Ap-w6R">
+                                <rect key="frame" x="29" y="83" width="262" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTj-5S-Z27">
@@ -416,8 +415,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elephant.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Y7-RA-fjk">
-                                <rect key="frame" x="-47" y="-4" width="415" height="362"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elephant" translatesAutoresizingMaskIntoConstraints="NO" id="5Y7-RA-fjk">
+                                <rect key="frame" x="42" y="54" width="237" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-Ab-3TP">
@@ -494,7 +493,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="w09-Ux-DvT"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="facebook_btn" destination="igb-yk-tE9" id="jXF-N6-ZPK"/>
                         <outlet property="login_btn" destination="LVg-wU-uwj" id="92S-0F-Xto"/>
@@ -502,40 +500,14 @@
                         <outlet property="signup_btn" destination="Ho3-WW-71E" id="kQx-Cf-ppz"/>
                         <outlet property="twitter_btn" destination="z2j-nE-HnM" id="EZc-XH-vV4"/>
                         <outlet property="username" destination="uWf-Ab-3TP" id="8iM-c6-Bdv"/>
-                        <segue destination="hUg-DZ-jkS" kind="modal" identifier="loginsuccess_segue" id="Fx4-b3-6OP"/>
                         <segue destination="9wb-iU-cYL" kind="push" identifier="newuser_segue" id="Yfr-M9-JyK"/>
                         <segue destination="xyP-Ha-2GG" kind="push" identifier="loginfail_segue" id="MCs-zM-RD2"/>
+                        <segue destination="Kji-Jb-fPF" kind="push" identifier="loginsuccess_segue" id="PYO-ks-NI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3R9-zv-h3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="-436"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="n3H-HO-CWE">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="hUg-DZ-jkS" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="KqZ-TV-DKc"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zLD-zf-4Vd">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Kji-Jb-fPF" kind="relationship" relationship="rootViewController" id="hdh-aK-HH3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8up-H0-GmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="SHh-FM-ipC"/>
-            </objects>
-            <point key="canvasLocation" x="-225" y="-5"/>
+            <point key="canvasLocation" x="-506" y="-436"/>
         </scene>
         <!--Topic Content View Controller-->
         <scene sceneID="M8b-1t-8WN">
@@ -635,7 +607,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="elephant.png" width="450" height="450"/>
+        <image name="elephant" width="230" height="164"/>
         <image name="logo.png" width="640" height="200"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -645,8 +617,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZYe-zR-ccH"/>
-        <segue reference="OlJ-Q9-OxQ"/>
+        <segue reference="PYO-ks-NI3"/>
+        <segue reference="RJ0-ik-Eai"/>
         <segue reference="Yfr-M9-JyK"/>
     </inferredMetricsTieBreakers>
 </document>

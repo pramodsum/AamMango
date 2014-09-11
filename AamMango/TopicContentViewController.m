@@ -79,14 +79,17 @@
     //    offlineRecognition = [[OfflineRecognition alloc] initWithDeck:_deckArray];
     [OpenEarsLogging startOpenEarsLogging];
     [self.openEarsEventsObserver setDelegate:self];
+//    [self createLanguageModel];
 }
 
 - (void) createLanguageModel {
     LanguageModelGenerator *languageModelGenerator = [[LanguageModelGenerator alloc] init];
-    NSString *myCorpus = [[NSBundle mainBundle] pathForResource:@"LanguageModelGeneratorLookupList" ofType:@"text"];
+    NSString *urlString = [[NSBundle mainBundle] pathForResource:@"numbers" ofType:@"txt"];
+    NSString *rawText = [NSString stringWithContentsOfFile:urlString encoding:NSUTF8StringEncoding error:nil];
+    NSArray *numbers = [rawText componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSString *name = @"hindi";
-    NSError *err = [languageModelGenerator generateLanguageModelFromTextFile:myCorpus withFilesNamed:name forAcousticModelAtPath:@"AcousticModelHindi"];
-    
+    NSError *err = [languageModelGenerator generateLanguageModelFromArray:numbers withFilesNamed:name forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"]];
+
     NSDictionary *languageGeneratorResults = nil;
     NSLog(@"err %@", err);
 
@@ -95,11 +98,11 @@
 
         languageGeneratorResults = [err userInfo];
 
-        lmPath = [[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"arpa"];
-        dicPath = [[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"dic"];
+        lmPath = [languageGeneratorResults objectForKey:@"LMPath"];
+        dicPath = [languageGeneratorResults objectForKey:@"DictionaryPath"];
 
         NSLog(@"languageGeneratorResults: %@", languageGeneratorResults);
-        
+
     } else {
         NSLog(@"\n--------------------\n--------------------\nError: %@",[err localizedDescription]);
     }
@@ -143,55 +146,59 @@
     }
 
     if (![recorder isRecording]) {
-        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
+//        NSLog(@"LMPATH: %@\nDICPATH: %@\n", lmPath, dicPath);
+//        [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
+//        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
+//
+//
+//        audioSession = [AVAudioSession sharedInstance];
+//        NSError *err = nil;
+//        [audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];
+//        if(err){
+//            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+//            return;
+//        }
+//        [audioSession setActive:YES error:&err];
+//        err = nil;
+//        if(err){
+//            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+//            return;
+//        }
+//
+//        NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+//                                               [NSNumber numberWithFloat: 16000.0],AVSampleRateKey,
+//                                               [NSNumber numberWithInt: kAudioFormatLinearPCM], AVFormatIDKey,// kAudioFormatLinearPCM
+//                                               [NSNumber numberWithInt:8],AVLinearPCMBitDepthKey,
+//                                               [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
+//                                               [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,
+//                                               [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
+//                                               [NSNumber numberWithInt: AVAudioQualityLow],AVEncoderAudioQualityKey,
+//                                               nil];
+//
+//
+//        NSString *recorderFilePath = [NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber];
+//        NSLog(@"recorderFilePath: %@",recorderFilePath);
+//        NSURL *audioFileURL = [NSURL fileURLWithPath:recorderFilePath];
+//
+//        recorder = [[ AVAudioRecorder alloc] initWithURL:audioFileURL settings:recordSettings error:&err];
+//        if(!recorder){
+//            NSLog(@"recorder: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
+//            [[[UIAlertView alloc] initWithTitle: @"Warning"
+//                                        message: [err localizedDescription]
+//                                       delegate: nil
+//                              cancelButtonTitle:@"OK"
+//                              otherButtonTitles:nil] show];
+//            return;
+//        }
+//        
+//        //prepare to record
+//        [recorder setDelegate: self];
+//        [recorder prepareToRecord];
+//        recorder.meteringEnabled = YES;
+//        [recorder record];
 
+        [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"DMP"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
 
-        audioSession = [AVAudioSession sharedInstance];
-        NSError *err = nil;
-        [audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];
-        if(err){
-            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
-            return;
-        }
-        [audioSession setActive:YES error:&err];
-        err = nil;
-        if(err){
-            NSLog(@"audioSession: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
-            return;
-        }
-
-        NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                               [NSNumber numberWithFloat: 16000.0],AVSampleRateKey,
-                                               [NSNumber numberWithInt: kAudioFormatLinearPCM], AVFormatIDKey,// kAudioFormatLinearPCM
-                                               [NSNumber numberWithInt:8],AVLinearPCMBitDepthKey,
-                                               [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
-                                               [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,
-                                               [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
-                                               [NSNumber numberWithInt: AVAudioQualityLow],AVEncoderAudioQualityKey,
-                                               nil];
-
-
-        NSString *recorderFilePath = [NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber];
-        NSLog(@"recorderFilePath: %@",recorderFilePath);
-        NSURL *audioFileURL = [NSURL fileURLWithPath:recorderFilePath];
-
-        recorder = [[ AVAudioRecorder alloc] initWithURL:audioFileURL settings:recordSettings error:&err];
-        if(!recorder){
-            NSLog(@"recorder: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
-            [[[UIAlertView alloc] initWithTitle: @"Warning"
-                                        message: [err localizedDescription]
-                                       delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil] show];
-            return;
-        }
-        
-        //prepare to record
-        [recorder setDelegate: self];
-        [recorder prepareToRecord];
-        recorder.meteringEnabled = YES;
-        [recorder record];
-//        [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"usedhindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
 //        alert = [[UIAlertView alloc] initWithTitle:@"Calibrating..." message:@"\n"
 //                                          delegate:self
 //                                 cancelButtonTitle:nil
@@ -201,10 +208,10 @@
 //        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
 //        [self.pocketsphinxController resumeRecognition];
     }else {
-        [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
-        [recorder stop];
-        [self.pocketsphinxController runRecognitionOnWavFileAtPath:[NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber] usingLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"usedhindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
-        fileNumber++;
+//        [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
+//        [recorder stop];
+//        [self.pocketsphinxController runRecognitionOnWavFileAtPath:[NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber] usingLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO];
+//        fileNumber++;
 //        [self.pocketsphinxController suspendRecognition];
     }
 
@@ -218,6 +225,8 @@
 
     NSString *message = [NSString stringWithFormat:@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID];
     NSLog(@"%@", message);
+
+
 
     [self checkPronunciationCorrectness:hypothesis recognitionScore:recognitionScore utteranceID:utteranceID];
 }
@@ -251,10 +260,6 @@
 		openEarsEventsObserver = [[OpenEarsEventsObserver alloc] init];
 	}
 	return openEarsEventsObserver;
-}
-
-- (void) getSpeech {
-    [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO];
 }
 
 // Lazily allocated PocketsphinxController.
@@ -328,8 +333,8 @@
 - (void) pocketsphinxDidDetectFinishedSpeech {
 	NSLog(@"Pocketsphinx has detected a period of silence, concluding an utterance.");
     [alert dismissWithClickedButtonIndex:0 animated:YES];
-    [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
-    [self.pocketsphinxController stopListening];
+//    [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
+//    [self.pocketsphinxController stopListening];
 //    alert = [[UIAlertView alloc] initWithTitle:@"Processing Speech..." message:@""
 //                                      delegate:self
 //                             cancelButtonTitle:nil

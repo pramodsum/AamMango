@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
 
+    [self.navigationController.navigationBar setHidden:NO];
+
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TopicViewController"];
     self.pageViewController.dataSource = self;

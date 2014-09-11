@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
 
+    [self.navigationController.navigationBar setHidden:NO];
+
     _score.text = [NSString stringWithFormat:@"%@", [[PFUser currentUser] valueForKey:@"Score"]];
     _score.layer.cornerRadius = 12.0f;
     _email.text = [@"Email: " stringByAppendingString:[[PFUser currentUser] email]];

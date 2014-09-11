@@ -9,6 +9,7 @@
 #import "UserViewController.h"
 #import "LoginViewController.h"
 #import "SignupViewController.h"
+#import <Parse/Parse.h>
 
 @interface UserViewController ()
 
@@ -35,9 +36,13 @@
     [_login_btn setHidden:YES];
     [_signup_btn setHidden:YES];
 
-//    self.navigationController.navigationBarHidden = YES;
-    self.navigationController.navigationBar.barTintColor =
-        [UIColor colorWithRed:102/255.0f green:102/255.0f blue:255/255.0f alpha:1];
+//    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+//        [self performSegueWithIdentifier:@"beginSegue" sender:self];
+//    }
+
+//    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setBarTintColor:
+        [UIColor colorWithRed:102/255.0f green:102/255.0f blue:255/255.0f alpha:1]];
 }
 
 - (void)didReceiveMemoryWarning
