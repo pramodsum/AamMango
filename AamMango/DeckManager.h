@@ -12,7 +12,7 @@
 @interface DeckManager : NSObject
 
 - (NSArray *) getDeckArray;
-
+- (BOOL) isDeckLoaded;
 - (Deck *) fetchDeck:(NSString *) category;
 - (Deck *) changeDeck:(NSString *) category;
 

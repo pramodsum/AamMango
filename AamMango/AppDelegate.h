@@ -18,5 +18,6 @@
 - (void)facebookRequestDidFailWithError:(NSError *)error;
 
 @property (readonly, strong, nonatomic) DeckManager *deckManager;
+@property (readonly, strong, nonatomic) UIActivityIndicatorView *spinner;
 
 @end

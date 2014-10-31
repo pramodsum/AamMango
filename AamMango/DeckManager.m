@@ -11,6 +11,11 @@
 @implementation DeckManager {
     Deck *deck;
     NSMutableArray *deckArray;
+    BOOL loadedDeck;
+}
+
+- (BOOL) isDeckLoaded {
+    return loadedDeck;
 }
 
 - (Deck *) getDeck {
@@ -31,22 +36,47 @@
         deckArray = [[NSMutableArray alloc] init];
     }
 
+    NSLog(@"got here");
+
     PFQuery *query = [PFQuery queryWithClassName:@"Cards"];
     [query whereKey:@"category" equalTo:category];
     [query orderByAscending:@"createdAt"];
 
-    NSArray *results = query.findObjects;
+    loadedDeck = false;
+
+    NSArray *results = [query findObjects];
 
     for(PFObject *obj in results) {
         Card *c = [[Card alloc] init];
         c.english = [obj objectForKey:@"english"];
-        c.hindi = [obj objectForKey:@"hindi"]; 
+        c.hindi = [obj objectForKey:@"hindi"];
         c.translit = [obj objectForKey:@"translit"];
         c.synthesizer = [[AVSpeechSynthesizer alloc] init];
         [deck addCard:c];
         [deckArray addObject:c.hindi];
     }
-    [query cancel];
+
+    loadedDeck = true;
+
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+//        if (!error) {
+//            NSLog(@"FOUND OBJECTS");
+//            for(PFObject *obj in results) {
+//                Card *c = [[Card alloc] init];
+//                c.english = [obj objectForKey:@"english"];
+//                c.hindi = [obj objectForKey:@"hindi"];
+//                c.translit = [obj objectForKey:@"translit"];
+//                c.synthesizer = [[AVSpeechSynthesizer alloc] init];
+//                [deck addCard:c];
+//                [deckArray addObject:c.hindi];
+//            }
+//            
+//            loadedDeck = true;
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
     return deck;
 }
 

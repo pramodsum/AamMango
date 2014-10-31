@@ -17,7 +17,7 @@
 
 @implementation ViewController {
     NSArray *topics;
-    UIActivityIndicatorView *spinner;
+    AppDelegate *appDelegate;
 }
 
 static NSString *CellIdentifier = @"CellIdentifier";
@@ -26,13 +26,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
 
-    topics = [NSArray arrayWithObjects:@"Numbers", nil];
+    topics = [NSArray arrayWithObjects: @"Number", @"Appetizer", @"Beverages", @"Breads", @"Curry", @"Dessert", @"Proteins", @"Rice Dish", @"Sides", @"South Indian Specialties", @"Vegetables", @"Vegetarian Dishes", @"None", nil];
 
-    //Add activityindicator to show next view is loading
-    spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(150, 225, 20, 30)];
-    [spinner setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
-    spinner.color = [UIColor blueColor];
-    [self.view addSubview:spinner];
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [self.view addSubview:appDelegate.spinner];
 
     //Init alertview
 //    UIAlertView *name_dialog = [[UIAlertView alloc]
@@ -71,16 +68,22 @@ static NSString *CellIdentifier = @"CellIdentifier";
         foo.navigationItem.title = title;
 
         //Load deck
-        foo.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
+        [foo setAppDelegate:appDelegate];
         [foo.appDelegate.deckManager changeDeck: title];
         NSLog(@"SIZE: %lu", (unsigned long)foo.appDelegate.deckManager.count);
+
+        // Wait for deck to load
+        while(!foo.appDelegate.deckManager.isDeckLoaded) {
+//            NSLog(@"SIZE: %lu", (unsigned long)foo.appDelegate.deckManager.count);
+            [appDelegate.spinner startAnimating];
+        }
+        [appDelegate.spinner stopAnimating];
     }
 }
 
 -(void)threadStartAnimating:(id)data
 {
-    [spinner startAnimating];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,13 +103,13 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 
 - (IBAction)viewProfile:(id)sender {
-    [spinner stopAnimating];
+//    [spinner stopAnimating];
     [self performSegueWithIdentifier:@"profileview_segue" sender:self];
 }
 
 - (IBAction)logout:(id)sender {
     [PFUser logOut];
-    [spinner stopAnimating];
+//    [spinner stopAnimating];
     [self performSegueWithIdentifier:@"rootlogout_segue" sender:self];
 }
 

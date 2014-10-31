@@ -75,6 +75,11 @@
 //    }
 
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+
+    //Add activityindicator to show next view is loading
+    _spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(150, 225, 20, 30)];
+    [_spinner setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    _spinner.color = [UIColor blueColor];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
