@@ -16,6 +16,7 @@
 @property (retain) NSString *hindi;
 @property (retain) NSString *translit;
 @property (retain) NSString *category;
+@property (retain) NSNumber *orderInCol;
 
 @property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
 @property (strong, nonatomic) NSNumber *answeredCorrectly; //set like [NSNumber numberWithBool:YES]

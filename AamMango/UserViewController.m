@@ -36,9 +36,9 @@
     [_login_btn setHidden:YES];
     [_signup_btn setHidden:YES];
 
-//    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-//        [self performSegueWithIdentifier:@"beginSegue" sender:self];
-//    }
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self performSegueWithIdentifier:@"beginSegue" sender:self];
+    }
 
 //    [self.navigationController.navigationBar setHidden:YES];
     [self.navigationController.navigationBar setBarTintColor:

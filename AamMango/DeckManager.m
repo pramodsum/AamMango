@@ -45,12 +45,17 @@
     loadedDeck = false;
 
     NSArray *results = [query findObjects];
-
-    for(PFObject *obj in results) {
+    
+    NSSortDescriptor *order = [[NSSortDescriptor alloc] initWithKey:@"orderInCol" ascending:YES];
+    NSSortDescriptor *name = [[NSSortDescriptor alloc] initWithKey:@"english" ascending:YES];
+    NSArray *sortedResults = [results sortedArrayUsingDescriptors:@[order, name]];
+    
+    for(PFObject *obj in sortedResults) {
         Card *c = [[Card alloc] init];
         c.english = [obj objectForKey:@"english"];
         c.hindi = [obj objectForKey:@"hindi"];
         c.translit = [obj objectForKey:@"translit"];
+        c.orderInCol = [obj objectForKey:@"orderInCol"];
         c.synthesizer = [[AVSpeechSynthesizer alloc] init];
         [deck addCard:c];
         [deckArray addObject:c.hindi];

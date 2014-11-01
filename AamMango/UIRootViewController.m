@@ -104,6 +104,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
             [appDelegate.spinner startAnimating];
         }
         [appDelegate.spinner stopAnimating];
+    } else if ([segue.identifier isEqualToString:@"rootlogout_segue"]) {
+        [PFUser logOut];
     }
 }
 
