@@ -67,6 +67,37 @@
 		494A8F8C18B2F97D00C8F8DF /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8B18B2F97D00C8F8DF /* PAPCache.m */; };
 		495070BB18C7E72B009C0675 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */; };
 		49852C8D19068D6D0021CB3E /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49852C8C19068D6D0021CB3E /* AcousticModelHindi.bundle */; };
+		498678AD1A047D7800726F83 /* Manchurian.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678AC1A047D7800726F83 /* Manchurian.png */; };
+		498678B11A047E7500726F83 /* Pakora.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678AF1A047E7500726F83 /* Pakora.png */; };
+		498678B21A047E7500726F83 /* Pakora.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678B01A047E7500726F83 /* Pakora.psd */; };
+		498678B51A047EDA00726F83 /* Papad.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678B31A047EDA00726F83 /* Papad.png */; };
+		498678B61A047EDA00726F83 /* Papad.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678B41A047EDA00726F83 /* Papad.psd */; };
+		498678B91A04804800726F83 /* Vada.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678B71A04804800726F83 /* Vada.png */; };
+		498678BA1A04804800726F83 /* Vada.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678B81A04804800726F83 /* Vada.psd */; };
+		498678BD1A0481B700726F83 /* Lassi.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678BB1A0481B700726F83 /* Lassi.png */; };
+		498678BE1A0481B700726F83 /* Lassi.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678BC1A0481B700726F83 /* Lassi.psd */; };
+		498678C51A0482AD00726F83 /* Batura.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678C31A0482AD00726F83 /* Batura.png */; };
+		498678C61A0482AD00726F83 /* Batura.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678C41A0482AD00726F83 /* Batura.psd */; };
+		498678C91A0483BA00726F83 /* Kulcha.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678C71A0483BA00726F83 /* Kulcha.png */; };
+		498678CA1A0483BA00726F83 /* Kulcha.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678C81A0483BA00726F83 /* Kulcha.psd */; };
+		498678CD1A0484AE00726F83 /* Naan.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678CB1A0484AE00726F83 /* Naan.png */; };
+		498678CE1A0484AE00726F83 /* Naan.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678CC1A0484AE00726F83 /* Naan.psd */; };
+		498678D11A04855000726F83 /* Poori.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678CF1A04855000726F83 /* Poori.png */; };
+		498678D21A04855000726F83 /* Poori.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678D01A04855000726F83 /* Poori.psd */; };
+		498678D51A04866800726F83 /* Roti.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678D31A04866800726F83 /* Roti.png */; };
+		498678D61A04866800726F83 /* Roti.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678D41A04866800726F83 /* Roti.psd */; };
+		498678DD1A0487B100726F83 /* Bagara.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678DB1A0487B100726F83 /* Bagara.png */; };
+		498678DE1A0487B100726F83 /* Bagara.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678DC1A0487B100726F83 /* Bagara.psd */; };
+		498678E31A048A7600726F83 /* Bartha.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678DF1A048A7600726F83 /* Bartha.png */; };
+		498678E41A048A7600726F83 /* Bartha.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678E01A048A7600726F83 /* Bartha.psd */; };
+		498678E51A048A7600726F83 /* Chettinand.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678E11A048A7600726F83 /* Chettinand.png */; };
+		498678E61A048A7600726F83 /* Chettinand.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678E21A048A7600726F83 /* Chettinand.psd */; };
+		498678E91A048B2300726F83 /* Gosht.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678E71A048B2300726F83 /* Gosht.png */; };
+		498678EA1A048B2300726F83 /* Gosht.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678E81A048B2300726F83 /* Gosht.psd */; };
+		498678EF1A048D5100726F83 /* Makhani.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678EB1A048D5100726F83 /* Makhani.png */; };
+		498678F01A048D5100726F83 /* Makhani.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678EC1A048D5100726F83 /* Makhani.psd */; };
+		498678F11A048D5100726F83 /* Navratan.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678ED1A048D5100726F83 /* Navratan.png */; };
+		498678F21A048D5100726F83 /* Navratan.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678EE1A048D5100726F83 /* Navratan.psd */; };
 		4989822418AD26A000A0F985 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989822318AD26A000A0F985 /* libsqlite3.dylib */; };
 		49A3ED7318ADCC0A00895B23 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7018ADCC0A00895B23 /* LaunchImage.png */; };
 		49A3ED7518ADCC0A00895B23 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49A3ED7218ADCC0A00895B23 /* logo.png */; };
@@ -173,6 +204,38 @@
 		494A8F8B18B2F97D00C8F8DF /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		49852C8C19068D6D0021CB3E /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AcousticModelHindi.bundle; path = "../../../Library/Developer/Xcode/DerivedData/AcousticModelHindi-dbfpfvsjmqiiakghommckhoygtgr/Build/Products/Debug/AcousticModelHindi.bundle"; sourceTree = "<group>"; };
+		498678AC1A047D7800726F83 /* Manchurian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Manchurian.png; sourceTree = "<group>"; };
+		498678AE1A047D8600726F83 /* Manchurian.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Manchurian.psd; sourceTree = "<group>"; };
+		498678AF1A047E7500726F83 /* Pakora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pakora.png; sourceTree = "<group>"; };
+		498678B01A047E7500726F83 /* Pakora.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pakora.psd; sourceTree = "<group>"; };
+		498678B31A047EDA00726F83 /* Papad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Papad.png; sourceTree = "<group>"; };
+		498678B41A047EDA00726F83 /* Papad.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Papad.psd; sourceTree = "<group>"; };
+		498678B71A04804800726F83 /* Vada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vada.png; sourceTree = "<group>"; };
+		498678B81A04804800726F83 /* Vada.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vada.psd; sourceTree = "<group>"; };
+		498678BB1A0481B700726F83 /* Lassi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lassi.png; sourceTree = "<group>"; };
+		498678BC1A0481B700726F83 /* Lassi.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lassi.psd; sourceTree = "<group>"; };
+		498678C31A0482AD00726F83 /* Batura.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Batura.png; sourceTree = "<group>"; };
+		498678C41A0482AD00726F83 /* Batura.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Batura.psd; sourceTree = "<group>"; };
+		498678C71A0483BA00726F83 /* Kulcha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kulcha.png; sourceTree = "<group>"; };
+		498678C81A0483BA00726F83 /* Kulcha.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kulcha.psd; sourceTree = "<group>"; };
+		498678CB1A0484AE00726F83 /* Naan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Naan.png; sourceTree = "<group>"; };
+		498678CC1A0484AE00726F83 /* Naan.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Naan.psd; sourceTree = "<group>"; };
+		498678CF1A04855000726F83 /* Poori.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Poori.png; sourceTree = "<group>"; };
+		498678D01A04855000726F83 /* Poori.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poori.psd; sourceTree = "<group>"; };
+		498678D31A04866800726F83 /* Roti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roti.png; sourceTree = "<group>"; };
+		498678D41A04866800726F83 /* Roti.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roti.psd; sourceTree = "<group>"; };
+		498678DB1A0487B100726F83 /* Bagara.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bagara.png; sourceTree = "<group>"; };
+		498678DC1A0487B100726F83 /* Bagara.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bagara.psd; sourceTree = "<group>"; };
+		498678DF1A048A7600726F83 /* Bartha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bartha.png; sourceTree = "<group>"; };
+		498678E01A048A7600726F83 /* Bartha.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bartha.psd; sourceTree = "<group>"; };
+		498678E11A048A7600726F83 /* Chettinand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chettinand.png; sourceTree = "<group>"; };
+		498678E21A048A7600726F83 /* Chettinand.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chettinand.psd; sourceTree = "<group>"; };
+		498678E71A048B2300726F83 /* Gosht.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gosht.png; sourceTree = "<group>"; };
+		498678E81A048B2300726F83 /* Gosht.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gosht.psd; sourceTree = "<group>"; };
+		498678EB1A048D5100726F83 /* Makhani.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Makhani.png; sourceTree = "<group>"; };
+		498678EC1A048D5100726F83 /* Makhani.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Makhani.psd; sourceTree = "<group>"; };
+		498678ED1A048D5100726F83 /* Navratan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Navratan.png; sourceTree = "<group>"; };
+		498678EE1A048D5100726F83 /* Navratan.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Navratan.psd; sourceTree = "<group>"; };
 		4989822318AD26A000A0F985 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		49A3ED7018ADCC0A00895B23 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		49A3ED7218ADCC0A00895B23 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -262,10 +325,18 @@
 			children = (
 				490DFA8019C260A9008CC62B /* Bonda.png */,
 				490DFA8119C260A9008CC62B /* Bonda.psd */,
+				498678AC1A047D7800726F83 /* Manchurian.png */,
+				498678AE1A047D8600726F83 /* Manchurian.psd */,
 				490DFA8219C260A9008CC62B /* Paratha.png */,
+				498678B01A047E7500726F83 /* Pakora.psd */,
+				498678AF1A047E7500726F83 /* Pakora.png */,
 				490DFA8319C260A9008CC62B /* Paratha.psd */,
+				498678B31A047EDA00726F83 /* Papad.png */,
+				498678B41A047EDA00726F83 /* Papad.psd */,
 				490DFA8419C260A9008CC62B /* Samosa.png */,
 				490DFA8519C260A9008CC62B /* Samosa.psd */,
+				498678B71A04804800726F83 /* Vada.png */,
+				498678B81A04804800726F83 /* Vada.psd */,
 			);
 			path = Appetizer;
 			sourceTree = "<group>";
@@ -273,6 +344,8 @@
 		490DFA8619C260A9008CC62B /* Beverages */ = {
 			isa = PBXGroup;
 			children = (
+				498678BB1A0481B700726F83 /* Lassi.png */,
+				498678BC1A0481B700726F83 /* Lassi.psd */,
 			);
 			path = Beverages;
 			sourceTree = "<group>";
@@ -280,21 +353,35 @@
 		490DFA8719C260A9008CC62B /* Breads */ = {
 			isa = PBXGroup;
 			children = (
-				490DFA8819C260A9008CC62B /* img */,
+				498678C31A0482AD00726F83 /* Batura.png */,
+				498678C41A0482AD00726F83 /* Batura.psd */,
+				498678C71A0483BA00726F83 /* Kulcha.png */,
+				498678C81A0483BA00726F83 /* Kulcha.psd */,
+				498678CB1A0484AE00726F83 /* Naan.png */,
+				498678CC1A0484AE00726F83 /* Naan.psd */,
+				498678CF1A04855000726F83 /* Poori.png */,
+				498678D01A04855000726F83 /* Poori.psd */,
+				498678D31A04866800726F83 /* Roti.png */,
+				498678D41A04866800726F83 /* Roti.psd */,
 			);
 			path = Breads;
-			sourceTree = "<group>";
-		};
-		490DFA8819C260A9008CC62B /* img */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = img;
 			sourceTree = "<group>";
 		};
 		490DFA8919C260A9008CC62B /* Curry */ = {
 			isa = PBXGroup;
 			children = (
+				498678DB1A0487B100726F83 /* Bagara.png */,
+				498678DC1A0487B100726F83 /* Bagara.psd */,
+				498678DF1A048A7600726F83 /* Bartha.png */,
+				498678E01A048A7600726F83 /* Bartha.psd */,
+				498678E11A048A7600726F83 /* Chettinand.png */,
+				498678E21A048A7600726F83 /* Chettinand.psd */,
+				498678E71A048B2300726F83 /* Gosht.png */,
+				498678E81A048B2300726F83 /* Gosht.psd */,
+				498678EB1A048D5100726F83 /* Makhani.png */,
+				498678EC1A048D5100726F83 /* Makhani.psd */,
+				498678ED1A048D5100726F83 /* Navratan.png */,
+				498678EE1A048D5100726F83 /* Navratan.psd */,
 			);
 			path = Curry;
 			sourceTree = "<group>";
@@ -653,30 +740,61 @@
 				490DFAA119C260A9008CC62B /* Samosa.png in Resources */,
 				492D1E2019C10D6700F8D215 /* AcousticModelSpanish.bundle in Resources */,
 				49D84BD818AC7E7100A67C03 /* AamMango-40.png in Resources */,
+				498678F21A048D5100726F83 /* Navratan.psd in Resources */,
+				498678CA1A0483BA00726F83 /* Kulcha.psd in Resources */,
 				49CC9FB419019C63004A9337 /* numbers.txt in Resources */,
+				498678B61A047EDA00726F83 /* Papad.psd in Resources */,
+				498678E31A048A7600726F83 /* Bartha.png in Resources */,
+				498678EA1A048B2300726F83 /* Gosht.psd in Resources */,
+				498678E41A048A7600726F83 /* Bartha.psd in Resources */,
 				49CCA0051902B7E6004A9337 /* hindi.arpa in Resources */,
 				49CCA0061902B7E6004A9337 /* hindi.DMP in Resources */,
 				4927F49018AC5D7C005257CF /* menu.png in Resources */,
+				498678AD1A047D7800726F83 /* Manchurian.png in Resources */,
+				498678CE1A0484AE00726F83 /* Naan.psd in Resources */,
 				490DFA9D19C260A9008CC62B /* Bonda.png in Resources */,
+				498678E51A048A7600726F83 /* Chettinand.png in Resources */,
+				498678B21A047E7500726F83 /* Pakora.psd in Resources */,
+				498678F01A048D5100726F83 /* Makhani.psd in Resources */,
 				4927F46918AC3A1E005257CF /* Images.xcassets in Resources */,
 				4927F45B18AC3A1E005257CF /* InfoPlist.strings in Resources */,
+				498678C51A0482AD00726F83 /* Batura.png in Resources */,
+				498678D11A04855000726F83 /* Poori.png in Resources */,
 				49A3ED7518ADCC0A00895B23 /* logo.png in Resources */,
 				49852C8D19068D6D0021CB3E /* AcousticModelHindi.bundle in Resources */,
+				498678C91A0483BA00726F83 /* Kulcha.png in Resources */,
 				490DFA9F19C260A9008CC62B /* Paratha.png in Resources */,
 				490DFAA819C260A9008CC62B /* Seven.png in Resources */,
+				498678D51A04866800726F83 /* Roti.png in Resources */,
 				49CCA0081902B8B0004A9337 /* hindi.dic in Resources */,
 				490DFAAC19C260A9008CC62B /* Two.png in Resources */,
+				498678BD1A0481B700726F83 /* Lassi.png in Resources */,
+				498678EF1A048D5100726F83 /* Makhani.png in Resources */,
 				490DFAA719C260A9008CC62B /* One.png in Resources */,
+				498678CD1A0484AE00726F83 /* Naan.png in Resources */,
 				493E09171905A2AA0077D35A /* en.txt in Resources */,
+				498678BE1A0481B700726F83 /* Lassi.psd in Resources */,
+				498678DD1A0487B100726F83 /* Bagara.png in Resources */,
 				49D84BD718AC7E7100A67C03 /* AamMango-29.png in Resources */,
+				498678DE1A0487B100726F83 /* Bagara.psd in Resources */,
 				490DFAAB19C260A9008CC62B /* Three.png in Resources */,
 				490DFAA919C260A9008CC62B /* Six.png in Resources */,
+				498678F11A048D5100726F83 /* Navratan.png in Resources */,
+				498678B91A04804800726F83 /* Vada.png in Resources */,
+				498678B11A047E7500726F83 /* Pakora.png in Resources */,
 				4927F46418AC3A1E005257CF /* Main.storyboard in Resources */,
+				498678D61A04866800726F83 /* Roti.psd in Resources */,
+				498678BA1A04804800726F83 /* Vada.psd in Resources */,
+				498678E61A048A7600726F83 /* Chettinand.psd in Resources */,
+				498678B51A047EDA00726F83 /* Papad.png in Resources */,
+				498678D21A04855000726F83 /* Poori.psd in Resources */,
+				498678C61A0482AD00726F83 /* Batura.psd in Resources */,
 				490DFAA219C260A9008CC62B /* Samosa.psd in Resources */,
 				49A3ED7318ADCC0A00895B23 /* LaunchImage.png in Resources */,
 				490DFAA419C260A9008CC62B /* Five.png in Resources */,
 				490DFAA319C260A9008CC62B /* Eight.png in Resources */,
 				49D84BD418AC7E0900A67C03 /* AamMango-57.png in Resources */,
+				498678E91A048B2300726F83 /* Gosht.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
