@@ -480,8 +480,6 @@
         <!--AamMango-->
         <scene sceneID="lhE-bu-LYC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="31b-I9-YbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="U3y-CD-LTE"/>
                 <tableViewController id="Kji-Jb-fPF" customClass="ViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" id="e4h-du-8dM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -512,6 +510,8 @@
                         <outlet property="view" destination="e4h-du-8dM" id="9WP-zz-EO7"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="31b-I9-YbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="U3y-CD-LTE"/>
             </objects>
             <point key="canvasLocation" x="225" y="1408"/>
         </scene>

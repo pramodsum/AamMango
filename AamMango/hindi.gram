@@ -1,12 +1,5 @@
 #JSGF V1.0;
-grammar samplegrammar;
-public <mygrammar2> = (eika |
-dhoo |
-thiin: |
-chaara |
-paan:cha |
-chh |
-saata |
-aat:ha |
-nau |
-das);
+
+grammar word;
+
+public <word> = ( bonda | manchurian | pakora | papad | samosa | vada | lassi | batura | kulcha | naan | paratha | poori | roti | bagara | bartha | chettinand | gosht | makhani | navratan | pasanda | tadka | tikka | gulabjamun | halwa | kheer | payasam | kulfi | rasmalai | vindaloo | ek | do | theen | chaar | paanch | che | saath | aat | nau | dus | badam | murg | kaaju | biryani | bisibelebaath | pulav | upma | vangibaath | venpongal | achaar | dahi | raita | adai | avial | dosa | uthappam | aloo | baingan | bhindi | channa | gajar | gobi | matar | palak | saag | chole | dal | idli | jalfrezi | rasam | sambar | kadai | keema | lachcha | shahi | kurma | malai | kofta | dopyaz | pudina | rava | tandoor | seekh | boti | tangri );

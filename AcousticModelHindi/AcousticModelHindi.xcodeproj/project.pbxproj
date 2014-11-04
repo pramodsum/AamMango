@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4935FB911A07F05F009954E1 /* feat.params in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB891A07F05F009954E1 /* feat.params */; };
+		4935FB921A07F05F009954E1 /* LanguageModelGeneratorLookupList.text in Sources */ = {isa = PBXBuildFile; fileRef = 4935FB8A1A07F05F009954E1 /* LanguageModelGeneratorLookupList.text */; };
+		4935FB931A07F05F009954E1 /* mdef in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB8B1A07F05F009954E1 /* mdef */; };
+		4935FB941A07F05F009954E1 /* means in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB8C1A07F05F009954E1 /* means */; };
+		4935FB951A07F05F009954E1 /* mixture_weights in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB8D1A07F05F009954E1 /* mixture_weights */; };
+		4935FB961A07F05F009954E1 /* noisedict in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB8E1A07F05F009954E1 /* noisedict */; };
+		4935FB971A07F05F009954E1 /* transition_matrices in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB8F1A07F05F009954E1 /* transition_matrices */; };
+		4935FB981A07F05F009954E1 /* variances in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB901A07F05F009954E1 /* variances */; };
 		49CC9FDE1902B67B004A9337 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CC9FDD1902B67B004A9337 /* CoreFoundation.framework */; };
 		49CC9FE41902B67B004A9337 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FE21902B67B004A9337 /* InfoPlist.strings */; };
-		49CC9FF21902B68A004A9337 /* feat.params in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF11902B68A004A9337 /* feat.params */; };
-		49CC9FFA1902B694004A9337 /* LanguageModelGeneratorLookupList.text in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF31902B694004A9337 /* LanguageModelGeneratorLookupList.text */; };
-		49CC9FFB1902B694004A9337 /* mdef in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF41902B694004A9337 /* mdef */; };
-		49CC9FFC1902B694004A9337 /* means in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF51902B694004A9337 /* means */; };
-		49CC9FFD1902B694004A9337 /* mixture_weights in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF61902B694004A9337 /* mixture_weights */; };
-		49CC9FFE1902B694004A9337 /* noisedict in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF71902B694004A9337 /* noisedict */; };
-		49CC9FFF1902B694004A9337 /* transition_matrices in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF81902B694004A9337 /* transition_matrices */; };
-		49CCA0001902B694004A9337 /* variances in Resources */ = {isa = PBXBuildFile; fileRef = 49CC9FF91902B694004A9337 /* variances */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4935FB891A07F05F009954E1 /* feat.params */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = feat.params; sourceTree = "<group>"; };
+		4935FB8A1A07F05F009954E1 /* LanguageModelGeneratorLookupList.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LanguageModelGeneratorLookupList.text; sourceTree = "<group>"; };
+		4935FB8B1A07F05F009954E1 /* mdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdef; sourceTree = "<group>"; };
+		4935FB8C1A07F05F009954E1 /* means */ = {isa = PBXFileReference; lastKnownFileType = file; path = means; sourceTree = "<group>"; };
+		4935FB8D1A07F05F009954E1 /* mixture_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = mixture_weights; sourceTree = "<group>"; };
+		4935FB8E1A07F05F009954E1 /* noisedict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noisedict; sourceTree = "<group>"; };
+		4935FB8F1A07F05F009954E1 /* transition_matrices */ = {isa = PBXFileReference; lastKnownFileType = file; path = transition_matrices; sourceTree = "<group>"; };
+		4935FB901A07F05F009954E1 /* variances */ = {isa = PBXFileReference; lastKnownFileType = file; path = variances; sourceTree = "<group>"; };
 		49CC9FDA1902B67B004A9337 /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AcousticModelHindi.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CC9FDD1902B67B004A9337 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		49CC9FE11902B67B004A9337 /* AcousticModelHindi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AcousticModelHindi-Info.plist"; sourceTree = "<group>"; };
 		49CC9FE31902B67B004A9337 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49CC9FE51902B67B004A9337 /* AcousticModelHindi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AcousticModelHindi-Prefix.pch"; sourceTree = "<group>"; };
-		49CC9FF11902B68A004A9337 /* feat.params */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = feat.params; sourceTree = "<group>"; };
-		49CC9FF31902B694004A9337 /* LanguageModelGeneratorLookupList.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LanguageModelGeneratorLookupList.text; sourceTree = "<group>"; };
-		49CC9FF41902B694004A9337 /* mdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdef; sourceTree = "<group>"; };
-		49CC9FF51902B694004A9337 /* means */ = {isa = PBXFileReference; lastKnownFileType = file; path = means; sourceTree = "<group>"; };
-		49CC9FF61902B694004A9337 /* mixture_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = mixture_weights; sourceTree = "<group>"; };
-		49CC9FF71902B694004A9337 /* noisedict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noisedict; sourceTree = "<group>"; };
-		49CC9FF81902B694004A9337 /* transition_matrices */ = {isa = PBXFileReference; lastKnownFileType = file; path = transition_matrices; sourceTree = "<group>"; };
-		49CC9FF91902B694004A9337 /* variances */ = {isa = PBXFileReference; lastKnownFileType = file; path = variances; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +75,14 @@
 		49CC9FDF1902B67B004A9337 /* AcousticModelHindi */ = {
 			isa = PBXGroup;
 			children = (
-				49CC9FF11902B68A004A9337 /* feat.params */,
-				49CC9FF31902B694004A9337 /* LanguageModelGeneratorLookupList.text */,
-				49CC9FF41902B694004A9337 /* mdef */,
-				49CC9FF51902B694004A9337 /* means */,
-				49CC9FF61902B694004A9337 /* mixture_weights */,
-				49CC9FF71902B694004A9337 /* noisedict */,
-				49CC9FF81902B694004A9337 /* transition_matrices */,
-				49CC9FF91902B694004A9337 /* variances */,
+				4935FB891A07F05F009954E1 /* feat.params */,
+				4935FB8A1A07F05F009954E1 /* LanguageModelGeneratorLookupList.text */,
+				4935FB8B1A07F05F009954E1 /* mdef */,
+				4935FB8C1A07F05F009954E1 /* means */,
+				4935FB8D1A07F05F009954E1 /* mixture_weights */,
+				4935FB8E1A07F05F009954E1 /* noisedict */,
+				4935FB8F1A07F05F009954E1 /* transition_matrices */,
+				4935FB901A07F05F009954E1 /* variances */,
 				49CC9FE01902B67B004A9337 /* Supporting Files */,
 			);
 			path = AcousticModelHindi;
@@ -149,15 +149,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49CC9FFC1902B694004A9337 /* means in Resources */,
-				49CC9FFD1902B694004A9337 /* mixture_weights in Resources */,
-				49CC9FFE1902B694004A9337 /* noisedict in Resources */,
-				49CC9FFB1902B694004A9337 /* mdef in Resources */,
-				49CCA0001902B694004A9337 /* variances in Resources */,
 				49CC9FE41902B67B004A9337 /* InfoPlist.strings in Resources */,
-				49CC9FFF1902B694004A9337 /* transition_matrices in Resources */,
-				49CC9FF21902B68A004A9337 /* feat.params in Resources */,
-				49CC9FFA1902B694004A9337 /* LanguageModelGeneratorLookupList.text in Resources */,
+				4935FB941A07F05F009954E1 /* means in Resources */,
+				4935FB951A07F05F009954E1 /* mixture_weights in Resources */,
+				4935FB961A07F05F009954E1 /* noisedict in Resources */,
+				4935FB911A07F05F009954E1 /* feat.params in Resources */,
+				4935FB981A07F05F009954E1 /* variances in Resources */,
+				4935FB971A07F05F009954E1 /* transition_matrices in Resources */,
+				4935FB931A07F05F009954E1 /* mdef in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4935FB921A07F05F009954E1 /* LanguageModelGeneratorLookupList.text in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +300,7 @@
 				49CC9FEA1902B67B004A9337 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

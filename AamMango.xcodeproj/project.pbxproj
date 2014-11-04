@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4904C2221A084B6A00126AF1 /* aammango.arpa in Resources */ = {isa = PBXBuildFile; fileRef = 4904C2201A084B6A00126AF1 /* aammango.arpa */; };
+		4904C2251A084CAD00126AF1 /* aammango.dic in Resources */ = {isa = PBXBuildFile; fileRef = 4904C2241A084CAD00126AF1 /* aammango.dic */; };
+		4904C2271A084FA000126AF1 /* hindi.gram in Resources */ = {isa = PBXBuildFile; fileRef = 4904C2261A084FA000126AF1 /* hindi.gram */; };
 		490DFA9D19C260A9008CC62B /* Bonda.png in Resources */ = {isa = PBXBuildFile; fileRef = 490DFA8019C260A9008CC62B /* Bonda.png */; };
 		490DFA9E19C260A9008CC62B /* Bonda.psd in Resources */ = {isa = PBXBuildFile; fileRef = 490DFA8119C260A9008CC62B /* Bonda.psd */; };
 		490DFA9F19C260A9008CC62B /* Paratha.png in Resources */ = {isa = PBXBuildFile; fileRef = 490DFA8219C260A9008CC62B /* Paratha.png */; };
@@ -57,6 +60,7 @@
 		492D1E1C19C10BBB00F8D215 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D1E1B19C10BBB00F8D215 /* OpenEars.framework */; };
 		492D1E2019C10D6700F8D215 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 492D1E1F19C10D6700F8D215 /* AcousticModelSpanish.bundle */; };
 		49344FC518CF30940043AD1B /* DeckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49344FC418CF30940043AD1B /* DeckManager.m */; };
+		4935FB9A1A07F098009954E1 /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4935FB991A07F098009954E1 /* AcousticModelHindi.bundle */; };
 		493E09171905A2AA0077D35A /* en.txt in Resources */ = {isa = PBXBuildFile; fileRef = 493E09161905A2AA0077D35A /* en.txt */; };
 		4945FB8718DCE70B00C894A5 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945FB8318DCE70B00C894A5 /* Slt.framework */; };
 		494A8F7918B2F3A100C8F8DF /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F7818B2F3A100C8F8DF /* Utility.m */; };
@@ -66,7 +70,6 @@
 		494A8F8918B2F61C00C8F8DF /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8618B2F61C00C8F8DF /* UIImage+RoundedCornerAdditions.m */; };
 		494A8F8C18B2F97D00C8F8DF /* PAPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 494A8F8B18B2F97D00C8F8DF /* PAPCache.m */; };
 		495070BB18C7E72B009C0675 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */; };
-		49852C8D19068D6D0021CB3E /* AcousticModelHindi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49852C8C19068D6D0021CB3E /* AcousticModelHindi.bundle */; };
 		498678AD1A047D7800726F83 /* Manchurian.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678AC1A047D7800726F83 /* Manchurian.png */; };
 		498678B11A047E7500726F83 /* Pakora.png in Resources */ = {isa = PBXBuildFile; fileRef = 498678AF1A047E7500726F83 /* Pakora.png */; };
 		498678B21A047E7500726F83 /* Pakora.psd in Resources */ = {isa = PBXBuildFile; fileRef = 498678B01A047E7500726F83 /* Pakora.psd */; };
@@ -127,6 +130,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4904C2201A084B6A00126AF1 /* aammango.arpa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aammango.arpa; sourceTree = "<group>"; };
+		4904C2241A084CAD00126AF1 /* aammango.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aammango.dic; sourceTree = "<group>"; };
+		4904C2261A084FA000126AF1 /* hindi.gram */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hindi.gram; sourceTree = "<group>"; };
+		4904C2281A0853F600126AF1 /* aammango.DMP */ = {isa = PBXFileReference; lastKnownFileType = file; path = aammango.DMP; sourceTree = "<group>"; };
 		490DFA8019C260A9008CC62B /* Bonda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bonda.png; sourceTree = "<group>"; };
 		490DFA8119C260A9008CC62B /* Bonda.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bonda.psd; sourceTree = "<group>"; };
 		490DFA8219C260A9008CC62B /* Paratha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paratha.png; sourceTree = "<group>"; };
@@ -184,10 +191,10 @@
 		4927F47B18AC3A1E005257CF /* AamMangoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AamMangoTests.m; sourceTree = "<group>"; };
 		4927F48F18AC5D7C005257CF /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		492D1E1B19C10BBB00F8D215 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenEars.framework; path = ../../SDKs/OpenEarsDistribution/Framework/OpenEars.framework; sourceTree = "<group>"; };
-		492D1E1D19C10D5900F8D215 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenEars.framework; path = ../../SDKs/OpenEarsDistribution/Framework/OpenEars.framework; sourceTree = "<group>"; };
 		492D1E1F19C10D6700F8D215 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AcousticModelSpanish.bundle; path = ../../SDKs/OpenEarsDistribution/Framework/AcousticModelSpanish.bundle; sourceTree = "<group>"; };
 		49344FC318CF30940043AD1B /* DeckManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeckManager.h; sourceTree = "<group>"; };
 		49344FC418CF30940043AD1B /* DeckManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckManager.m; sourceTree = "<group>"; };
+		4935FB991A07F098009954E1 /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AcousticModelHindi.bundle; path = "../../../Library/Developer/Xcode/DerivedData/AcousticModelHindi-dqobweuguvfqezeziokynhmppjzk/Build/Products/Debug/AcousticModelHindi.bundle"; sourceTree = "<group>"; };
 		493E09161905A2AA0077D35A /* en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = en.txt; sourceTree = "<group>"; };
 		4945FB8318DCE70B00C894A5 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		494A8F7718B2F3A100C8F8DF /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
@@ -203,7 +210,6 @@
 		494A8F8A18B2F97D00C8F8DF /* PAPCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPCache.h; sourceTree = "<group>"; };
 		494A8F8B18B2F97D00C8F8DF /* PAPCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPCache.m; sourceTree = "<group>"; };
 		495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		49852C8C19068D6D0021CB3E /* AcousticModelHindi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AcousticModelHindi.bundle; path = "../../../Library/Developer/Xcode/DerivedData/AcousticModelHindi-dbfpfvsjmqiiakghommckhoygtgr/Build/Products/Debug/AcousticModelHindi.bundle"; sourceTree = "<group>"; };
 		498678AC1A047D7800726F83 /* Manchurian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Manchurian.png; sourceTree = "<group>"; };
 		498678AE1A047D8600726F83 /* Manchurian.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Manchurian.psd; sourceTree = "<group>"; };
 		498678AF1A047E7500726F83 /* Pakora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pakora.png; sourceTree = "<group>"; };
@@ -521,10 +527,9 @@
 		4927F44F18AC3A1E005257CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4935FB991A07F098009954E1 /* AcousticModelHindi.bundle */,
 				492D1E1F19C10D6700F8D215 /* AcousticModelSpanish.bundle */,
 				492D1E1B19C10BBB00F8D215 /* OpenEars.framework */,
-				49852C8C19068D6D0021CB3E /* AcousticModelHindi.bundle */,
-				492D1E1D19C10D5900F8D215 /* OpenEars.framework */,
 				4945FB8318DCE70B00C894A5 /* Slt.framework */,
 				495070BA18C7E72B009C0675 /* libz.1.1.3.dylib */,
 				4920FDDD18C67FF700653628 /* AVFoundation.framework */,
@@ -645,8 +650,12 @@
 			isa = PBXGroup;
 			children = (
 				49CCA0071902B8B0004A9337 /* hindi.dic */,
+				4904C2261A084FA000126AF1 /* hindi.gram */,
+				4904C2281A0853F600126AF1 /* aammango.DMP */,
+				4904C2241A084CAD00126AF1 /* aammango.dic */,
 				49CCA0031902B7E6004A9337 /* hindi.arpa */,
 				49CCA0041902B7E6004A9337 /* hindi.DMP */,
+				4904C2201A084B6A00126AF1 /* aammango.arpa */,
 				49CC9FB319019C63004A9337 /* numbers.txt */,
 				493E09161905A2AA0077D35A /* en.txt */,
 			);
@@ -761,10 +770,10 @@
 				498678C51A0482AD00726F83 /* Batura.png in Resources */,
 				498678D11A04855000726F83 /* Poori.png in Resources */,
 				49A3ED7518ADCC0A00895B23 /* logo.png in Resources */,
-				49852C8D19068D6D0021CB3E /* AcousticModelHindi.bundle in Resources */,
 				498678C91A0483BA00726F83 /* Kulcha.png in Resources */,
 				490DFA9F19C260A9008CC62B /* Paratha.png in Resources */,
 				490DFAA819C260A9008CC62B /* Seven.png in Resources */,
+				4904C2221A084B6A00126AF1 /* aammango.arpa in Resources */,
 				498678D51A04866800726F83 /* Roti.png in Resources */,
 				49CCA0081902B8B0004A9337 /* hindi.dic in Resources */,
 				490DFAAC19C260A9008CC62B /* Two.png in Resources */,
@@ -780,10 +789,12 @@
 				490DFAAB19C260A9008CC62B /* Three.png in Resources */,
 				490DFAA919C260A9008CC62B /* Six.png in Resources */,
 				498678F11A048D5100726F83 /* Navratan.png in Resources */,
+				4904C2271A084FA000126AF1 /* hindi.gram in Resources */,
 				498678B91A04804800726F83 /* Vada.png in Resources */,
 				498678B11A047E7500726F83 /* Pakora.png in Resources */,
 				4927F46418AC3A1E005257CF /* Main.storyboard in Resources */,
 				498678D61A04866800726F83 /* Roti.psd in Resources */,
+				4904C2251A084CAD00126AF1 /* aammango.dic in Resources */,
 				498678BA1A04804800726F83 /* Vada.psd in Resources */,
 				498678E61A048A7600726F83 /* Chettinand.psd in Resources */,
 				498678B51A047EDA00726F83 /* Papad.png in Resources */,
@@ -794,6 +805,7 @@
 				490DFAA419C260A9008CC62B /* Five.png in Resources */,
 				490DFAA319C260A9008CC62B /* Eight.png in Resources */,
 				49D84BD418AC7E0900A67C03 /* AamMango-57.png in Resources */,
+				4935FB9A1A07F098009954E1 /* AcousticModelHindi.bundle in Resources */,
 				498678E91A048B2300726F83 /* Gosht.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

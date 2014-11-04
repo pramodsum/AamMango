@@ -79,33 +79,6 @@
     //    offlineRecognition = [[OfflineRecognition alloc] initWithDeck:_deckArray];
     [OpenEarsLogging startOpenEarsLogging];
     [self.openEarsEventsObserver setDelegate:self];
-//    [self createLanguageModel];
-}
-
-- (void) createLanguageModel {
-    LanguageModelGenerator *languageModelGenerator = [[LanguageModelGenerator alloc] init];
-    NSString *urlString = [[NSBundle mainBundle] pathForResource:@"numbers" ofType:@"txt"];
-    NSString *rawText = [NSString stringWithContentsOfFile:urlString encoding:NSUTF8StringEncoding error:nil];
-    NSArray *numbers = [rawText componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    NSString *name = @"hindi";
-    NSError *err = [languageModelGenerator generateLanguageModelFromArray:numbers withFilesNamed:name forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"]];
-
-    NSDictionary *languageGeneratorResults = nil;
-    NSLog(@"err %@", err);
-
-    if([err code] == noErr) {
-        NSLog(@"err %@", err);
-
-        languageGeneratorResults = [err userInfo];
-
-        lmPath = [languageGeneratorResults objectForKey:@"LMPath"];
-        dicPath = [languageGeneratorResults objectForKey:@"DictionaryPath"];
-
-        NSLog(@"languageGeneratorResults: %@", languageGeneratorResults);
-
-    } else {
-        NSLog(@"\n--------------------\n--------------------\nError: %@",[err localizedDescription]);
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,8 +122,8 @@
 //        NSLog(@"LMPATH: %@\nDICPATH: %@\n", lmPath, dicPath);
 //        [self.pocketsphinxController startListeningWithLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
 //        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
-//
-//
+
+
 //        audioSession = [AVAudioSession sharedInstance];
 //        NSError *err = nil;
 //        [audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];
@@ -197,22 +170,19 @@
 //        recorder.meteringEnabled = YES;
 //        [recorder record];
 
-        [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"DMP"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"hindi" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
+        [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"aammango" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"aammango" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
 
 //        alert = [[UIAlertView alloc] initWithTitle:@"Calibrating..." message:@"\n"
 //                                          delegate:self
 //                                 cancelButtonTitle:nil
 //                                 otherButtonTitles:nil];
 //        [alert show];
-//    }else if([self.pocketsphinxController isSuspended]) {
-//        [recordButton setTitle:@"Done" forState:UIControlStateNormal];
-//        [self.pocketsphinxController resumeRecognition];
     }else {
 //        [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
 //        [recorder stop];
-//        [self.pocketsphinxController runRecognitionOnWavFileAtPath:[NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber] usingLanguageModelAtPath:lmPath dictionaryAtPath:dicPath acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO];
+//        [self.pocketsphinxController runRecognitionOnWavFileAtPath:[NSString stringWithFormat:@"%@%lu", filePath, (long)fileNumber] usingLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"aammango" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"aammango" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
 //        fileNumber++;
-//        [self.pocketsphinxController suspendRecognition];
+        [self.pocketsphinxController suspendRecognition];
     }
 
 }
