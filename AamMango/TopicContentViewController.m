@@ -242,7 +242,7 @@
 
 - (void) pocketsphinxDidDetectFinishedSpeech {
 	NSLog(@"Pocketsphinx has detected a period of silence, concluding an utterance.");
-    [self.pocketsphinxController suspendRecognition];
+//    [self.pocketsphinxController suspendRecognition];
     [alert dismissWithClickedButtonIndex:0 animated:YES];
 //    [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
 //    [self.pocketsphinxController stopListening];
@@ -251,6 +251,8 @@
 //                             cancelButtonTitle:nil
 //                             otherButtonTitles:nil];
 //    [alert show];
+    
+    [pocketsphinxController performSelector:@selector(suspendRecognition) withObject:nil afterDelay:0.5];
 }
 
 - (void) pocketsphinxDidStopListening {
