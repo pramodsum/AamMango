@@ -28,6 +28,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [self.view addSubview:appDelegate.spinner];
     
+    [appDelegate.pocketsphinxController suspendRecognition];
+    
     [self InitImgBtns];
     
     //Init alertview

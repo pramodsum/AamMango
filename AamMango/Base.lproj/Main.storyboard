@@ -789,21 +789,6 @@
                                     <action selector="record:" destination="9zl-27-lw1" eventType="touchUpInside" id="HeB-cQ-dww"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-T5-HIG">
-                                <rect key="frame" x="90" y="466" width="141" height="35"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="My Pronunciation">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="playback:" destination="9zl-27-lw1" eventType="touchUpInside" id="3Ql-3b-dAu"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoM-wH-PqO">
                                 <rect key="frame" x="94" y="383" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -818,7 +803,6 @@
                         <outlet property="cardEnglishLabel" destination="PoM-wH-PqO" id="IaB-MQ-fr6"/>
                         <outlet property="cardImage" destination="f5E-F3-rtt" id="rft-3L-v9m"/>
                         <outlet property="cardLabel" destination="DgZ-12-n78" id="FiU-LH-l2y"/>
-                        <outlet property="playbackButton" destination="UVU-T5-HIG" id="B6O-5B-ZdG"/>
                         <outlet property="recordButton" destination="cqA-Aw-Tv2" id="Xpc-qz-xrT"/>
                     </connections>
                 </viewController>
@@ -850,9 +834,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Yfr-M9-JyK"/>
-        <segue reference="MCs-zM-RD2"/>
+        <segue reference="1rX-V9-UeJ"/>
         <segue reference="iXT-yY-VsP"/>
+        <segue reference="Yfr-M9-JyK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

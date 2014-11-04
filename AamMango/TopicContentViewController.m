@@ -7,7 +7,7 @@
 //
 
 #import "TopicContentViewController.h"
-#import <OpenEars/OpenEarsLogging.h>
+#import "AppDelegate.h"
 
 @interface TopicContentViewController ()
 
@@ -23,23 +23,15 @@
 
     AVAudioSession *audioSession;
     AVAudioRecorder *recorder;
-
-//    OfflineRecognition *offlineRecognition;
+    
+    AppDelegate *appDelegate;
+    PocketsphinxController *PSController;
 }
 
 @synthesize cardImage, cardLabel, cardEnglishLabel;
 @synthesize card;
 @synthesize player;
-@synthesize playbackButton, recordButton;
-@synthesize openEarsEventsObserver;
-
-@synthesize pocketsphinxController;
-@synthesize fliteController;
-@synthesize usingStartLanguageModel;
-@synthesize slt;
-@synthesize restartAttemptsDueToPermissionRequests;
-@synthesize startupFailedDueToLackOfPermissions;
-@synthesize heardText;
+@synthesize recordButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,21 +58,12 @@
     cardLabel.text = card.hindi;
     cardEnglishLabel.text = card.english;
 
-    // Disable Stop/Play button when application launches
-    [playbackButton setHidden:YES];
-
-    // Setup audio session
-//    AVAudioSession *session = [AVAudioSession sharedInstance];
-//    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-
     fileNumber = 0;
     filePath = [NSString stringWithFormat:@"%@/audio", [self applicationDocumentsDirectory].path];
-
-    //    offlineRecognition = [[OfflineRecognition alloc] initWithDeck:_deckArray];
-    [OpenEarsLogging startOpenEarsLogging];
-    [self.openEarsEventsObserver setDelegate:self];
-    [self.pocketsphinxController startListeningWithLanguageModelAtPath:[[NSBundle mainBundle] pathForResource:@"aammango" ofType:@"arpa"] dictionaryAtPath:[[NSBundle mainBundle] pathForResource:@"aammango" ofType:@"dic"] acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelHindi"] languageModelIsJSGF:NO];
-    [self.pocketsphinxController suspendRecognition];
+    
+    
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    PSController = [appDelegate pocketsphinxController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,187 +84,18 @@
     }
 }
 
-
-// Playback + Recording
-- (IBAction)playback:(id)sender {
-//    if (!recorder.recording){
-//        player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
-//        [player setDelegate:self];
-//        [player play];
-//    }
-//    else {
-//        [recorder stop];
-//    }
-}
-
 - (IBAction)record:(id)sender {
     // Stop the audio player before recording
     if (player.playing) {
         [player stop];
     }
 
-    if ([pocketsphinxController isSuspended]) {
-        [self.pocketsphinxController resumeRecognition];
+    if ([PSController isSuspended]) {
+        [PSController resumeRecognition];
     } else {
-        [self.pocketsphinxController suspendRecognition];
+        [PSController suspendRecognition];
     }
 
-}
-
-- (void) pocketsphinxDidReceiveHypothesis:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
-
-	NSLog(@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID); // Log it.
-    NSLog(@"----------------------------------------");
-
-	self.heardText = [NSString stringWithFormat:@"Heard: \"%@\"", hypothesis]; // Show it in the status box.
-
-    NSString *message = [NSString stringWithFormat:@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID];
-    NSLog(@"%@", message);
-
-    [self checkPronunciationCorrectness:hypothesis recognitionScore:recognitionScore utteranceID:utteranceID];
-}
-
-- (void)checkPronunciationCorrectness:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
-
-//    [alert dismissWithClickedButtonIndex:0 animated:YES];
-
-    if([hypothesis isEqual:card.english]) {
-        NSString *message = [NSString stringWithFormat:@"You said %@ correctly!", card.hindi];
-        alert = [[UIAlertView alloc] initWithTitle: @"Correct!"
-                                           message: message
-                                          delegate: nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-        [alert show];
-    } else {
-        NSString *message = [NSString stringWithFormat:@"Sounds like you said %@ instead. Try again!", hypothesis];
-        alert = [[UIAlertView alloc] initWithTitle: @"Wrong!"
-                                           message: message
-                                          delegate: nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
-// OpenEars
-- (OpenEarsEventsObserver *)openEarsEventsObserver {
-	if (openEarsEventsObserver == nil) {
-		openEarsEventsObserver = [[OpenEarsEventsObserver alloc] init];
-	}
-	return openEarsEventsObserver;
-}
-
-// Lazily allocated PocketsphinxController.
-- (PocketsphinxController *)pocketsphinxController {
-	if (pocketsphinxController == nil) {
-		pocketsphinxController = [[PocketsphinxController alloc] init];
-        pocketsphinxController.verbosePocketSphinx = TRUE; // Uncomment me for verbose debug output
-        pocketsphinxController.outputAudio = TRUE;
-#ifdef kGetNbest
-        pocketsphinxController.returnNbest = TRUE;
-        pocketsphinxController.nBestNumber = 5;
-#endif
-	}
-	return pocketsphinxController;
-}
-
-// Lazily allocated slt voice.
-- (Slt *)slt {
-	if (slt == nil) {
-		slt = [[Slt alloc] init];
-	}
-	return slt;
-}
-
-// Lazily allocated FliteController.
-- (FliteController *)fliteController {
-	if (fliteController == nil) {
-		fliteController = [[FliteController alloc] init];
-
-	}
-	return fliteController;
-}
-
-#pragma mark OpenEars Delegate Functions
-
-- (void) pocketsphinxDidStartCalibration {
-	NSLog(@"Pocketsphinx calibration has started.");
-}
-
-- (void) pocketsphinxDidCompleteCalibration {
-	NSLog(@"Pocketsphinx calibration is complete.");
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-//    alert = [[UIAlertView alloc] initWithTitle:@"Begin!" message:@""
-//                                      delegate:self
-//                             cancelButtonTitle:nil
-//                             otherButtonTitles:nil];
-//    [alert show];
-}
-
-- (void) pocketsphinxDidStartListening {
-	NSLog(@"Pocketsphinx is now listening.");
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-    alert = [[UIAlertView alloc] initWithTitle:@"Speak" message:@""
-                                      delegate:self
-                             cancelButtonTitle:nil
-                             otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void) pocketsphinxDidDetectSpeech {
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-	NSLog(@"Pocketsphinx has detected speech.");
-    alert = [[UIAlertView alloc] initWithTitle:@"Speech Detected" message:@""
-                                      delegate:self
-                             cancelButtonTitle:@"OK"
-                             otherButtonTitles:nil];
-    [alert show];
-
-}
-
-- (void) pocketsphinxDidDetectFinishedSpeech {
-	NSLog(@"Pocketsphinx has detected a period of silence, concluding an utterance.");
-    [self.pocketsphinxController suspendRecognition];
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-//    [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
-//    [self.pocketsphinxController stopListening];
-//    alert = [[UIAlertView alloc] initWithTitle:@"Processing Speech..." message:@""
-//                                      delegate:self
-//                             cancelButtonTitle:nil
-//                             otherButtonTitles:nil];
-//    [alert show];
-}
-
-- (void) pocketsphinxDidStopListening {
-	NSLog(@"Pocketsphinx has stopped listening.");
-}
-
-- (void) pocketsphinxDidSuspendRecognition {
-	NSLog(@"Pocketsphinx has suspended recognition.");
-}
-
-- (void) pocketsphinxDidResumeRecognition {
-	NSLog(@"Pocketsphinx has resumed recognition.");
-}
-
-//- (void) pocketsphinxDidChangeLanguageModelToFile:(NSString *)newLanguageModelPathAsString andDictionary:(NSString *)newDictionaryPathAsString {
-//	NSLog(@"Pocketsphinx is now using the following language model: \n%@ and the following dictionary: %@",newLanguageModelPathAsString,newDictionaryPathAsString);
-//}
-
-- (void) pocketSphinxContinuousSetupDidFail { // This can let you know that something went wrong with the recognition loop startup. Turn on OPENEARSLOGGING to learn why.
-	NSLog(@"Setting up the continuous recognition loop has failed for some reason, please turn on OpenEarsLogging to learn more.");
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-    alert = [[UIAlertView alloc] initWithTitle:@"Setup Failed"
-                                       message:@"Setting up the continuous recognition loop has failed for some reason, please turn on OpenEarsLogging to learn more."
-                                      delegate:self
-                             cancelButtonTitle:nil
-                             otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void) testRecognitionCompleted {
-	NSLog(@"A test file that was submitted for recognition is now complete.");
 }
 
 @end
