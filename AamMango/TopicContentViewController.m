@@ -131,14 +131,15 @@
 - (void) pocketsphinxDidReceiveHypothesis:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
 
 	NSLog(@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID); // Log it.
-    NSLog(@"----------------------------------------");
-
-	self.heardText = [NSString stringWithFormat:@"Heard: \"%@\"", hypothesis]; // Show it in the status box.
 
     NSString *message = [NSString stringWithFormat:@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID];
     NSLog(@"%@", message);
 
     [self checkPronunciationCorrectness:hypothesis recognitionScore:recognitionScore utteranceID:utteranceID];
+}
+
+- (void) pocketsphinxDidReceiveNBestHypothesisArray: (NSArray *) hypothesisArray {
+    NSLog(@"Hypothesis array: %@", hypothesisArray);
 }
 
 - (void)checkPronunciationCorrectness:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
@@ -153,6 +154,8 @@
                                  cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil];
         [alert show];
+        
+        NSLog(@"%@", message);
     } else {
         NSString *message = [NSString stringWithFormat:@"Sounds like you said %@ instead. Try again!", hypothesis];
         alert = [[UIAlertView alloc] initWithTitle: @"Wrong!"
@@ -161,6 +164,8 @@
                                  cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil];
         [alert show];
+        
+        NSLog(@"%@", message);
     }
 }
 
@@ -181,6 +186,7 @@
 #ifdef kGetNbest
         pocketsphinxController.returnNbest = TRUE;
         pocketsphinxController.nBestNumber = 5;
+        pocketsphinxController.secondsOfSilenceToDetect = 0.2;
 #endif
 	}
 	return pocketsphinxController;
@@ -212,11 +218,6 @@
 - (void) pocketsphinxDidCompleteCalibration {
 	NSLog(@"Pocketsphinx calibration is complete.");
     [alert dismissWithClickedButtonIndex:0 animated:YES];
-//    alert = [[UIAlertView alloc] initWithTitle:@"Begin!" message:@""
-//                                      delegate:self
-//                             cancelButtonTitle:nil
-//                             otherButtonTitles:nil];
-//    [alert show];
 }
 
 - (void) pocketsphinxDidStartListening {
@@ -242,17 +243,10 @@
 
 - (void) pocketsphinxDidDetectFinishedSpeech {
 	NSLog(@"Pocketsphinx has detected a period of silence, concluding an utterance.");
-//    [self.pocketsphinxController suspendRecognition];
     [alert dismissWithClickedButtonIndex:0 animated:YES];
-//    [recordButton setTitle:@"Speak" forState:UIControlStateNormal];
-//    [self.pocketsphinxController stopListening];
-//    alert = [[UIAlertView alloc] initWithTitle:@"Processing Speech..." message:@""
-//                                      delegate:self
-//                             cancelButtonTitle:nil
-//                             otherButtonTitles:nil];
-//    [alert show];
     
-    [pocketsphinxController performSelector:@selector(suspendRecognition) withObject:nil afterDelay:0.5];
+    [pocketsphinxController suspendRecognition];
+//    [pocketsphinxController performSelector:@selector(suspendRecognition) withObject:nil afterDelay:0.5];
 }
 
 - (void) pocketsphinxDidStopListening {
@@ -267,12 +261,9 @@
 	NSLog(@"Pocketsphinx has resumed recognition.");
 }
 
-//- (void) pocketsphinxDidChangeLanguageModelToFile:(NSString *)newLanguageModelPathAsString andDictionary:(NSString *)newDictionaryPathAsString {
-//	NSLog(@"Pocketsphinx is now using the following language model: \n%@ and the following dictionary: %@",newLanguageModelPathAsString,newDictionaryPathAsString);
-//}
-
 - (void) pocketSphinxContinuousSetupDidFail { // This can let you know that something went wrong with the recognition loop startup. Turn on OPENEARSLOGGING to learn why.
 	NSLog(@"Setting up the continuous recognition loop has failed for some reason, please turn on OpenEarsLogging to learn more.");
+    
     [alert dismissWithClickedButtonIndex:0 animated:YES];
     alert = [[UIAlertView alloc] initWithTitle:@"Setup Failed"
                                        message:@"Setting up the continuous recognition loop has failed for some reason, please turn on OpenEarsLogging to learn more."
