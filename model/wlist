@@ -1,0 +1,138 @@
+var wordList = [["aat", "aa t:h sp"], ["achaar", " a ch aa r sp"], ["adai", " a d. ae sp"], ["aloo", " aa l uu sp"], ["avial", "a v ii y a l sp"], ["badam", "b aa d aam sp"], ["bagara", " b a g aa r aa sp"], ["baingan", "b ae n:g a n sp"], ["bartha", " b:h a r a th aa sp"], ["batura", " b:h a t uu r aa sp"], ["bhindi", " b:h i n:d. ii sp"], ["biryani", "b i r a y aa n ii sp"], ["bisibelebaath", "  b i s i b e l e b aa th sp"], ["bonda", "b o nd. aa sp"], ["boti", " b o t ii sp"], ["chaar", "ch aa r sp"], ["channa", " ch a n aa sp"], ["che", "ch h sp"], ["chettinand", " ch et ti n a n:d sp"], ["chole", "c:h o l e sp"], ["dahi", " d a h ii sp"], ["dal", "d aa l sp"], ["do", "  d o sp"], ["dopyaz", " d o py aa z sp"], ["dosa", " d. o s aa sp"], ["dus", "d a s sp"], ["ek", "  e k sp"], ["gajar", "g aa j a r sp"], ["gobi", " g o b ii sp"], ["gosht", "g o shth sp"], ["gulabjamun", " g uu l aaa b j aa m uu n sp"], ["halwa", "h a l a w aa sp"], ["idli", " i d. a l ii sp"], ["jalfrezi", " j a l ph r:e z ii sp"], ["kaaju", "k aa j uu sp"], ["kadai", "k a r. aa ii sp"], ["keema", "k ii m aa sp"], ["kheer", "k:h ii r sp"], ["kofta", "k o phth aa sp"], ["kulcha", " k ul a ch aa sp"], ["kulfi", "k ul ph ii sp"], ["kurma", "k oo rm aa sp"], ["lachcha", "l ach ch: aa sp"], ["lassi", "l as s ii sp"], ["makhani", "m a k:h a n ii sp"], ["malai", "m a l aa ii sp"], ["manchurian", " m a nch uu r i y a n sp"], ["matar", "m a t a r sp"], ["murg", " m u r:g sp"], ["naan", " n aa n sp"], ["nau", "n au sp"], ["navratan", " n a v a r a th a n sp"], ["paanch", " p aa n:ch sp"], ["pakora", " p a k o r. aa sp"], ["palak", "p aa l a k sp"], ["papad", "p aa p a r. sp"], ["paratha", "p a r aa nt:h aa sp"], ["pasanda", "p a s a nd aa sp"], ["payasam", "p aa y a s a m sp"], ["poori", "p uu r ii sp"], ["pudina", " p u d ii n aa sp"], ["pulav", "p u l aa w sp"], ["raita", "r aa y a th aa sp"], ["rasam", "r a s a m sp"], ["rasmalai", " r a s a m a l a ii sp"], ["rava", " r a v aa sp"], ["roti", " r o t ii sp"], ["saag", " s aa g sp"], ["saath", "s aa th sp"], ["sambar", " s a m:b aa r sp"], ["samosa", " s a m o s aa sp"], ["seekh", "s ii k:h sp"], ["shahi", "sh aa h ii sp"], ["tadka", "th a r. a k aa sp"], ["tandoor", "t a n:d oo r sp"], ["tangri", " t a n:g r. ii sp"], ["theen", "th ii n sp"], ["tikka", "t ik k aa sp"], ["upma", " u p a m aa sp"], ["uthappam", " uth th ap p a m sp"], ["vada", " v a d. aa sp"], ["vangibaath", " v a n:g ii b aa th sp"], ["venpongal", "v e n:p o n:g a l sp"], ["vindaloo", " w in: d aa l uu sp"]];
+
+var gram_appetizer = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "bonda"},
+	{from: 0, to: 0, word: "manchurian"},
+	{from: 0, to: 0, word: "pakora"},
+	{from: 0, to: 0, word: "papad"},
+	{from: 0, to: 0, word: "samosa"},
+	{from: 0, to: 0, word: "vada"}
+]};
+
+var gram_beverages = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "lassi"}
+]};
+
+var gram_breads = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "batura"},
+	{from: 0, to: 0, word: "kulcha"},
+	{from: 0, to: 0, word: "naan"},
+	{from: 0, to: 0, word: "paratha"},
+	{from: 0, to: 0, word: "poori"},
+	{from: 0, to: 0, word: "roti"}
+]};
+
+var gram_curries = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "bagara"},
+	{from: 0, to: 0, word: "bartha"},
+	{from: 0, to: 0, word: "chettinand"},
+	{from: 0, to: 0, word: "gosht"},
+	{from: 0, to: 0, word: "makhani"},
+	{from: 0, to: 0, word: "navratan"},
+	{from: 0, to: 0, word: "pasanda"},
+	{from: 0, to: 0, word: "tadka"},
+	{from: 0, to: 0, word: "tikka"},
+	{from: 0, to: 0, word: "vindaloo"}
+]};
+
+var gram_desserts = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "gulabjamun"},
+	{from: 0, to: 0, word: "halwa"},
+	{from: 0, to: 0, word: "kheer"},
+	{from: 0, to: 0, word: "payasam"},
+	{from: 0, to: 0, word: "kulfi"},
+	{from: 0, to: 0, word: "rasmalai"}
+]};
+
+var gram_none = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "kadai"},
+	{from: 0, to: 0, word: "keema"},
+	{from: 0, to: 0, word: "lachcha"},
+	{from: 0, to: 0, word: "shahi"},
+	{from: 0, to: 0, word: "kurma"},
+	{from: 0, to: 0, word: "malai"},
+	{from: 0, to: 0, word: "kofta"},
+	{from: 0, to: 0, word: "dopyaz"},
+	{from: 0, to: 0, word: "pudina"},
+	{from: 0, to: 0, word: "rava"},
+	{from: 0, to: 0, word: "tandoor"},
+	{from: 0, to: 0, word: "seekh"},
+	{from: 0, to: 0, word: "boti"},
+	{from: 0, to: 0, word: "tangri"}
+]};
+
+var gram_number = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "ek"},
+	{from: 0, to: 0, word: "do"},
+	{from: 0, to: 0, word: "theen"},
+	{from: 0, to: 0, word: "chaar"},
+	{from: 0, to: 0, word: "paanch"},
+	{from: 0, to: 0, word: "che"},
+	{from: 0, to: 0, word: "saath"},
+	{from: 0, to: 0, word: "aat"},
+	{from: 0, to: 0, word: "nau"},
+	{from: 0, to: 0, word: "dus"}
+]};
+
+var gram_proteins = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "badam"},
+	{from: 0, to: 0, word: "murg"},
+	{from: 0, to: 0, word: "kaaju"}
+]};
+
+var gram_rice = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "biryani"},
+	{from: 0, to: 0, word: "bisibelebaath"},
+	{from: 0, to: 0, word: "pulav"},
+	{from: 0, to: 0, word: "upma"},
+	{from: 0, to: 0, word: "vangibaath"},
+	{from: 0, to: 0, word: "venpongal"}
+]};
+
+var gram_sides = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "achaar"},
+	{from: 0, to: 0, word: "dahi"},
+	{from: 0, to: 0, word: "raita"}
+]};
+
+var gram_south = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "adai"},
+	{from: 0, to: 0, word: "avial"},
+	{from: 0, to: 0, word: "dosa"},
+	{from: 0, to: 0, word: "uthappam"}
+]};
+
+var gram_vegetables = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "aloo"},
+	{from: 0, to: 0, word: "baingan"},
+	{from: 0, to: 0, word: "bhindi"},
+	{from: 0, to: 0, word: "channa"},
+	{from: 0, to: 0, word: "gajar"},
+	{from: 0, to: 0, word: "gobi"},
+	{from: 0, to: 0, word: "matar"},
+	{from: 0, to: 0, word: "palak"},
+	{from: 0, to: 0, word: "saag"}
+]};
+
+var gram_vegetarian = {
+	numStates: 1, start: 0, end: 0, transitions: [
+	{from: 0, to: 0, word: "chole"},
+	{from: 0, to: 0, word: "dal"},
+	{from: 0, to: 0, word: "idli"},
+	{from: 0, to: 0, word: "jalfrezi"},
+	{from: 0, to: 0, word: "rasam"},
+	{from: 0, to: 0, word: "sambar"}
+]};
+

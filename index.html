@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AamMango</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+    <link rel="stylesheet" href="css/pure.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class="pure-skin-mine">
+    <div>
+      <div id="main">
+        <div class="header">
+          <img src="https://raw.githubusercontent.com/pramodsum/AamMango/master/AamMango/logo.png"/>
+          <h2>A Hindi Web Speech Recognizer</h2>
+        </div>
+        <div class="content">
+          <h2 class="content-subhead">Categories</h2>
+          <p>
+            <p>
+              <select class="form-control" id="grammars" onchange="updateWordList()"></select>
+            </p>
+            <button class="pure-button pure-button-primary" id="startBtn">Start</button>
+            <button class="pure-button pure-button-primary" id="stopBtn">Stop</button>
+            <span id="recording-indicator" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 20px; height: 20px; background: red;"></span>
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>Recognition Output</h2>
+                <div id="output" ></div>
+              </div>
+              <div class="col-sm-6">
+                <h2>Words in Category</h2>
+                <div id="words" ></div>
+              </div>
+            </div>
+            <h2>Status</h2>
+            <div id="current-status">Loading page</div>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+    <!-- These are the two JavaScript files you must load in the HTML,
+    The recognizer is loaded through a Web Worker -->
+    <script src="js/audioRecorder.js"></script>
+    <script src="js/callbackManager.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,1 @@
+var grammar = {numStates: 1, start: 0, end: 0, transitions: 
