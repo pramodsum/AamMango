@@ -2,8 +2,9 @@
 var recognizer, recorder, callbackManager, audioContext, outputContainer;
 // Only when both recorder and recognizer do we have a ready application
 var recorderReady = recognizerReady = false;
-
 var selectedWord;
+
+
 // A convenience function to post a message to the recognizer and associate
 // a callback to its response
 function postRecognizerJob(message, callback) {
@@ -11,6 +12,8 @@ function postRecognizerJob(message, callback) {
   if (callbackManager) msg.callbackId = callbackManager.add(callback);
   if (recognizer) recognizer.postMessage(msg);
 };
+
+
 // This function initializes an instance of the recorder
 // it posts a message right away and calls onReady when it
 // is ready so that onmessage can be properly set
@@ -21,10 +24,14 @@ function spawnWorker(workerURL, onReady) {
     };
     recognizer.postMessage('');
 };
+
+
 // To display the hypothesis sent by the recognizer
 function updateHyp(hyp) {
   if (outputContainer) outputContainer.innerHTML = hyp;
 };
+
+
 // This updates the UI when the app might get ready
 // Only when both recorder and recognizer are ready do we enable the buttons
 function updateUI() {
@@ -36,25 +43,28 @@ function updateUI() {
 
   if (recorderReady && recognizerReady && selectTag != undefined) startBtn.disabled = stopBtn.disabled = false;
 };
+
+
 // This is just a logging window where we display the status
 function updateStatus(newStatus) {
   document.getElementById('current-status').innerHTML += "<br/>" + newStatus;
 };
+
+
 // A not-so-great recording indicator
 function displayRecording(display) {
   if (display) document.getElementById('recording-indicator').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   else document.getElementById('recording-indicator').innerHTML = "";
 };
+
+
 // Callback function once the user authorises access to the microphone
 // in it, we instanciate the recorder
 function startUserMedia(stream) {
   var input = audioContext.createMediaStreamSource(stream);
   // Firefox hack https://support.mozilla.org/en-US/questions/984179
   window.firefox_audio_hack = input; 
-  var audioRecorderConfig = {errorCallback: function(x) { 
-    if(x != "silent")
-      updateStatus("Error from recorder: " + x);
-  }};
+  var audioRecorderConfig = {errorCallback: function(x) { if(x != "silent") updateStatus("Error from recorder: " + x); }};
   recorder = new AudioRecorder(input, audioRecorderConfig);
   // If a recognizer is ready, we pass it to the recorder
   if (recognizer) recorder.consumers = [recognizer];
@@ -62,17 +72,24 @@ function startUserMedia(stream) {
   updateUI();
   updateStatus("Audio recorder ready");
 };
+
+
 // This starts recording. We first need to get the id of the grammar to use
 var startRecording = function() {
   var id = document.getElementById('grammars').value;
   if (recorder && recorder.start(id)) displayRecording(true);
 };
+
+
 // Stops recording
 var stopRecording = function() {
   recorder && recorder.stop();
   displayRecording(false);
 };
 
+
+// We get the words defined in the selected grammar set below and 
+// fill in the input select tag
 var updateWordList = function() {
   var id = document.getElementById('grammars').value;
   var selectTag = document.getElementById('words');
@@ -85,6 +102,7 @@ var updateWordList = function() {
   }
 }
 
+
 // Called once the recognizer is ready
 // We then add the grammars to the input select tag and update the UI
 var recognizerReady = function() {
@@ -94,6 +112,8 @@ var recognizerReady = function() {
      updateStatus("Recognizer ready");
      updateWordList();
 };
+
+
 // We get the grammars defined below and fill in the input select tag
 var updateGrammars = function() {
   var selectTag = document.getElementById('grammars');
@@ -104,6 +124,8 @@ var updateGrammars = function() {
       selectTag.appendChild(newElt);
   }
 };
+
+
 // This adds a grammar from the grammars array
 // We add them one by one and call it again as
 // a callback.
@@ -119,11 +141,15 @@ postRecognizerJob({command: 'addGrammar', data: g[index].g},
     recognizerReady();
   }
 };
+
+
 // This adds words to the recognizer. When it calls back, we add grammars
 var feedWords = function(words) {
      postRecognizerJob({command: 'addWords', data: words},
                   function() {feedGrammar(grammars, 0);});
 };
+
+
 // This initializes the recognizer. When it calls back, we add words
 var initRecognizer = function() {
     // You can pass parameters to the recognizer, such as : {command: 'initialize', data: [["-hmm", "my_model"], ["-fwdflat", "no"]]}
@@ -132,6 +158,8 @@ var initRecognizer = function() {
                                   if (recorder) recorder.consumers = [recognizer];
                                   feedWords(wordList);});
 };
+
+
 // When the page is loaded, we spawn a new recognizer worker and call getUserMedia to
 // request access to the microphone
 window.onload = function() {
@@ -187,6 +215,8 @@ window.onload = function() {
                                   updateStatus("No live audio input in this browser");
                               });
   else updateStatus("No web audio support in this browser");
+
+
 // Wiring JavaScript to the UI
 var startBtn = document.getElementById('startBtn');
 var stopBtn = document.getElementById('stopBtn');
