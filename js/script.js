@@ -51,7 +51,10 @@ function startUserMedia(stream) {
   var input = audioContext.createMediaStreamSource(stream);
   // Firefox hack https://support.mozilla.org/en-US/questions/984179
   window.firefox_audio_hack = input; 
-  var audioRecorderConfig = {errorCallback: function(x) {updateStatus("Error from recorder: " + x);}};
+  var audioRecorderConfig = {errorCallback: function(x) { 
+    if(x != "silent")
+      updateStatus("Error from recorder: " + x);
+  }};
   recorder = new AudioRecorder(input, audioRecorderConfig);
   // If a recognizer is ready, we pass it to the recorder
   if (recognizer) recorder.consumers = [recognizer];
