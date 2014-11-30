@@ -40,7 +40,7 @@ for category in gram_lists:
 
     #add each word to word list)
     words += "[\"" + splitWord[0] + "\", \"" + splitWord[2] + "\"], "
-    gram += "{from: 0, to: 0, word: \"" + splitWord[0] + "\", text: \"" + splitWord[1] + "\"},\n\t"
+    gram += "{from: 0, to: 0, logp: -5, word: \"" + splitWord[0] + "\", text: \"" + splitWord[1] + "\"},\n\t"
     # gram += "{from: 0, to: 0, word: \"" + splitWord[0] + "\", text: \"" + splitWord[1] + "\"},\n" + gram_footer
 
     # grammars += "{title: \"" + splitWord[1] + "\", g: gram_" + splitWord[0] + "},\n\t"
