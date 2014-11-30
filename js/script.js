@@ -2,6 +2,8 @@
 var recognizer, recorder, callbackManager, audioContext, outputContainer;
 // Only when both recorder and recognizer do we have a ready application
 var recorderReady = recognizerReady = false;
+
+var selectedWord;
 // A convenience function to post a message to the recognizer and associate
 // a callback to its response
 function postRecognizerJob(message, callback) {
@@ -26,7 +28,13 @@ function updateHyp(hyp) {
 // This updates the UI when the app might get ready
 // Only when both recorder and recognizer are ready do we enable the buttons
 function updateUI() {
-  if (recorderReady && recognizerReady) startBtn.disabled = stopBtn.disabled = false;
+  var selectTag = document.getElementById('words');
+
+  var gid = document.getElementById('grammars').value;
+  var wid = document.getElementById('words').value;
+  selectedWord = grammars[gid].g.transitions[wid];
+
+  if (recorderReady && recognizerReady && selectTag != undefined) startBtn.disabled = stopBtn.disabled = false;
 };
 // This is just a logging window where we display the status
 function updateStatus(newStatus) {
@@ -64,11 +72,14 @@ var stopRecording = function() {
 
 var updateWordList = function() {
   var id = document.getElementById('grammars').value;
-  var words = "";
+  var selectTag = document.getElementById('words');
+  selectTag.length=0
   for(var i = 0; i < grammars[id].g.transitions.length; i++) {
-    words += "<li>" + grammars[id].g.transitions[i].text + "</li>";
+      var newElt = document.createElement('option');
+      newElt.value=i;
+      newElt.innerHTML = grammars[id].g.transitions[i].text;
+      selectTag.appendChild(newElt);
   }
-  wordsContainer.innerHTML = words;
 }
 
 // Called once the recognizer is ready
@@ -137,9 +148,20 @@ window.onload = function() {
           }
           // This is a case when the recognizer has a new hypothesis
           if (e.data.hasOwnProperty('hyp')) {
-            var newHyp = e.data.hyp;
-            if (e.data.hasOwnProperty('final') &&  e.data.final) newHyp = "Final: " + newHyp;
-            updateHyp(newHyp);
+            var newHyp = output = e.data.hyp;
+            if(newHyp == "") return;
+            stopRecording();
+
+            var gid = document.getElementById('grammars').value;
+            var wid = document.getElementById('words').value;
+            selectedWord = grammars[gid].g.transitions[wid];
+
+            if(newHyp == selectedWord.word) {
+              output = "YAY! You said " + selectedWord.text + " correctly!";
+            } else {
+              output = "NO! You said " + newHyp + " instead of " + selectedWord.text;
+            }
+            updateHyp(output);
           }
           // This is the case when we have an error
           if (e.data.hasOwnProperty('status') && (e.data.status == "error")) {
@@ -173,7 +195,7 @@ stopBtn.onclick = stopRecording;
 
  // This is the list of words that need to be added to the recognizer
  // This follows the CMU dictionary format
-var wordList = [["aat", "aa t:h sp"], ["achaar", " a ch aa r sp"], ["adai", " a d. ae sp"], ["aloo", " aa l uu sp"], ["avial", "a v ii y a l sp"], ["badam", "b aa d aam sp"], ["bagara", " b a g aa r aa sp"], ["baingan", "b ae n:g a n sp"], ["bartha", " b:h a r a th aa sp"], ["batura", " b:h a t uu r aa sp"], ["bhindi", " b:h i n:d. ii sp"], ["biryani", "b i r a y aa n ii sp"], ["bisibelebaath", "  b i s i b e l e b aa th sp"], ["bonda", "b o nd. aa sp"], ["boti", " b o t ii sp"], ["chaar", "ch aa r sp"], ["channa", " ch a n aa sp"], ["che", "ch h sp"], ["chettinand", " ch et ti n a n:d sp"], ["chole", "c:h o l e sp"], ["dahi", " d a h ii sp"], ["dal", "d aa l sp"], ["do", "  d o sp"], ["dopyaz", " d o py aa z sp"], ["dosa", " d. o s aa sp"], ["dus", "d a s sp"], ["ek", "  e k sp"], ["gajar", "g aa j a r sp"], ["gobi", " g o b ii sp"], ["gosht", "g o shth sp"], ["gulabjamun", " g uu l aaa b j aa m uu n sp"], ["halwa", "h a l a w aa sp"], ["idli", " i d. a l ii sp"], ["jalfrezi", " j a l ph r:e z ii sp"], ["kaaju", "k aa j uu sp"], ["kadai", "k a r. aa ii sp"], ["keema", "k ii m aa sp"], ["kheer", "k:h ii r sp"], ["kofta", "k o phth aa sp"], ["kulcha", " k ul a ch aa sp"], ["kulfi", "k ul ph ii sp"], ["kurma", "k oo rm aa sp"], ["lachcha", "l ach ch: aa sp"], ["lassi", "l as s ii sp"], ["makhani", "m a k:h a n ii sp"], ["malai", "m a l aa ii sp"], ["manchurian", " m a nch uu r i y a n sp"], ["matar", "m a t a r sp"], ["murg", " m u r:g sp"], ["naan", " n aa n sp"], ["nau", "n au sp"], ["navratan", " n a v a r a th a n sp"], ["paanch", " p aa n:ch sp"], ["pakora", " p a k o r. aa sp"], ["palak", "p aa l a k sp"], ["papad", "p aa p a r. sp"], ["paratha", "p a r aa nt:h aa sp"], ["pasanda", "p a s a nd aa sp"], ["payasam", "p aa y a s a m sp"], ["poori", "p uu r ii sp"], ["pudina", " p u d ii n aa sp"], ["pulav", "p u l aa w sp"], ["raita", "r aa y a th aa sp"], ["rasam", "r a s a m sp"], ["rasmalai", " r a s a m a l a ii sp"], ["rava", " r a v aa sp"], ["roti", " r o t ii sp"], ["saag", " s aa g sp"], ["saath", "s aa th sp"], ["sambar", " s a m:b aa r sp"], ["samosa", " s a m o s aa sp"], ["seekh", "s ii k:h sp"], ["shahi", "sh aa h ii sp"], ["tadka", "th a r. a k aa sp"], ["tandoor", "t a n:d oo r sp"], ["tangri", " t a n:g r. ii sp"], ["theen", "th ii n sp"], ["tikka", "t ik k aa sp"], ["upma", " u p a m aa sp"], ["uthappam", " uth th ap p a m sp"], ["vada", " v a d. aa sp"], ["vangibaath", " v a n:g ii b aa th sp"], ["venpongal", "v e n:p o n:g a l sp"], ["vindaloo", " w in: d aa l uu sp"]];
+var wordList = [["bonda", "b o nd. aa"], ["manchurian", "m a nch uu r i y a n"], ["pakora", "p a k o r. aa"], ["papad", "p aa p a r."], ["samosa", "s a m o s aa"], ["vada", "v a d. aa "], ["lassi", "l as s ii"], ["batura", "b:h a t uu r aa"], ["kulcha", "k ul a ch aa"], ["naan", "n aa n"], ["paratha", "p a r aa nt:h aa"], ["poori", "p uu r ii"], ["roti", "r o t ii"], ["bagara", "b a g aa r aa"], ["bartha", "b:h a r a th aa"], ["chettinand", "ch et ti n a n:d"], ["gosht", "g o shth"], ["makhani", "m a k:h a n ii"], ["navratan", "n a v a r a th a n"], ["pasanda", "p a s a nd aa"], ["tadka", "th a r. a k aa"], ["tikka", "t ik k aa "], ["vindaloo", "w in: d aa l uu"], ["gulabjamun", "g uu l aaa b j aa m uu n"], ["halwa", "h a l a w aa"], ["kheer", "k:h ii r"], ["payasam", "p aa y a s a m"], ["kulfi", "k ul ph ii"], ["rasmalai", "r a s a m a l a ii"], ["ek", "e k"], ["do", "d o"], ["theen", "th ii n"], ["chaar", "ch aa r"], ["paanch", "p aa n:ch"], ["che", "ch h"], ["saath", "s aa th"], ["aat", "aa t:h"], ["nau", "n au"], ["dus", "d a s"], ["badam", "b aa d aam"], ["murg", "m u r:g"], ["kaaju", "k aa j uu"], ["biryani", "b i r a y aa n ii"], ["bisibelebaath", "b i s i b e l e b aa th"], ["pulav", "p u l aa w"], ["upma", "u p a m aa"], ["vangibaath", "v a n:g ii b aa th"], ["venpongal", "v e n:p o n:g a l"], ["achaar", "a ch aa r"], ["dahi", "d a h ii"], ["raita", "r aa y a th aa"], ["adai", "a d. ae"], ["avial", "a v ii y a l"], ["dosa", "d. o s aa"], ["uthappam", "uth th ap p a m "], ["aloo", "aa l uu"], ["baingan", "b ae n:g a n"], ["bhindi", "b:h i n:d. ii"], ["channa", "ch a n aa"], ["gajar", "g aa j a r"], ["gobi", "g o b ii"], ["matar", "m a t a r"], ["palak", "p aa l a k"], ["saag", "s aa g"], ["chole", "c:h o l e"], ["dal", "d aa l"], ["idli", "I d. a l ii"], ["jalfrezi", "j a l ph r:e z ii "], ["rasam", "r a s a m"], ["sambar", "s a m:b aa r"], ["kadai", "k a r. aa ii"], ["keema", "k ii m aa"], ["lachcha", "l ach ch: aa"], ["shahi", "sh aa h ii"], ["kurma", "k oo rm aa"], ["malai", "m a l aa ii"], ["kofta", "k o phth aa"], ["dopyaz", "d o py aa z"], ["pudina", "p u d ii n aa"], ["rava", "r a v aa"], ["tandoor", "t a n:d oo r"], ["seekh", "s ii k:h"], ["boti", "b o t ii "], ["tangri", "t a n:g r. ii"]];
 
 var gram_appetizer = {
   numStates: 1, start: 0, end: 0, transitions: [
@@ -196,7 +218,7 @@ var gram_breads = {
   {from: 0, to: 0, word: "kulcha", text: "Kulcha"},
   {from: 0, to: 0, word: "naan", text: "Naan"},
   {from: 0, to: 0, word: "paratha", text: "Paratha"},
-  {from: 0, to: 0, word: "poori", text: "Puri"},
+  {from: 0, to: 0, word: "poori", text: "Poori"},
   {from: 0, to: 0, word: "roti", text: "Roti"}
 ]};
 
@@ -258,7 +280,7 @@ var gram_number = {
 
 var gram_proteins = {
   numStates: 1, start: 0, end: 0, transitions: [
-  {from: 0, to: 0, word: "badam", text: "Bada"},
+  {from: 0, to: 0, word: "badam", text: "Badam"},
   {from: 0, to: 0, word: "murg", text: "Murg"},
   {from: 0, to: 0, word: "kaaju", text: "Kaaju"}
 ]};

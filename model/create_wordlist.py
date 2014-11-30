@@ -10,12 +10,13 @@ wlist.write("var wordList = [")
 gram_footer = "]};\n\n"
 gram = ""
 words = ""
+grammars = "var grammars = [\n\t"
 
 for word in wordArr:
   word = word.strip('\n')
-  splitWord = word.split(' ')
+  splitWord = word.split(',')
   print(splitWord)
-  words += "[\"" + splitWord[0] + "\", \"" + ' '.join(splitWord[1:]) + "\"], "
+  words += "[\"" + splitWord[0] + "\", \"" + splitWord[2] + "\"], "
 
 wlist.write(words[:-2] + "];\n\n")
 
@@ -31,12 +32,22 @@ for category in gram_lists:
 
   for word in wordArr:
     word = word.strip('\n')
-    splitWord = word.split(' ')
+    splitWord = word.split(',')
     print(splitWord)
-    words += "[\"" + splitWord[0] + "\", \"" + ' '.join(splitWord[1:]) + "\"], "
-    gram += "{from: 0, to: 0, word: \"" + splitWord[0] + "\"},\n\t"
 
+    #separate grammar for each word
+    # gram += "var gram_" + splitWord[0] + " = {\n\tnumStates: 1, start: 0, end: 0, transitions: [\n\t"
+
+    #add each word to word list)
+    words += "[\"" + splitWord[0] + "\", \"" + splitWord[2] + "\"], "
+    gram += "{from: 0, to: 0, word: \"" + splitWord[0] + "\", text: \"" + splitWord[1] + "\"},\n\t"
+    # gram += "{from: 0, to: 0, word: \"" + splitWord[0] + "\", text: \"" + splitWord[1] + "\"},\n" + gram_footer
+
+    # grammars += "{title: \"" + splitWord[1] + "\", g: gram_" + splitWord[0] + "},\n\t"
+    
   gram = gram[:-3] + "\n" + gram_footer
+
+# gram += grammars[:-3] + "\n];"
 
 wlist.write(gram)
 wlist.close()

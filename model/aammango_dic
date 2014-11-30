@@ -1,84 +1,84 @@
-aat aa t:h sp
-achaar  a ch aa r sp
-adai  a d. ae sp
-aloo  aa l uu sp
-avial a v ii y a l sp
-badam b aa d aam sp
-bagara  b a g aa r aa sp
-baingan b ae n:g a n sp
-bartha  b:h a r a th aa sp
-batura  b:h a t uu r aa sp
-bhindi  b:h i n:d. ii sp
-biryani b i r a y aa n ii sp
-bisibelebaath   b i s i b e l e b aa th sp
-bonda b o nd. aa sp
-boti  b o t ii sp
-chaar ch aa r sp
-channa  ch a n aa sp
-che ch h sp
-chettinand  ch et ti n a n:d sp
-chole c:h o l e sp
-dahi  d a h ii sp
-dal d aa l sp
-do   d o sp
-dopyaz  d o py aa z sp
-dosa  d. o s aa sp
-dus d a s sp
-ek   e k sp
-gajar g aa j a r sp
-gobi  g o b ii sp
-gosht g o shth sp
-gulabjamun  g uu l aaa b j aa m uu n sp
-halwa h a l a w aa sp
-idli  i d. a l ii sp
-jalfrezi  j a l ph r:e z ii sp
-kaaju k aa j uu sp
-kadai k a r. aa ii sp
-keema k ii m aa sp
-kheer k:h ii r sp
-kofta k o phth aa sp
-kulcha  k ul a ch aa sp
-kulfi k ul ph ii sp
-kurma k oo rm aa sp
-lachcha l ach ch: aa sp
-lassi l as s ii sp
-makhani m a k:h a n ii sp
-malai m a l aa ii sp
-manchurian  m a nch uu r i y a n sp
-matar m a t a r sp
-murg  m u r:g sp
-naan  n aa n sp
-nau n au sp
-navratan  n a v a r a th a n sp
-paanch  p aa n:ch sp
-pakora  p a k o r. aa sp
-palak p aa l a k sp
-papad p aa p a r. sp
-paratha p a r aa nt:h aa sp
-pasanda p a s a nd aa sp
-payasam p aa y a s a m sp
-poori p uu r ii sp
-pudina  p u d ii n aa sp
-pulav p u l aa w sp
-raita r aa y a th aa sp
-rasam r a s a m sp
-rasmalai  r a s a m a l a ii sp
-rava  r a v aa sp
-roti  r o t ii sp
-saag  s aa g sp
-saath s aa th sp
-sambar  s a m:b aa r sp
-samosa  s a m o s aa sp
-seekh s ii k:h sp
-shahi sh aa h ii sp
-tadka th a r. a k aa sp
-tandoor t a n:d oo r sp
-tangri  t a n:g r. ii sp
-theen th ii n sp
-tikka t ik k aa sp
-upma  u p a m aa sp
-uthappam  uth th ap p a m sp
-vada  v a d. aa sp
-vangibaath  v a n:g ii b aa th sp
-venpongal v e n:p o n:g a l sp
-vindaloo  w in: d aa l uu sp
+bonda,Bonda,b o nd. aa,appetizers
+manchurian,Manchurian,m a nch uu r i y a n,appetizers
+pakora,Pakora,p a k o r. aa,appetizers
+papad,Papad,p aa p a r.,appetizers
+samosa,Samosa,s a m o s aa,appetizers
+vada,Vada,v a d. aa ,appetizers
+lassi,Lassi,l as s ii,beverages
+batura,Batura,b:h a t uu r aa,breads
+kulcha,Kulcha,k ul a ch aa,breads
+naan,Naan,n aa n,breads
+paratha,Paratha,p a r aa nt:h aa,breads
+poori,Poori,p uu r ii,breads
+roti,Roti,r o t ii,breads
+bagara,Bagara,b a g aa r aa,curries
+bartha,Bartha,b:h a r a th aa,curries
+chettinand,Chettinand,ch et ti n a n:d,curries
+gosht,Gosht,g o shth,curries
+makhani,Makhani,m a k:h a n ii,curries
+navratan,Navratan,n a v a r a th a n,curries
+pasanda,Pasanda,p a s a nd aa,curries
+tadka,Tadka,th a r. a k aa,curries
+tikka,Tikka,t ik k aa ,curries
+vindaloo,Vindaloo,w in: d aa l uu,curries
+gulabjamun,Gulab Jamun,g uu l aaa b j aa m uu n,desserts
+halwa,Halwa,h a l a w aa,desserts
+kheer,Kheer,k:h ii r,desserts
+payasam,Payasam,p aa y a s a m,desserts
+kulfi,Kulfi,k ul ph ii,desserts
+rasmalai,Rasmalai,r a s a m a l a ii,desserts
+ek,Ek,e k,numbers
+do,Do,d o,numbers
+theen,Theen,th ii n,numbers
+chaar,Chaar,ch aa r,numbers
+paanch,Paanch,p aa n:ch,numbers
+che,Che,ch h,numbers
+saath,Saath,s aa th,numbers
+aat,Aat,aa t:h,numbers
+nau,Nau,n au,numbers
+dus,Dus,d a s,numbers
+badam,Badam,b aa d aam,proteins
+murg,Murg,m u r:g,proteins
+kaaju,Kaaju,k aa j uu,proteins
+biryani,Biryani,b i r a y aa n ii,rice
+bisibelebaath,Bisibele Baath,b i s i b e l e b aa th,rice
+pulav,Pulav,p u l aa w,rice
+upma,Upma,u p a m aa,rice
+vangibaath,Vangibaath,v a n:g ii b aa th,rice
+venpongal,Venpongal,v e n:p o n:g a l,rice
+achaar,Achaar,a ch aa r,sides
+dahi,Dahi,d a h ii,sides
+raita,Raita,r aa y a th aa,sides
+adai,Adai,a d. ae,south
+avial,Avial,a v ii y a l,south
+dosa,Dosa,d. o s aa,south
+uthappam,Uthappam,uth th ap p a m ,south
+aloo,Aloo,aa l uu,vegetables
+baingan,Baingan,b ae n:g a n,vegetables
+bhindi,Bhindi,b:h i n:d. ii,vegetables
+channa,Channa,ch a n aa,vegetables
+gajar,Gajar,g aa j a r,vegetables
+gobi,Gobi,g o b ii,vegetables
+matar,Matar,m a t a r,vegetables
+palak,Palak,p aa l a k,vegetables
+saag,Saag,s aa g,vegetables
+chole,Chole,c:h o l e,vegetarian
+dal,Dal,d aa l,vegetarian
+idli,Idli,I d. a l ii,vegetarian
+jalfrezi,Jal Frezi,j a l ph r:e z ii ,vegetarian
+rasam,Rasam,r a s a m,vegetarian
+sambar,Sambar,s a m:b aa r,vegetarian
+kadai,Kadai,k a r. aa ii,none
+keema,Keema,k ii m aa,none
+lachcha,Lachcha,l ach ch: aa,none
+shahi,Shahi,sh aa h ii,none
+kurma,Kurma,k oo rm aa,none
+malai,Malai,m a l aa ii,none
+kofta,Kofta,k o phth aa,none
+dopyaz,DoPyaz,d o py aa z,none
+pudina,Pudina,p u d ii n aa,none
+rava,Rava,r a v aa,none
+tandoor,Tandoor,t a n:d oo r,none
+seekh,Seekh,s ii k:h,none
+boti,Boti,b o t ii ,none
+tangri,Tangri,t a n:g r. ii,none
