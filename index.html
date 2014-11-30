@@ -24,21 +24,21 @@
           <h2>A Hindi Web Speech Recognizer</h2>
         </div>
         <div class="content">
-          <h2 class="content-subhead">Categories</h2>
+          <h2 class="content-subhead">Select a Category</h2>
           <p>
             <p>
               <select class="form-control" id="grammars" onchange="updateWordList()"></select>
             </p>
-            <button class="pure-button pure-button-primary" id="startBtn">Start</button>
-            <button class="pure-button pure-button-primary" id="stopBtn" hidden>Stop</button>
-            <span id="recording-indicator" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 20px; height: 20px; background: red;"></span>
             <div class="row">
               <div class="col-sm-6">
                 <h2>Words in Category</h2>
                 <select class="form-control" id="words" onchange="updateUI()"></select>
               </div>
               <div class="col-sm-6">
-                <h2>Recognition Output</h2>
+                <h2>Recognition</h2>
+                <button class="pure-button pure-button-primary" id="startBtn">Start</button>
+                <button class="pure-button pure-button-primary" id="stopBtn" hidden>Stop</button>
+                <span id="recording-indicator" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 20px; height: 20px; background: red;"></span>
                 <div id="output" ></div>
               </div>
             </div>
