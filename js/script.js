@@ -117,7 +117,7 @@ var recognizerReady = function() {
 // We get the grammars defined below and fill in the input select tag
 var updateGrammars = function() {
   var selectTag = document.getElementById('grammars');
-  for (var i = 0 ; i < grammarIds.length ; i++) {
+  for (var i = grammarIds.length - 1; i >= 0; i--) {
       var newElt = document.createElement('option');
       newElt.value=grammarIds[i].id;
       newElt.innerHTML = grammarIds[i].title;
