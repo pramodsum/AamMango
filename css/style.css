@@ -22,3 +22,13 @@
     background-image: url("../img/elephant.png");
     background-repeat: repeat-x;
 }
+
+i.ion-bug {
+  color: #00BFA0;
+  font-size: 20px;
+}
+
+i.ion-bug:hover,
+i.ion-bug:focus {
+  color: #6562EF;
+}
