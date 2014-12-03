@@ -55,7 +55,7 @@ for (var i = 0; i < 100; i++) {
     drawContext.clearRect (0, 0, canvas.width, canvas.height);
 
     drawLine(canvas, streamVolumes, '#00BFA0');
-    drawLine(canvas, referenceVolumes, 'black');
+    drawLine(canvas, referenceVolumes, '#6562EF');
     window.requestAnimationFrame(draw);
   }
   window.requestAnimationFrame(draw);
