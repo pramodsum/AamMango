@@ -40,8 +40,7 @@ function updateUI() {
   var gid = document.getElementById('grammars').value;
   var wid = document.getElementById('words').value;
   selectedWord = grammars[gid].g.transitions[wid];
-
-  if (recorderReady && recognizerReady && selectTag != undefined) startBtn.disabled = stopBtn.disabled = false;
+  startBtn.disabled = stopBtn.disabled = false;
 };
 
 
@@ -206,7 +205,7 @@ window.onload = function() {
   // The following is to initialize Web Audio
   try {
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     window.URL = window.URL || window.webkitURL;
     audioContext = new AudioContext();
   } catch (e) {

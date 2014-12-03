@@ -1,5 +1,135 @@
-(function(e){if("function"==typeof bootstrap)bootstrap("hark",e);else if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else if("undefined"!=typeof ses){if(!ses.ok())return;ses.makeHark=e}else"undefined"!=typeof window?window.hark=e():global.hark=e()})(function(){var define,ses,bootstrap,module,exports;
-return (function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0].call(u.exports,function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var hark = require('hark')
+
+var getUserMedia = require('getusermedia')
+
+getUserMedia(function(err, stream) {
+  if (err) throw err
+
+  var options = {};
+  var speechEvents = hark(stream, options);
+
+  speechEvents.on('speaking', function() {
+    console.log('speaking');
+  });
+
+  speechEvents.on('volume_change', function(volume, threshold) {
+    console.log(volume, threshold)
+    streamVolumes.push(volume);
+    streamVolumes.shift();
+  });
+
+  speechEvents.on('stopped_speaking', function() {
+    console.log('stopped_speaking');
+  });
+});
+
+var streamVolumes = [];
+var referenceVolumes = [];
+for (var i = 0; i < 100; i++) {
+  streamVolumes.push(-100);
+  referenceVolumes.push(-50);
+}
+
+(function () {
+
+  function drawLine(canvas, data, color) {
+    var drawContext = canvas.getContext('2d');
+    drawContext.moveTo(0,canvas.height);
+    drawContext.beginPath();
+    drawContext.strokeStyle = color;
+    for (var i = 0; i < data.length; i++) {
+      var value = -data[i];
+      var percent = value / 100;
+      var height = canvas.height * percent;
+      var vOffset = height; //canvas.height - height - 5;
+      var hOffset = i * canvas.width / 100.0;
+      drawContext.lineTo(hOffset, vOffset);
+    }
+    drawContext.stroke();
+  }
+  function draw() {
+    var canvas = document.querySelector('canvas');
+    if (!canvas) return;
+    var drawContext = canvas.getContext('2d');
+    drawContext.clearRect (0, 0, canvas.width, canvas.height);
+
+    drawLine(canvas, streamVolumes, '#00BFA0');
+    drawLine(canvas, referenceVolumes, 'black');
+    window.requestAnimationFrame(draw);
+  }
+  window.requestAnimationFrame(draw);
+})();
+
+},{"getusermedia":2,"hark":3}],2:[function(require,module,exports){
+// getUserMedia helper by @HenrikJoreteg
+var func = (window.navigator.getUserMedia ||
+            window.navigator.webkitGetUserMedia ||
+            window.navigator.mozGetUserMedia ||
+            window.navigator.msGetUserMedia);
+
+
+module.exports = function (constraints, cb) {
+    var options;
+    var haveOpts = arguments.length === 2;
+    var defaultOpts = {video: true, audio: true};
+    var error;
+    var denied = 'PermissionDeniedError';
+    var notSatified = 'ConstraintNotSatisfiedError';
+
+    // make constraints optional
+    if (!haveOpts) {
+        cb = constraints;
+        constraints = defaultOpts;
+    }
+
+    // treat lack of browser support like an error
+    if (!func) {
+        // throw proper error per spec
+        error = new Error('MediaStreamError');
+        error.name = 'NotSupportedError';
+        return cb(error);
+    }
+
+    if (localStorage && localStorage.useFirefoxFakeDevice === "true") {
+        constraints.fake = true;
+    }
+
+    func.call(window.navigator, constraints, function (stream) {
+        cb(null, stream);
+    }, function (err) {
+        var error;
+        // coerce into an error object since FF gives us a string
+        // there are only two valid names according to the spec
+        // we coerce all non-denied to "constraint not satisfied".
+        if (typeof err === 'string') {
+            error = new Error('MediaStreamError');
+            if (err === denied) {
+                error.name = denied;
+            } else {
+                error.name = notSatified;
+            }
+        } else {
+            // if we get an error object make sure '.name' property is set
+            // according to spec: http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermediaerror-and-navigatorusermediaerrorcallback
+            error = err;
+            if (!error.name) {
+                // this is likely chrome which
+                // sets a property called "ERROR_DENIED" on the error object
+                // if so we make sure to set a name
+                if (error[denied]) {
+                    err.name = denied;
+                } else {
+                    err.name = notSatified;
+                }
+            }
+        }
+
+        cb(error);
+    });
+};
+
+},{}],3:[function(require,module,exports){
 var WildEmitter = require('wildemitter');
 
 function getMaxVolume (analyser, fftBins) {
@@ -129,7 +259,7 @@ module.exports = function(stream, options) {
   return harker;
 }
 
-},{"wildemitter":2}],2:[function(require,module,exports){
+},{"wildemitter":4}],4:[function(require,module,exports){
 /*
 WildEmitter.js is a slim little event emitter by @henrikjoreteg largely based 
 on @visionmedia's Emitter from UI Kit.
@@ -270,6 +400,4 @@ WildEmitter.prototype.getWildcardCallbacks = function (eventName) {
     return result;
 };
 
-},{}]},{},[1])(1)
-});
-;
+},{}]},{},[1]);
