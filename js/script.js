@@ -4,6 +4,10 @@ var recognizer, recorder, callbackManager, audioContext, outputContainer;
 var recorderReady = recognizerReady = false;
 var selectedWord;
 
+var correctContainer, almostContainer, wrongContainer, scoreContainer;
+var correct = almost = wrong = userScore = totalCount = 0;
+var prevScore = 0;
+
 
 // A convenience function to post a message to the recognizer and associate
 // a callback to its response
@@ -29,6 +33,10 @@ function spawnWorker(workerURL, onReady) {
 // To display the hypothesis sent by the recognizer
 function updateHyp(hyp) {
   if (outputContainer) outputContainer.innerHTML = hyp;
+  correctContainer.innerHTML = correct;
+  almostContainer.innerHTML = almost;
+  wrongContainer.innerHTML = wrong;
+  // scoreContainer.innerHTML = correct/totalCount + "%";
 };
 
 
@@ -174,6 +182,10 @@ var initRecognizer = function() {
 // request access to the microphone
 window.onload = function() {
   outputContainer = document.getElementById("output");
+  // scoreContainer = document.getElementById("userScore");
+  correctContainer = document.getElementById("correct");
+  almostContainer = document.getElementById("almost");
+  wrongContainer = document.getElementById("wrong");
   wordsContainer = document.getElementById("words");
   updateStatus("Initializing web audio and speech recognizer, waiting for approval to access the microphone");
   callbackManager = new CallbackManager();
@@ -191,6 +203,7 @@ window.onload = function() {
           if (e.data.hasOwnProperty('hyp')) {
             var newHyp = output = e.data.hyp;
             //console.log("Score: " + e.data.score);
+            console.log(e);
 
             if(newHyp == "") return;
             stopRecording();
@@ -210,18 +223,26 @@ window.onload = function() {
                 output = "<div class=\"alert alert-success\">";
                 output += "YAY! You said " + selectedWord.text + " correctly!";
                 output += "</div>";
+                correct++;
+                if(prevScore != score) userScore += 100;
               }
               else {
                 output = "<div class=\"alert alert-warning\">";
                 output += "You said " + selectedWord.text + " but didn't pronounce it correctly.\n\nListen to the correct pronunciation and try again!";
                 output += "</div>";
                 playAudio();
+                almost++;
+                if(prevScore != score) userScore += 25;
               }
             } else {
               output = "<div class=\"alert alert-danger\">";
               output += "NO! You said " + newHyp + " instead of " + selectedWord.text;
               output += "</div>";
+              wrong++;
+              if(prevScore != score) userScore -= 25;
             }
+            totalCount++;
+            if(prevScore != score) prevScore = score;
             updateHyp(output);
           }
           // This is the case when we have an error

@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>AamMango</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="img/mango.png">
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
@@ -16,14 +18,16 @@
     <link rel="stylesheet" href="css/github-fork.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="img/mango.png">
+    <!-- JS Files -->
+    <script src="js/audioRecorder.js"></script>
+    <script src="js/callbackManager.js"></script>
+    <script src="js/script.js"></script>
   </head>
   <body class="pure-skin-mine">
     <div class="github-fork-ribbon-wrapper left">
-        <div class="github-fork-ribbon">
-            <a href="https://github.com/pramodsum/AamMango">Fork me on GitHub</a>
-        </div>
+      <div class="github-fork-ribbon">
+        <a href="https://github.com/pramodsum/AamMango">Fork me on GitHub</a>
+      </div>
     </div>
     <div>
       <div id="main">
@@ -32,43 +36,35 @@
           <h2>A Hindi Web Speech Recognizer</h2>
         </div>
         <div class="content">
-          <h2 class="content-subhead">Select a Category</h2>
-          <p>
-            <p>
-              <select class="form-control" id="grammars" onchange="updateWordList()"></select>
-            </p>
-            <div class="row">
-              <div class="col-sm-6">
-                <h2>Words in Category</h2>
-                <select class="form-control" id="words" onchange="updateUI()"></select>
+          <h2 class="category content-subhead">Select a Category</h2>
+          <select class="form-control" id="grammars" onchange="updateWordList()"></select>
+          <div class="row">
+            <div class="col-sm-6">
+              <h2 class="content-subhead">Words in Category</h2>
+              <select class="form-control" id="words" onchange="updateUI()"></select>
 
-                <h2>Recognition</h2>
-                <button class="pure-button pure-button-primary" id="startBtn">Start</button>
-                <button class="pure-button pure-button-primary" id="playBtn">Listen</button>
-                <button class="pure-button pure-button-primary" id="stopBtn" hidden>Stop</button>
-                <span id="recording-indicator" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 20px; height: 20px; background: red;"></span>
-                
-                <div id="output" ></div>
-              </div>
-<!--               <div class="col-sm-6">
-                <div class='pane'>
-                  <canvas width=320 height=240></canvas>
-                </div>
-              </div> -->
+              <h2 class="content-subhead">Recognition</h2>
+              <button class="pure-button pure-button-primary" id="startBtn">Start</button>
+              <button class="pure-button pure-button-primary" id="playBtn">Listen</button>
+              <button class="pure-button pure-button-primary" id="stopBtn" hidden>Stop</button>
+              <span id="recording-indicator"></span>
+
+              <div id="output"></div>
             </div>
-
-          </p>
+            <div class="col-sm-6">
+              <h2 class="content-subhead">User Statistics</h2>
+              <div class="stats content-subhead">
+                Correctly Pronounced: <span id="correct">0</span><br>
+                Incorrectly Pronounced: <span id="almost">0</span><br>
+                Incorrect word: <span id="wrong">0</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <footer class="container">
-      <!-- <img src="img/footer.png" class="pull-left"> -->
       <a class="pull-right" href="http://github.com/pramodsum/AamMango/issues"><i class="ion-bug"></i></a>
     </footer>
-    <script src="js/audioRecorder.js"></script>
-    <script src="js/callbackManager.js"></script>
-    <script src="js/script.js"></script>
-    <!-- These are the two JavaScript files you must load in the HTML,
-    The recognizer is loaded through a Web Worker -->
   </body>
-  </html>
+</html>
