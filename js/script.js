@@ -48,7 +48,7 @@ function updateUI() {
 
 // This is just a logging window where we display the status
 function updateStatus(newStatus) {
-  console.log("STATUS: " + newStatus);
+  //console.log("STATUS: " + newStatus);
 };
 
 
@@ -80,7 +80,7 @@ var playAudio = function() {
   selectedWord = grammars[gid].g.transitions[wid];
   var audio = new Audio('https://raw.githubusercontent.com/pramodsum/AamMango/gh-pages/audio/' + selectedWord.word + '.wav');
   audio.play();
-  console.log("Playing back audio for " + selectedWord.text);
+  //console.log("Playing back audio for " + selectedWord.text);
 }
 
 
@@ -190,7 +190,7 @@ window.onload = function() {
           // This is a case when the recognizer has a new hypothesis
           if (e.data.hasOwnProperty('hyp')) {
             var newHyp = output = e.data.hyp;
-            console.log("Score: " + e.data.score);
+            //console.log("Score: " + e.data.score);
 
             if(newHyp == "") return;
             stopRecording();
@@ -198,7 +198,7 @@ window.onload = function() {
             var gid = document.getElementById('grammars').value;
             var wid = document.getElementById('words').value;
             selectedWord = grammars[gid].g.transitions[wid];
-            console.log(grammars[gid].g.transitions[wid]);
+            //console.log(grammars[gid].g.transitions[wid]);
 
             var score = undefined;
             if(e.data.hypSeg != undefined) {
