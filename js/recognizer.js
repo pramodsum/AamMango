@@ -249,18 +249,10 @@ function stop() {
         code: output
       });
     else {
-      // var seg = undefined;
       recognizer.getHypseg(segmentation);
-      // if (seg == undefined) {
-      //   console.log("Segmentiation is undefined");
-      // } else {
-      //   console.log(seg);
-      //   // for (var i = 0; i < seg.length; i++) {
-      //   //   console.log(seg[i]);
-      //   // }
-      // }
       post({
         hyp: recognizer.getHyp(),
+        score: recognizer.getHypAccuracy(),
         hypseg: segmentation,
         final: true
       });

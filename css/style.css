@@ -32,3 +32,12 @@ i.ion-bug:hover,
 i.ion-bug:focus {
   color: #6562EF;
 }
+
+footer {
+  height: 40px;
+  background: url("../img/footer.png") no-repeat;
+}
+
+a.pull-right {
+  margin-top: 12px;
+}

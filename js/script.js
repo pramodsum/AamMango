@@ -80,6 +80,7 @@ var playAudio = function() {
   selectedWord = grammars[gid].g.transitions[wid];
   var audio = new Audio('https://raw.githubusercontent.com/pramodsum/AamMango/gh-pages/audio/' + selectedWord.word + '.wav');
   audio.play();
+  console.log("Playing back audio for " + selectedWord.text);
 }
 
 
@@ -199,7 +200,12 @@ window.onload = function() {
             console.log(grammars[gid].g.transitions[wid]);
 
             if(newHyp == selectedWord.word) {
-              output = "YAY! You said " + selectedWord.text + " correctly!";
+              if(e.data.score <= -1500){
+                output = "YAY! You said " + selectedWord.text + " correctly!";
+              }
+              else {
+                output = "You said " + selectedWord.text + " but didn't pronounce it correctly.\nListen to the correct pronunciation and try again!";
+              }
             } else {
               output = "NO! You said " + newHyp + " instead of " + selectedWord.text;
             }
