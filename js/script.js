@@ -227,6 +227,7 @@ window.onload = function() {
   else {
     updateStatus("No web audio support in this browser");
     startBtn.disabled = true;
+    recognizerReady = false;
   }
 
 // Wiring JavaScript to the UI
