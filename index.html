@@ -44,6 +44,7 @@
               <div class="col-sm-6">
                 <h2>Recognition</h2>
                 <button class="pure-button pure-button-primary" id="startBtn">Start</button>
+                <button class="pure-button pure-button-primary" id="playBtn">Listen</button>
                 <button class="pure-button pure-button-primary" id="stopBtn" hidden>Stop</button>
                 <span id="recording-indicator" style="border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 20px; height: 20px; background: red;"></span>
                 <div id="output" ></div>
@@ -62,10 +63,10 @@
       <a class="pull-right" href="http://github.com/pramodsum/AamMango/issues"><i class="ion-bug"></i></a>
     </footer>
     <script src="js/hark.js"></script>
+    <script src="js/audioRecorder.js"></script>
+    <script src="js/callbackManager.js"></script>
     <script src="js/script.js"></script>
     <!-- These are the two JavaScript files you must load in the HTML,
     The recognizer is loaded through a Web Worker -->
-    <script src="js/audioRecorder.js"></script>
-    <script src="js/callbackManager.js"></script>
   </body>
   </html>
