@@ -218,16 +218,17 @@ window.onload = function() {
             var score = GOP = -1;
             if(e.data.hypSeg != undefined) {
               score = e.data.hypSeg.acScore;
-              userScore = Math.log(score*-1)*10.0;
+              score = Math.log(score*-1)*10.0;
             } else {
-              userScore = Math.log(e.data.score*-1)*10.0;
+              score = Math.log(e.data.score*-1)*10.0;
             }
 
-            GOP = (1.0 - Math.abs(Math.log(userScore/(0.01470588235)))/(e.data.nFrames))*100.0;
+            GOP = (1.0 - Math.abs(Math.log(score/(0.01470588235)))/(e.data.nFrames))*100.0;
             console.log(GOP);
+            userScore = GOP;
 
             if(newHyp == selectedWord.word) {
-              if(GOP > 75.0){
+              if(GOP > 70.0){
                 output = "<div class=\"alert alert-success\">";
                 output += "YAY! You said " + selectedWord.text + " correctly!";
                 output += "</div>";
@@ -245,6 +246,7 @@ window.onload = function() {
               output += "NO! You said " + newHyp + " instead of " + selectedWord.text;
               output += "</div>";
               wrong++;
+              // userScore = 0.00;
             }
 
             totalCount++;
