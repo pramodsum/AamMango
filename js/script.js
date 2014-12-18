@@ -6,7 +6,6 @@ var selectedWord;
 
 var correctContainer, almostContainer, wrongContainer, scoreContainer;
 var correct = almost = wrong = userScore = totalCount = 0;
-var prevScore = 0;
 
 
 // A convenience function to post a message to the recognizer and associate
@@ -204,32 +203,35 @@ window.onload = function() {
             var newHyp = output = e.data.hyp;
             //console.log("Score: " + e.data.score);
 
+            //Only process if not silence
             if(newHyp == "") return;
             stopRecording();
+
+            //only calculate and display hypothesis and GOP if stopped recording
+            if(!e.data.final) return;
 
             var gid = document.getElementById('grammars').value;
             var wid = document.getElementById('words').value;
             selectedWord = grammars[gid].g.transitions[wid];
             //console.log(grammars[gid].g.transitions[wid]);
 
-            var score = 0;
+            var score = GOP = -1;
             if(e.data.hypSeg != undefined) {
               score = e.data.hypSeg.acScore;
-              userScore = score*-1;
+              userScore = Math.log(score*-1)*10.0;
             } else {
-              userScore = e.data.score*-1;
+              userScore = Math.log(e.data.score*-1)*10.0;
             }
-            console.log(userScore);
-            userScore = Math.log(userScore)*10.0;
-            console.log(userScore)
+
+            GOP = (1.0 - Math.abs(Math.log(userScore/(0.01470588235)))/(e.data.nFrames))*100.0;
+            console.log(GOP);
 
             if(newHyp == selectedWord.word) {
-              if(userScore > 75.0){
+              if(GOP > 75.0){
                 output = "<div class=\"alert alert-success\">";
                 output += "YAY! You said " + selectedWord.text + " correctly!";
                 output += "</div>";
                 correct++;
-                // if(prevScore != score) userScore += 100;
               }
               else {
                 output = "<div class=\"alert alert-warning\">";
@@ -237,18 +239,15 @@ window.onload = function() {
                 output += "</div>";
                 playAudio();
                 almost++;
-                // if(prevScore != score) userScore += 25;
               }
             } else {
               output = "<div class=\"alert alert-danger\">";
               output += "NO! You said " + newHyp + " instead of " + selectedWord.text;
               output += "</div>";
               wrong++;
-              // if(prevScore != score) userScore -= 25;
             }
 
             totalCount++;
-            if(prevScore != score) prevScore = score;
             updateHyp(output);
           }
           // This is the case when we have an error

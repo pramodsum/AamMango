@@ -248,16 +248,18 @@ function stop() {
         command: "stop",
         code: output
       });
-    // else {
-    //   recognizer.getHypseg(segmentation);
-    //   // //console.log("SIZE OF SEGMENTATION: " + segmentation.size());
-    //   post({
-    //     hyp: recognizer.getHyp(),
-    //     score: recognizer.getHypAccuracy(),
-    //     hypseg: getHypSeg(segmentation, recognizer.getHyp()),
-    //     final: true
-    //   });
-    // }
+    else {
+      if(recognizer.getHypseg(segmentation) != Module.ReturnType.SUCCESS)
+        console.log(recognizer.getHypseg(segmentation));
+      console.log("SIZE OF SEGMENTATION: " + segmentation.size());
+      post({
+        hyp: recognizer.getHyp(),
+        score: recognizer.getHypAccuracy(),
+        nFrames: getNFrames(segmentation, recognizer.getHyp()),
+        hypseg: getHypSeg(segmentation, recognizer.getHyp()),
+        final: true
+      });
+    }
   } else {
     post({
       status: "error",
@@ -281,12 +283,16 @@ function process(array) {
         code: output
       });
     else {
-      recognizer.getHypseg(segmentation);
-      // //console.log("SIZE OF SEGMENTATION: " + segmentation.size());
+      if(recognizer.getHypseg(segmentation) != Module.ReturnType.SUCCESS)
+        console.log(recognizer.getHypseg(segmentation));
+
+      console.log("SIZE OF SEGMENTATION: " + segmentation.size());
       post({
         hyp: recognizer.getHyp(),
         score: recognizer.getHypAccuracy(),
-        hypseg: getHypSeg(segmentation, recognizer.getHyp())
+        nFrames: getNFrames(segmentation, recognizer.getHyp()),
+        hypseg: getHypSeg(segmentation, recognizer.getHyp()),
+        final: false
       });
     }
   } else {
@@ -298,8 +304,20 @@ function process(array) {
   }
 };
 
+function getNFrames(segmentation, hyp) {
+  // console.log("SIZE OF SEGMENTATION: " + segmentation.size());
+  for(var i = 0; i < segmentation.size(); i++) {
+    if(segmentation.get(i).word == hyp) {
+      console.log("NFrames: " + segmentation.get(i).end - segmentation.get(i).start);
+      return segmentation.get(i).end - segmentation.get(i).start;
+    }
+  }
+  return undefined;
+}
+
 //GET SEGMENTATION 
 function getHypSeg(segmentation, hyp) {
+  // console.log("SIZE OF SEGMENTATION: " + segmentation.size());
   for(var i = 0; i < segmentation.size(); i++) {
     if(segmentation.get(i).word == hyp) {
       console.log("HypSeg: " + segmentation.get(i).acScore);
