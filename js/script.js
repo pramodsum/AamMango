@@ -215,7 +215,7 @@ window.onload = function() {
   // The following is to initialize Web Audio
   try {
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     window.URL = window.URL || window.webkitURL;
     audioContext = new AudioContext();
   } catch (e) {
