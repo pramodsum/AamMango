@@ -215,6 +215,7 @@ window.onload = function() {
                 output = "<div class=\"alert alert-warning\">";
                 output += "You said " + selectedWord.text + " but didn't pronounce it correctly.\n\nListen to the correct pronunciation and try again!";
                 output += "</div>";
+                playAudio();
               }
             } else {
               output = "<div class=\"alert alert-danger\">";
