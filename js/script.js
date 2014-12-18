@@ -207,13 +207,19 @@ window.onload = function() {
 
             if(newHyp == selectedWord.word) {
               if(score <= -1500 || e.data.score <= -1500){
-                output = "YAY! You said " + selectedWord.text + " correctly!";
+                output = "<div class=\"alert alert-success\">";
+                output += "YAY! You said " + selectedWord.text + " correctly!";
+                output += "</div>";
               }
               else {
-                output = "You said " + selectedWord.text + " but didn't pronounce it correctly.\nListen to the correct pronunciation and try again!";
+                output = "<div class=\"alert alert-warning\">";
+                output += "You said " + selectedWord.text + " but didn't pronounce it correctly.\n\nListen to the correct pronunciation and try again!";
+                output += "</div>";
               }
             } else {
-              output = "NO! You said " + newHyp + " instead of " + selectedWord.text;
+              output = "<div class=\"alert alert-danger\">";
+              output += "NO! You said " + newHyp + " instead of " + selectedWord.text;
+              output += "</div>";
             }
             updateHyp(output);
           }
