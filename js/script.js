@@ -78,7 +78,7 @@ var playAudio = function() {
   var gid = document.getElementById('grammars').value;
   var wid = document.getElementById('words').value;
   selectedWord = grammars[gid].g.transitions[wid];
-  var audio = new Audio('../audio/' + selectedWord.word + '.wav');
+  var audio = new Audio('https://raw.githubusercontent.com/pramodsum/AamMango/gh-pages/audio/' + selectedWord.word + '.wav');
   audio.play();
 }
 
