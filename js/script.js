@@ -36,7 +36,7 @@ function updateHyp(hyp) {
   correctContainer.innerHTML = correct;
   almostContainer.innerHTML = almost;
   wrongContainer.innerHTML = wrong;
-  // scoreContainer.innerHTML = correct/totalCount + "%";
+  scoreContainer.innerHTML = userScore + "%";
 };
 
 
@@ -182,7 +182,7 @@ var initRecognizer = function() {
 // request access to the microphone
 window.onload = function() {
   outputContainer = document.getElementById("output");
-  // scoreContainer = document.getElementById("userScore");
+  scoreContainer = document.getElementById("userScore");
   correctContainer = document.getElementById("correct");
   almostContainer = document.getElementById("almost");
   wrongContainer = document.getElementById("wrong");
@@ -203,7 +203,6 @@ window.onload = function() {
           if (e.data.hasOwnProperty('hyp')) {
             var newHyp = output = e.data.hyp;
             //console.log("Score: " + e.data.score);
-            console.log(e);
 
             if(newHyp == "") return;
             stopRecording();
@@ -213,18 +212,24 @@ window.onload = function() {
             selectedWord = grammars[gid].g.transitions[wid];
             //console.log(grammars[gid].g.transitions[wid]);
 
-            var score = undefined;
+            var score = 0;
             if(e.data.hypSeg != undefined) {
               score = e.data.hypSeg.acScore;
+              userScore = score*-1;
+            } else {
+              userScore = e.data.score*-1;
             }
+            console.log(userScore);
+            userScore = Math.log(userScore)*10.0;
+            console.log(userScore)
 
             if(newHyp == selectedWord.word) {
-              if(score <= -1500 || e.data.score <= -1500){
+              if(userScore > 75.0){
                 output = "<div class=\"alert alert-success\">";
                 output += "YAY! You said " + selectedWord.text + " correctly!";
                 output += "</div>";
                 correct++;
-                if(prevScore != score) userScore += 100;
+                // if(prevScore != score) userScore += 100;
               }
               else {
                 output = "<div class=\"alert alert-warning\">";
@@ -232,15 +237,16 @@ window.onload = function() {
                 output += "</div>";
                 playAudio();
                 almost++;
-                if(prevScore != score) userScore += 25;
+                // if(prevScore != score) userScore += 25;
               }
             } else {
               output = "<div class=\"alert alert-danger\">";
               output += "NO! You said " + newHyp + " instead of " + selectedWord.text;
               output += "</div>";
               wrong++;
-              if(prevScore != score) userScore -= 25;
+              // if(prevScore != score) userScore -= 25;
             }
+
             totalCount++;
             if(prevScore != score) prevScore = score;
             updateHyp(output);

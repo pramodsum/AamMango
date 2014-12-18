@@ -248,6 +248,16 @@ function stop() {
         command: "stop",
         code: output
       });
+    // else {
+    //   recognizer.getHypseg(segmentation);
+    //   // //console.log("SIZE OF SEGMENTATION: " + segmentation.size());
+    //   post({
+    //     hyp: recognizer.getHyp(),
+    //     score: recognizer.getHypAccuracy(),
+    //     hypseg: getHypSeg(segmentation, recognizer.getHyp()),
+    //     final: true
+    //   });
+    // }
   } else {
     post({
       status: "error",
@@ -276,8 +286,7 @@ function process(array) {
       post({
         hyp: recognizer.getHyp(),
         score: recognizer.getHypAccuracy(),
-        hypseg: getHypSeg(segmentation, recognizer.getHyp()),
-        final: true
+        hypseg: getHypSeg(segmentation, recognizer.getHyp())
       });
     }
   } else {
@@ -293,7 +302,7 @@ function process(array) {
 function getHypSeg(segmentation, hyp) {
   for(var i = 0; i < segmentation.size(); i++) {
     if(segmentation.get(i).word == hyp) {
-      //console.log("HypSeg: " + segmentation.get(i).acScore);
+      console.log("HypSeg: " + segmentation.get(i).acScore);
       return segmentation.get(i);
     }
   }
