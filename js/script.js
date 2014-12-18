@@ -41,7 +41,8 @@ function updateUI() {
   var wid = document.getElementById('words').value;
   selectedWord = grammars[gid].g.transitions[wid];
 
-  if (recorderReady && recognizerReady && selectTag != undefined) startBtn.disabled = stopBtn.disabled = playBtn.disabled = false;
+  if (recorderReady && recognizerReady && selectTag != undefined && navigator.getUserMedia) 
+    startBtn.disabled = stopBtn.disabled = playBtn.disabled = false;
 };
 
 
