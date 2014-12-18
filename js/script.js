@@ -224,7 +224,10 @@ window.onload = function() {
   if (navigator.getUserMedia) navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
                                   updateStatus("No live audio input in this browser");
                               });
-  else updateStatus("No web audio support in this browser");
+  else {
+    updateStatus("No web audio support in this browser");
+    startBtn.disabled = true;
+  }
 
 // Wiring JavaScript to the UI
 var startBtn = document.getElementById('startBtn');
