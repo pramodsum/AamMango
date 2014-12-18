@@ -191,6 +191,7 @@ window.onload = function() {
           if (e.data.hasOwnProperty('hyp')) {
             var newHyp = output = e.data.hyp;
             console.log("Score: " + e.data.score);
+
             if(newHyp == "") return;
             stopRecording();
 
@@ -199,8 +200,13 @@ window.onload = function() {
             selectedWord = grammars[gid].g.transitions[wid];
             console.log(grammars[gid].g.transitions[wid]);
 
+            var score = undefined;
+            if(e.data.hypSeg != undefined) {
+              score = e.data.hypSeg.acScore;
+            }
+
             if(newHyp == selectedWord.word) {
-              if(e.data.score <= -1500){
+              if(score <= -1500 || e.data.score <= -1500){
                 output = "YAY! You said " + selectedWord.text + " correctly!";
               }
               else {
